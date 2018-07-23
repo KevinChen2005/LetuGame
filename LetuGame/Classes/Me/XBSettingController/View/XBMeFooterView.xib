@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="eTH-sl-u7g" customClass="XBMeFooterView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTI-Ys-v0d">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="退出登录">
+                        <color key="titleColor" red="0.86348364637305697" green="0.053652845923197912" blue="0.10747062090197555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="clickLogoutBtn:" destination="eTH-sl-u7g" eventType="touchUpInside" id="FLQ-zg-g85"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="UTI-Ys-v0d" firstAttribute="top" secondItem="eTH-sl-u7g" secondAttribute="top" id="9HH-7B-pvM"/>
+                <constraint firstItem="UTI-Ys-v0d" firstAttribute="leading" secondItem="eTH-sl-u7g" secondAttribute="leading" id="ZRm-75-uOp"/>
+                <constraint firstAttribute="trailing" secondItem="UTI-Ys-v0d" secondAttribute="trailing" id="jKJ-5q-Xc6"/>
+                <constraint firstAttribute="bottom" secondItem="UTI-Ys-v0d" secondAttribute="bottom" constant="32" id="xq9-Bd-NgE"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="loginBtn" destination="UTI-Ys-v0d" id="raX-Iy-570"/>
+            </connections>
+            <point key="canvasLocation" x="241.5" y="122"/>
+        </view>
+    </objects>
+</document>

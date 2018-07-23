@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FJGameToolbar">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saH-NZ-yOl">
+                    <rect key="frame" x="229" y="10" width="85" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="85" id="coI-Ay-teN"/>
+                    </constraints>
+                    <state key="normal" title="写攻略">
+                        <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="writeStrategy:" destination="iN0-l3-epB" eventType="touchUpInside" id="Bnf-qt-4kB"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYT-hw-ilj">
+                    <rect key="frame" x="186" y="0.0" width="3" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="3" id="1l6-Kq-z5S"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfI-h6-4aA">
+                    <rect key="frame" x="61" y="10" width="85" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="85" id="IvS-ib-Uy6"/>
+                    </constraints>
+                    <state key="normal" title="查看攻略">
+                        <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="showStrategyList:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ze3-pP-KxT"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aj3-2s-wms">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                    <color key="backgroundColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="ylY-Sb-olU"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="qYT-hw-ilj" firstAttribute="leading" secondItem="ZfI-h6-4aA" secondAttribute="trailing" constant="40" id="1Sx-FJ-pPC"/>
+                <constraint firstAttribute="bottom" secondItem="ZfI-h6-4aA" secondAttribute="bottom" constant="10" id="99V-GA-Ctg"/>
+                <constraint firstAttribute="bottom" secondItem="saH-NZ-yOl" secondAttribute="bottom" constant="10" id="BRO-2c-5kB"/>
+                <constraint firstItem="qYT-hw-ilj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BSg-5i-h41"/>
+                <constraint firstAttribute="trailing" secondItem="Aj3-2s-wms" secondAttribute="trailing" id="H2X-Pw-IlG"/>
+                <constraint firstItem="saH-NZ-yOl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Ilo-ML-NX3"/>
+                <constraint firstItem="Aj3-2s-wms" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JED-Pn-X8a"/>
+                <constraint firstItem="qYT-hw-ilj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="POv-Au-ZNG"/>
+                <constraint firstItem="qYT-hw-ilj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Qru-4a-ZVA"/>
+                <constraint firstItem="Aj3-2s-wms" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iWJ-KU-5w1"/>
+                <constraint firstItem="qYT-hw-ilj" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="rhx-Ue-XRw"/>
+                <constraint firstItem="ZfI-h6-4aA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="xKx-N2-YVu"/>
+                <constraint firstItem="saH-NZ-yOl" firstAttribute="leading" secondItem="qYT-hw-ilj" secondAttribute="trailing" constant="40" id="xsO-or-LFf"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="32.5" y="357"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeadLineView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_place_holder" translatesAutoresizingMaskIntoConstraints="NO" id="6Kp-Kd-Mxf">
+                    <rect key="frame" x="10" y="10" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="9y7-rd-IC5"/>
+                        <constraint firstAttribute="width" constant="70" id="cmX-XK-93n"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勇者荣耀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg4-8z-tum">
+                    <rect key="frame" x="88" y="10" width="279" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="eSG-mS-xtB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成都雨墨科技有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3b-ce-Kqc">
+                    <rect key="frame" x="88" y="40" width="279" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Eb0-uQ-xTL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.53305697990000001" green="0.56683128240000002" blue="0.56510284330000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-07-11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR1-DS-Tmc">
+                    <rect key="frame" x="88" y="63" width="279" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="tp1-io-wOZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.53305697990000001" green="0.56683128240000002" blue="0.56510284330000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="游戏截图" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToU-HJ-u7R">
+                    <rect key="frame" x="10" y="105" width="100" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="8TS-yg-601"/>
+                        <constraint firstAttribute="height" constant="25" id="pnN-ZW-IBe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7fu-MB-fEY" customClass="KNBannerView">
+                    <rect key="frame" x="10" y="138" width="357" height="150"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="6OW-wI-wdC"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="游戏简介" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVt-KU-JAK">
+                    <rect key="frame" x="10" y="303" width="100" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="6jJ-Nv-geg"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="SJU-hb-h3N"/>
+                        <constraint firstAttribute="width" constant="100" id="ofl-Dc-gl4"/>
+                        <constraint firstAttribute="height" constant="25" id="smQ-SF-Iqj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="《勇者荣耀》雨墨科技巨匠工作室历时3年推出的东方英雄即时对战手游大作,抗塔强杀、团灭超神,领略爽热血竞技的酣畅淋漓!1v1、3v3、5v5、闯关等丰富游戏模式,随时战..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fio-jH-GGf">
+                    <rect key="frame" x="10" y="336" width="349" height="83"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="P3b-ce-Kqc" firstAttribute="leading" secondItem="6Kp-Kd-Mxf" secondAttribute="trailing" constant="8" id="1jb-eE-ZqN"/>
+                <constraint firstItem="7fu-MB-fEY" firstAttribute="top" secondItem="ToU-HJ-u7R" secondAttribute="bottom" constant="8" id="2FA-iM-FTp"/>
+                <constraint firstAttribute="trailing" secondItem="fR1-DS-Tmc" secondAttribute="trailing" constant="8" id="4nf-rO-qjw"/>
+                <constraint firstAttribute="trailing" secondItem="fio-jH-GGf" secondAttribute="trailing" constant="16" id="9Io-Fc-rsR"/>
+                <constraint firstItem="eVt-KU-JAK" firstAttribute="top" secondItem="7fu-MB-fEY" secondAttribute="bottom" constant="15" id="B1A-Yu-FVB"/>
+                <constraint firstItem="ToU-HJ-u7R" firstAttribute="top" secondItem="6Kp-Kd-Mxf" secondAttribute="bottom" constant="25" id="HkU-v5-NpM"/>
+                <constraint firstItem="fio-jH-GGf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="I2E-mq-9Pl"/>
+                <constraint firstItem="6Kp-Kd-Mxf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Jin-xh-6QF"/>
+                <constraint firstItem="ToU-HJ-u7R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="KRJ-gN-fTx"/>
+                <constraint firstItem="7fu-MB-fEY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="LHJ-g4-FfV"/>
+                <constraint firstItem="fR1-DS-Tmc" firstAttribute="top" secondItem="P3b-ce-Kqc" secondAttribute="bottom" constant="2" id="Rgf-vu-wH1"/>
+                <constraint firstAttribute="trailing" secondItem="P3b-ce-Kqc" secondAttribute="trailing" constant="8" id="UKm-pS-qf0"/>
+                <constraint firstItem="eVt-KU-JAK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="UPW-cC-NnS"/>
+                <constraint firstItem="P3b-ce-Kqc" firstAttribute="top" secondItem="eg4-8z-tum" secondAttribute="bottom" constant="2" id="Uk5-tq-CsS"/>
+                <constraint firstAttribute="trailing" secondItem="7fu-MB-fEY" secondAttribute="trailing" constant="8" id="eNy-Td-zXu"/>
+                <constraint firstItem="eg4-8z-tum" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="elB-NQ-wuS"/>
+                <constraint firstItem="6Kp-Kd-Mxf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="ivL-GX-Vtu"/>
+                <constraint firstItem="eg4-8z-tum" firstAttribute="leading" secondItem="6Kp-Kd-Mxf" secondAttribute="trailing" constant="8" id="oVp-hT-FCp"/>
+                <constraint firstItem="fR1-DS-Tmc" firstAttribute="leading" secondItem="6Kp-Kd-Mxf" secondAttribute="trailing" constant="8" id="pRj-wx-746"/>
+                <constraint firstAttribute="trailing" secondItem="eg4-8z-tum" secondAttribute="trailing" constant="8" id="pab-Kz-YPe"/>
+                <constraint firstAttribute="bottom" secondItem="fio-jH-GGf" secondAttribute="bottom" constant="200" id="qC9-MV-bhU"/>
+                <constraint firstItem="fio-jH-GGf" firstAttribute="top" secondItem="eVt-KU-JAK" secondAttribute="bottom" constant="8" id="tHt-kQ-dv3"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bannerHoldView" destination="7fu-MB-fEY" id="kSP-cr-KBB"/>
+                <outlet property="company" destination="P3b-ce-Kqc" id="CXj-h3-fgC"/>
+                <outlet property="content" destination="fio-jH-GGf" id="L5b-0Q-MHy"/>
+                <outlet property="date" destination="fR1-DS-Tmc" id="CdV-CS-Eer"/>
+                <outlet property="icon" destination="6Kp-Kd-Mxf" id="vxo-JS-Zxp"/>
+                <outlet property="name" destination="eg4-8z-tum" id="FIx-4K-eoS"/>
+            </connections>
+            <point key="canvasLocation" x="90.5" y="613.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="img_place_holder" width="40" height="27"/>
+    </resources>
+</document>
