@@ -8,7 +8,7 @@
 
 #import "FJLoginViewController.h"
 #import "FJRegisterViewController.h"
-
+#import "FJFindPwdViewController.h"
 
 @interface FJLoginViewController () <UITextFieldDelegate>
 
@@ -40,7 +40,7 @@
 {
     [super viewDidAppear:animated];
     
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -92,9 +92,9 @@
         NSString* message = [NSString stringWithFormat:@"%@", retDict[@"message"]];
         if ([code isEqualToString:@"1"]) { //登录成功
             [FJProgressHUB showSuccessWithMessage:@"登录成功" withTimeInterval:kTimeHubSuccess];
-            UserModel* userModel = [UserModel userWithDict:retDict[@"data"]];
+            UserModel* userModel = [UserModel mj_objectWithKeyValues:retDict[@"data"]];
             [UserAuth saveUserInfo:userModel] ;
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
         } else {
             DLog(@"登录失败-%@", code);
             [FJProgressHUB showErrorWithMessage:message withTimeInterval:kTimeHubError];
@@ -103,6 +103,12 @@
         DLog(@"登录失败-%@", error);
         [FJProgressHUB showErrorWithMessage:@"登录失败，请检查网络" withTimeInterval:kTimeHubError];
     }];
+}
+
+- (IBAction)onClickForgetPwd:(id)sender
+{
+    FJFindPwdViewController* findVC = [FJFindPwdViewController new];
+    [self.navigationController pushViewController:findVC animated:YES];
 }
 
 - (void)onClickRegister:(UIButton*)sender

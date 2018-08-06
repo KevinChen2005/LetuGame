@@ -82,13 +82,15 @@ static NSString * const reuseIdentifier = @"Cell";
             [strongSelf.datas addObjectsFromArray:tempArr];
             [strongSelf.collectionView reloadData];
         } else {
-            [strongSelf showRefreshStaus:@"刷新失败"];
+//            [strongSelf showRefreshStaus:@"刷新失败"];
+//            [FJProgressHUB showErrorWithMessage:@"刷新失败" withTimeInterval:kTimeHubError];
         }
     } failure:^(NSError *error) {
         STRONGSELF
         DLog(@"fetchMyGameList error - %@", error);
         [strongSelf.collectionView.mj_header endRefreshing];
-        [strongSelf showRefreshStaus:@"刷新失败，请检查网络"];
+//        [strongSelf showRefreshStaus:@"刷新失败，请检查网络"];
+//        [FJProgressHUB showErrorWithMessage:@"刷新失败，请检查网络" withTimeInterval:kTimeHubError];
     }];
 }
 

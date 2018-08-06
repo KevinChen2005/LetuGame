@@ -21,6 +21,7 @@
     //去掉分割线
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.rowHeight = 48;
+    self.tableView.tableFooterView = [UIView new];
 }
 
 #pragma mark - Table view data source

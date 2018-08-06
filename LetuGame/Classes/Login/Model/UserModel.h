@@ -13,7 +13,7 @@
 /**
  *  用户编号
  */
-@property(nonatomic,copy) NSString *userid;
+@property(nonatomic,copy) NSString *userId;
 
 /**
  *  手机号
@@ -28,19 +28,22 @@
 /**
  *  昵称
  */
-@property(nonatomic,copy) NSString *nickname;
+@property(nonatomic,copy) NSString *nickName;
 
 /**
  *  头像
  */
-@property(nonatomic,copy) NSString *avatar;
+@property(nonatomic,copy) NSString *avatarUrl;
 
 /**
  *  性别
  */
 @property(nonatomic,copy) NSString *sex;
 
-- (instancetype)initWithDict:(NSDictionary*)dict;
-+ (instancetype)userWithDict:(NSDictionary*)dict;
+/**
+ *  是否是推广员
+ */
+@property(nonatomic,assign)BOOL isSpreader;
 
 @end
+

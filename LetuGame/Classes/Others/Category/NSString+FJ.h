@@ -16,6 +16,9 @@
 // 是否满足正则表达式
 - (BOOL)isRegularString:(NSString*)regular;
 
+// 正则表达式匹配结果
+- (NSArray*)resultForRegularString:(NSString*)regular;
+
 // 是否是电话号码（2018）
 - (BOOL)isPhoneNumber;
 

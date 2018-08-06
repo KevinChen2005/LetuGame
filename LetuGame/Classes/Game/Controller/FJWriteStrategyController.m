@@ -41,6 +41,8 @@
     // title view
     UITextField* titleView = [UITextField new];
     titleView.borderStyle = UITextBorderStyleRoundedRect;
+    titleView.placeholder = @"输入攻略标题";
+    titleView.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:titleView];
     [titleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@10);
@@ -120,22 +122,27 @@
         [self.contentView becomeFirstResponder];
         return;
     }
-    [HttpTool addNewsWithGameId:self.game.gameId title:title content:content typeOne:@"news" typeTwo:@"" success:^(id retObj) {
+    
+    //内容加上换行的html标签
+    NSString* formatContent = [content stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+    formatContent = [formatContent stringByReplacingOccurrencesOfString:@" " withString:@"&nbsp;"];
+    [HttpTool addNewsWithGameId:self.game.gameId title:title content:formatContent typeOne:@"news" typeTwo:@"" success:^(id retObj) {
         DLog(@"addNews success retObj- %@", retObj);
         NSDictionary* retDict = retObj;
         NSString* code = [NSString stringWithString:retDict[@"code"]];
         NSString* message = [NSString stringWithString:retDict[@"message"]];
         if ([code isEqualToString:@"1"]) {
-            [FJProgressHUB showInfoWithMessage:@"添加攻略成功" withTimeInterval:1.0f];
+            [FJProgressHUB showInfoWithMessage:@"添加攻略成功" withTimeInterval:1.5f];
             self.titleView.text = @"";
             self.contentView.text = @"";
             [self.navigationController popViewControllerAnimated:YES];
             [self.view endEditing:YES];
         } else {
-            [FJProgressHUB showInfoWithMessage:message withTimeInterval:1.0f];
+            [FJProgressHUB showInfoWithMessage:message withTimeInterval:1.5f];
         }
     } failure:^(NSError *error) {
         DLog(@"addNews failed - %@", error);
+        [FJProgressHUB showInfoWithMessage:@"添加攻略失败，请检查网络" withTimeInterval:1.5f];
     }];
 }
 

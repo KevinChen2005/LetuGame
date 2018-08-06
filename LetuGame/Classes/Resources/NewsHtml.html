@@ -13,6 +13,7 @@
                     /*标题*/
                     p.thicker { font-weight: 900 }
                     p.light { font-weight: 0 }
+                    p.subtitle { font-weight: 0 ; font-size: 80%; color:#c8c8c8;}
                     p { font-size: 108% }
                     h2 { font-size: 120% }
                     h3 { font-size: 80% ; color:#c8c8c8;}
@@ -24,7 +25,7 @@
             window.onload = function(){
                 var $img = document.getElementsByTagName('img');
                 for(var p in  $img){
-                $img[p].style.width = '100%';
+                $img[p].style.maxWidth = '100%';
                 $img[p].style.height ='auto'
                 }
             }
@@ -109,4 +110,5 @@
                                        })
             </script>
         <p>mainnews</p>
-    </body></html>
+    </body>
+</html>

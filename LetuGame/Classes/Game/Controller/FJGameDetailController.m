@@ -15,14 +15,18 @@
 #import "FJGameDetail.h"
 #import "FJStrategyController.h"
 #import "FJWriteStrategyController.h"
+#import "RichTextViewController.h"
+#import "PictureModel.h"
 
-@interface FJGameDetailController () <NavHeadTitleViewDelegate, headLineDelegate, FJGameToolbarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface FJGameDetailController () <NavHeadTitleViewDelegate, FJGameToolbarDelegate, UITableViewDataSource, UITableViewDelegate, RichTextViewControllerDelegate>
 {
     //头像
     UIImageView *_headerImg;
     //昵称
     UILabel *_nickLabel;
 }
+@property(nonatomic,assign)NSInteger count;
+@property(nonatomic,strong)NSMutableDictionary *dictWork;//存放上传计数
 
 @property(nonatomic,strong)UIImageView *backgroundImgV;//背景图
 @property(nonatomic,assign)float backImgHeight;
@@ -45,6 +49,7 @@
 {
     [super viewDidLoad];
     
+    self.dictWork = [NSMutableDictionary dictionary];
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.detail = [FJGameDetail new];
@@ -57,7 +62,6 @@
     
     //创建TableView
     [self createTableView];
-    
     
     //创建toolbar
     _toolbar = [FJGameToolbar toolbar];
@@ -104,14 +108,25 @@
 {
     [super viewWillAppear:animated];
     
+    self.backgroundImgV.hidden = NO;
     self.navigationController.navigationBar.hidden = YES;
+    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
+    self.backgroundImgV.hidden = YES;
     self.navigationController.navigationBar.hidden = NO;
+    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleDefault;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleDefault;
 }
 
 - (void)endLoading
@@ -132,12 +147,13 @@
         [self.backgroundImgV sd_setImageWithURL:[NSURL URLWithString:bgPic.url] placeholderImage:[UIImage imageNamed:@"img_place_holder"]];
     }
     self.headLineView.detail = self.detail;
+    [self.tableView reloadData];
 }
 
 //拉伸顶部图片
 -(void)lashenBgView
 {
-    _backgroundImgV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight*0.3)];
+    _backgroundImgV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 240)];
     _backgroundImgV.image=[UIImage imageNamed:@"img_place_holder"];
     _backgroundImgV.userInteractionEnabled=YES;
     [self.view addSubview:_backgroundImgV];
@@ -157,6 +173,17 @@
         _tableView.dataSource=self;
         _tableView.delegate=self;
         _tableView.tableFooterView = [[UIView alloc] init];
+        
+        // tableView 偏移20/64适配
+        self.extendedLayoutIncludesOpaqueBars = YES;
+        if (@available(iOS 11.0, *)) {
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;//UIScrollView也适用
+        }else {
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
+//        _tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+//        _tableView.scrollIndicatorInsets = self.tableView.contentInset;
+        
         [self.view addSubview:_tableView];
     }
     
@@ -232,7 +259,6 @@
     if (!_headLineView) {
         _headLineView=[HeadLineView headLineView];
         _headLineView.frame=CGRectMake(0, 0, kScreenWidth, [HeadLineView height]);
-        _headLineView.delegate=self;
     }
     
     return _headLineView;
@@ -240,11 +266,8 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //创建一个静态标识符  来给每一个cell 加上标记  方便我们从复用队列里面取到 名字为该标记的cell
     static NSString *reusID=@"ID";
-    //我创建一个cell 先从复用队列dequeue 里面 用上面创建的静态标识符来取
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:reusID];
-    //做一个if判断  如果没有cell  我们就创建一个新的 并且 还要给这个cell 加上复用标识符
     if (!cell) {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reusID];
     }
@@ -276,7 +299,7 @@
         self.NavView.rightImageView=@"Setting-click";
         self.NavView.color=[UIColor blackColor];
         //隐藏黑线
-        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+//        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
         //状态栏字体黑色
         [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleDefault;
     }
@@ -315,15 +338,100 @@
         return;
     }
     
-    FJWriteStrategyController* writeVC = [FJWriteStrategyController new];
-    writeVC.game = self.game;
+//    FJWriteStrategyController* writeVC = [FJWriteStrategyController new];
+//    writeVC.game = self.game;
+//    [self.navigationController pushViewController:writeVC animated:YES];
     
-    [self.navigationController pushViewController:writeVC animated:YES];
+    RichTextViewController * ctrl=[RichTextViewController ViewController];
+    ctrl.game = self.game;
+    //需要返回的是网页,开启代理
+    ctrl.RTDelegate=self;
+    //控制 文字是否需要 颜色，大小等属性
+    ctrl.textType = RichTextType_HtmlString;
+//    __weak typeof(self) weakSelf=self;
+    //    无需返回网页
+    ctrl.finished=^(id content,NSArray * imageArr){
+//        [weakSelf.navigationController popViewControllerAnimated:YES];
+    };
+    [self.navigationController pushViewController:ctrl animated:YES];
 }
 
-// 返回状态栏的样式
-- (UIStatusBarStyle)preferredStatusBarStyle
+#pragma mark RichTextViewControllerDelegate 生成网页
+-(void)uploadImageArray:(NSArray *)imageArr withCompletion:(NSString * (^)(NSArray * urlArray))completion;
 {
-    return UIStatusBarStyleLightContent;
+    
+    //上传图片
+    
+    //    //比如这是服务器返回的数据
+    //   /*
+    //
+    //    url="http://photocdn.sohu.com/20160426/Img446187083.jpg",
+    //    W=320,
+    //    H=390,
+    //    */
+    //    //把图片地址传入
+    //    NSMutableArray * urlArr=[NSMutableArray array];
+    //    //模拟图片上传，返回每个图片的地址和大小
+    //    for (int i=0; i<imageArr.count; i++) {
+    //        PictureModel * model=[[PictureModel alloc]init];
+    //        model.imageurl=@"http://photocdn.sohu.com/20160426/Img446187083.jpg";
+    //        [urlArr addObject:model];
+    //    }
+    
+    if (!imageArr || ![imageArr isKindOfClass:[NSArray class]] || imageArr.count==0) {
+        if (completion) {
+            completion(@[]);
+        }
+        return;
+    }
+    
+    self.count = 0;
+    [self.dictWork removeAllObjects];
+    
+    NSInteger countWork = imageArr.count;
+    
+    for (int i=0; i<imageArr.count; i++) {
+        UIImage* image = imageArr[i];
+        [HttpTool uploadPicWithType:@"news" image:image Success:^(id retObj) {
+            DLog(@"retObj = %@", retObj);
+            
+            NSDictionary* retDict = retObj;
+            if ([retDict[@"code"] isEqualToString:@"1"]) {
+                NSString* url = retDict[@"data"];
+//                if (!url || [url isKindOfClass:[NSNull class]] || [url isEqualToString:@""]) {
+//                    return ;
+//                }
+                PictureModel* pic = [PictureModel new];
+                pic.imageurl = url;
+                pic.width = image.size.width;
+                pic.height = image.size.height;
+                
+                NSString* index = [NSString stringWithFormat:@"%d", i];
+                [self.dictWork setObject:pic forKey:index];
+                
+                self.count++;
+                if (self.count == countWork) {
+                    if (completion) {
+                        NSMutableArray* arr = [NSMutableArray arrayWithCapacity:countWork];
+                        for (int j=0; j<countWork; j++) {
+                            NSString* strIndex = [NSString stringWithFormat:@"%d", j];
+                            [arr addObject:[self.dictWork objectForKey:strIndex]];
+                        }
+                        NSString* json = completion([arr copy]);
+                        NSLog(@"json = %@", json);
+                    }
+                }
+            } else {
+                [FJProgressHUB showErrorWithMessage:retDict[@"message"] withTimeInterval:kTimeHubError];
+            }
+        } failure:^(NSError *error) {
+            [FJProgressHUB showErrorWithMessage:@"上传失败，请检查网络" withTimeInterval:kTimeHubError];
+        }];
+    }
+    
+    
 }
+
 @end
+
+

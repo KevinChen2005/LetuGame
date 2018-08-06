@@ -29,7 +29,7 @@
 {
     [super viewDidAppear:animated];
     
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 - (void)viewDidLoad
@@ -143,6 +143,7 @@
     DLog(@"clickUserProtocol");
     
     FJWebViewController* vc = [FJWebViewController new];
+    vc.title = @"用户协议";
     vc.htmlString = [CommTool contentForFileName:@"me_user_protocol" ofType:@"html"];
     [self.navigationController pushViewController:vc animated:YES];
 }

@@ -38,7 +38,7 @@
 {
     _comment = comment;
     
-    [self.icon sd_setImageWithURL:[NSURL URLWithString:comment.avatarUrl] placeholderImage:[UIImage imageNamed:@"avator_default"]];
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:comment.avatarUrl] placeholderImage:[UIImage imageNamed:@"avatar_default"]];
     self.username.text = comment.nickName;
     self.content.text = comment.content;
     self.time.text = comment.createtime;

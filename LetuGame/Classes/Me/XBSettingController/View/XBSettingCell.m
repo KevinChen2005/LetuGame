@@ -54,35 +54,79 @@
         [self setupDetailText];
     }
     
-    if (self.item.detailImage) {
+    if (self.item.detailImage || self.item.detailImageURL) {
         [self setupDetailImage];
     }
 
     //bottomLine
-    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, self.height, XBScreenWidth, 0.8)];
-    line.backgroundColor = FJGlobalBG;
+//    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, self.height, XBScreenWidth, 0.8)];
+//    line.backgroundColor = FJGlobalBG;
 //    [self.contentView addSubview:line];
 }
 
 -(void)setupDetailImage
 {
-    self.detailImageView = [[UIImageView alloc]initWithImage:self.item.detailImage];
-    self.detailImageView.centerY = self.contentView.centerY;
+    if (self.item.detailImage) {
+        self.detailImageView = [[UIImageView alloc]initWithImage:self.item.detailImage];
+    } else if ([self.item.detailImageURL hasPrefix:@"http"]) {
+        self.detailImageView = [[UIImageView alloc]init];
+        [self.detailImageView sd_setImageWithURL:[NSURL URLWithString:self.item.detailImageURL] placeholderImage:[UIImage imageNamed:@"img_place_holder"]];
+    } else {
+        self.detailImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:self.item.detailImageURL]];
+    }
+    
+    self.detailImageView.contentMode = UIViewContentModeScaleToFill;
+    [self.contentView addSubview:self.detailImageView];
     
     switch (self.item.accessoryType) {
         case XBSettingAccessoryTypeNone:
-            self.detailImageView.x = XBScreenWidth - self.detailImageView.width - XBDetailViewToIndicatorGap - 2;
+        {
+            NSLog(@"detailImageView.size = %@", NSStringFromCGSize(self.detailImageView.size));
+            [self.detailImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self.contentView).offset(-XBDetailViewToIndicatorGap-2);
+                make.centerY.mas_equalTo(self.contentView);
+            }];
+        }
             break;
         case XBSettingAccessoryTypeDisclosureIndicator:
-            self.detailImageView.x = self.indicator.x - self.detailImageView.width - XBDetailViewToIndicatorGap;
+        {
+            [self.detailImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self.indicator.mas_left).offset(-XBDetailViewToIndicatorGap);
+                make.centerY.mas_equalTo(self.contentView);
+            }];
+        }
             break;
         case XBSettingAccessoryTypeSwitch:
-            self.detailImageView.x = self.aswitch.x - self.detailImageView.width - XBDetailViewToIndicatorGap;
+        {
+            [self.detailImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self.aswitch.mas_left).offset(-XBDetailViewToIndicatorGap);
+                make.centerY.mas_equalTo(self.contentView);
+            }];
+        }
             break;
         default:
             break;
     }
-    [self.contentView addSubview:self.detailImageView];
+    
+    self.detailImageView.layer.cornerRadius = self.item.isAvatar ? 28 : 5;
+    self.detailImageView.layer.masksToBounds = YES;
+    
+    //图片过大，将detailImageView调整和到contentView高度
+    CGFloat imgW = self.detailImageView.size.width > 10 ? self.detailImageView.size.width : 56;
+    CGFloat imgH = self.detailImageView.size.height > 10 ? self.detailImageView.size.height : 56;
+    if (imgH > self.contentView.height) {
+        CGFloat relH = 56;
+        CGFloat relW = (relH * imgW)/imgH;
+        [self.detailImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo([NSNumber numberWithFloat:relH]);
+            make.width.equalTo([NSNumber numberWithFloat:relW]);
+        }];
+    } else {
+        [self.detailImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo([NSNumber numberWithFloat:imgH]);
+            make.width.equalTo([NSNumber numberWithFloat:imgW]);
+        }];
+    }
 }
 
 - (void)setupDetailText
@@ -92,23 +136,37 @@
     self.detailLabel.textColor = XBMakeColorWithRGB(142, 142, 142, 1);
     self.detailLabel.font = [UIFont systemFontOfSize:XBDetailLabelFont];
     self.detailLabel.size = [self sizeForTitle:self.item.detailText withFont:self.detailLabel.font];
-    self.detailLabel.centerY = self.contentView.centerY;
+    
+    [self.contentView addSubview:self.detailLabel];
     
     switch (self.item.accessoryType) {
         case XBSettingAccessoryTypeNone:
-            self.detailLabel.x = XBScreenWidth - self.detailLabel.width - XBDetailViewToIndicatorGap - 2;
+        {
+            [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self.contentView).offset(-XBDetailViewToIndicatorGap);
+                make.centerY.mas_equalTo(self.contentView);
+            }];
+        }
             break;
         case XBSettingAccessoryTypeDisclosureIndicator:
-            self.detailLabel.x = self.indicator.x - self.detailLabel.width - XBDetailViewToIndicatorGap;
+        {
+            [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self.indicator.mas_left).offset(-XBDetailViewToIndicatorGap);
+                make.centerY.mas_equalTo(self.contentView);
+            }];
+        }
             break;
         case XBSettingAccessoryTypeSwitch:
-            self.detailLabel.x = self.aswitch.x - self.detailLabel.width - XBDetailViewToIndicatorGap;
+        {
+            [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self.aswitch.mas_left).offset(-XBDetailViewToIndicatorGap);
+                make.centerY.mas_equalTo(self.contentView);
+            }];
+        }
             break;
         default:
             break;
-    }
-    
-    [self.contentView addSubview:self.detailLabel];
+    }   
 }
 
 - (void)setupAccessoryType
@@ -130,20 +188,30 @@
 - (void)setupSwitch
 {
     [self.contentView addSubview:self.aswitch];
+    [self.aswitch mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.contentView).offset(-XBIndicatorToRightGap);
+        make.centerY.mas_equalTo(self.contentView);
+    }];
 }
 
 - (void)setupIndicator
 {
     [self.contentView addSubview:self.indicator];
+    [self.indicator mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.contentView).offset(-XBIndicatorToRightGap);
+        make.centerY.mas_equalTo(self.contentView);
+    }];
 }
 
 - (void)setupImgView
 {
     self.imgView = [[UIImageView alloc]initWithImage:self.item.img];
-    self.imgView.x = XBFuncImgToLeftGap;
-    self.imgView.centerY = self.contentView.centerY;
-    self.imgView.centerY = self.contentView.centerY;
     [self.contentView addSubview:self.imgView];
+
+    [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(@XBFuncImgToLeftGap);
+        make.centerY.mas_equalTo(self.contentView.mas_centerY);
+    }];
 }
 
 - (void)setupFuncLabel
@@ -153,9 +221,17 @@
     self.funcNameLabel.textColor = XBMakeColorWithRGB(13, 13, 13, 1);
     self.funcNameLabel.font = [UIFont systemFontOfSize:XBFuncLabelFont];
     self.funcNameLabel.size = [self sizeForTitle:self.item.funcName withFont:self.funcNameLabel.font];
-    self.funcNameLabel.centerY = self.contentView.centerY;
-    self.funcNameLabel.x = CGRectGetMaxX(self.imgView.frame) + XBFuncLabelToFuncImgGap;
     [self.contentView addSubview:self.funcNameLabel];
+    
+    [self.funcNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        if (self.imgView) {
+            make.left.mas_equalTo(self.imgView.mas_right).offset(XBFuncLabelToFuncImgGap);
+        } else {
+            make.left.mas_equalTo(@XBFuncLabelToFuncImgGap);
+        }
+        
+        make.centerY.mas_equalTo(self.contentView.mas_centerY);
+    }];
 }
 
 - (CGSize)sizeForTitle:(NSString *)title withFont:(UIFont *)font
@@ -173,8 +249,6 @@
 {
     if (!_indicator) {
         _indicator = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"icon-arrow1"]];
-        _indicator.centerY = self.contentView.centerY;
-        _indicator.x = XBScreenWidth - _indicator.width - XBIndicatorToRightGap;
     }
     return _indicator;
 }
@@ -183,8 +257,6 @@
 {
     if (!_aswitch) {
         _aswitch = [[UISwitch alloc]init];
-        _aswitch.centerY = self.contentView.centerY;
-        _aswitch.x = XBScreenWidth - _aswitch.width - XBIndicatorToRightGap;
         [_aswitch addTarget:self action:@selector(switchTouched:) forControlEvents:UIControlEventValueChanged];
     }
     return _aswitch;

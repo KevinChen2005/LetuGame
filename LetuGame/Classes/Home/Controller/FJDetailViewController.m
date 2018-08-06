@@ -28,9 +28,11 @@
 {
     BOOL bShowComment;
     CGPoint _offset;
+    
 }
 
 @property(nonatomic, assign)NSInteger loadFlag;//记录加载完成线程的数量
+@property(nonatomic, assign)BOOL isFirstEnterPage;
 
 @property(nonatomic, strong)UITableView *tableView;
 @property(nonatomic, copy)NSString *HTMLData;//需要加载的HTML数据
@@ -54,6 +56,7 @@
     _loadFlag = 0;
     bShowComment = NO;
     _offset = CGPointZero;
+    _isFirstEnterPage = YES;
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.datas = [NSMutableArray arrayWithCapacity:20];
@@ -80,7 +83,7 @@
     [self.view insertSubview:toolbar atIndex:0];
     [toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.height.mas_equalTo(ToolBarHeigth);
+        make.height.mas_equalTo(ToolBarHeight);
     }];
     self.toolbar = toolbar;
 
@@ -123,6 +126,7 @@
     }];
     self.tableView.tableFooterView = mjFooter;
     self.mj_footer = mjFooter;
+    self.mj_footer.hidden = YES;
     
     // 加载攻略详情
     [HttpTool fetchNewsDetailWithNewsId:self.news.ID success:^(id retObj) {
@@ -163,6 +167,7 @@
 //        [FJProgressHUB showWithMessage:nil];
 //    }
     
+    
     // 加载评论数据
     NSInteger start = 0;
     NSInteger end = 20;
@@ -176,19 +181,28 @@
         NSString* code = [NSString stringWithString:retDict[@"code"]];
         if ([code isEqualToString:@"1"]) {
             NSArray* arr = retDict[@"data"][@"comments"];
+            NSInteger count = [retDict[@"data"][@"count"] integerValue];//评论总数
             if (arr == nil || [arr isEqual:[NSNull null]] || arr.count <= 0) {
+                strongSelf.isFirstEnterPage = NO;
+                [strongSelf.mj_footer endRefreshingWithNoMoreData];
                 return;
+            }
+            if (arr.count < 20) {
+                [strongSelf.mj_footer endRefreshingWithNoMoreData];
             }
             NSArray* arrTemp = [FJComment mj_objectArrayWithKeyValuesArray:arr];
             [strongSelf.datas removeAllObjects];
             [strongSelf.datas addObjectsFromArray:[[arrTemp reverseObjectEnumerator] allObjects]];
-            [strongSelf.tableView reloadData];
-            
-            strongSelf.toolbar.badgeValue = strongSelf.datas.count;
+            if (strongSelf.isFirstEnterPage == NO) { //发表评论后进入页面
+                [strongSelf.tableView reloadData];
+            }
+            strongSelf.toolbar.badgeValue = count;
         }
+        strongSelf.isFirstEnterPage = NO;
         
     } failure:^(NSError *error) {
         STRONGSELF
+        strongSelf.isFirstEnterPage = NO;
         [strongSelf endLoading:YES];
         DLog(@"fetchCommentlist error - %@", error);
     }];
@@ -237,14 +251,16 @@
     [self endLoading:YES];
 }
 
-- (void)endLoading:(BOOL)force
+- (void)endLoading:(BOOL)forceEnd
 {
     DLog(@"endLoading");
     self.loadFlag++;
-    if (self.loadFlag == kWorkCount || force) {
+    if (self.loadFlag == kWorkCount || forceEnd) {
         self.loadFlag = 0;
         [FJProgressHUB dismiss];
         [self.cover removeFromSuperview];
+        [self.tableView reloadData];
+        self.mj_footer.hidden = NO;
         DLog(@"dismiss removeFromSuperview");
     }
 }
@@ -260,7 +276,7 @@
     //标题
     NSString* t = [self.newsDetail.title isEqualToString:@""]?@"--":self.newsDetail.title;
     
-    NSString* titleFormat = [NSString stringWithFormat:@"<h2 class = 'thicker'>%@</h2><h3>作者：%@   时间：%@</h3>", t, self.newsDetail.creatUser, [self.newsDetail.creattime timeFormat]];
+    NSString* titleFormat = [NSString stringWithFormat:@"<h2 class = 'thicker'>%@</h2><p class='subtitle'>%@ 发布于 %@</p>", t, self.newsDetail.creatUser, [self.newsDetail.creattime timeFormat]];
     
     //内容
     NSString* c = [content isEqualToString:@""]?@"--":content;
@@ -429,6 +445,7 @@
             NSString* message = [NSString stringWithString:retDict[@"message"]];
             if ([code isEqualToString:@"1"]) {
                 self.newsDetail.isCollected = NO;
+                toolBar.isCollected = NO;
                 [FJProgressHUB showInfoWithMessage:@"收藏已取消" withTimeInterval:1.0f];
             } else {
                 [FJProgressHUB showInfoWithMessage:message withTimeInterval:1.0f];
@@ -444,9 +461,11 @@
             NSString* message = [NSString stringWithString:retDict[@"message"]];
             if ([code isEqualToString:@"1"]) {
                 self.newsDetail.isCollected = YES;
+                toolBar.isCollected = YES;
                 [FJProgressHUB showInfoWithMessage:@"已收藏" withTimeInterval:1.0f];
             } else if ([code isEqualToString:@"-3"]) { //已收藏
                 self.newsDetail.isCollected = YES;
+                toolBar.isCollected = YES;
                 [FJProgressHUB showInfoWithMessage:@"已收藏" withTimeInterval:1.0f];
             } else {
                 [FJProgressHUB showInfoWithMessage:message withTimeInterval:1.0f];

@@ -70,7 +70,6 @@ static NSString *securityAuthKey = @"!@#MacProject123_";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         obj = [[UserAuth alloc]init];
-        //[[NSUserDefaults standardUserDefaults] setSecret:@"WeSchoolTeacher"];
     });
     return obj;
 }
@@ -136,7 +135,6 @@ static NSString *securityAuthKey = @"!@#MacProject123_";
 + (void)saveUserName:(NSString*)userName
 {
     NSUserDefaults *save = [NSUserDefaults standardUserDefaults];
-    //[save setObject:userName forKey:kUserName];
     [save setSecretObject:userName forKey:kUserName];
 }
 
@@ -151,6 +149,8 @@ static NSString *securityAuthKey = @"!@#MacProject123_";
 + (void)clean
 {
     NSUserDefaults *clean = [NSUserDefaults standardUserDefaults];
+    [clean removeObjectForKey:kUserInfo];
+    
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [clean removePersistentDomainForName:appDomain];
     [clean synchronize];

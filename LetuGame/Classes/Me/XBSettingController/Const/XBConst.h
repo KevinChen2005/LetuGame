@@ -30,7 +30,7 @@
 #define XBIndicatorToRightGap 15
 
 //详情文字字体
-#define XBDetailLabelFont 12
+#define XBDetailLabelFont 15
 
 //详情到指示箭头或开关的距离
 #define XBDetailViewToIndicatorGap 13

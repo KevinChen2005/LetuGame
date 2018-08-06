@@ -15,6 +15,7 @@
 #import "FJCollectionViewController.h"
 #import "FJOrderGameController.h"
 #import "FJWebViewController.h"
+#import "FJPromotionController.h"
 
 @interface FJMeViewController () <XBMeHeaderViewDelegate, XBMeFooterViewDelegate>
 
@@ -28,9 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //设置数据
-    [self setupSections];
     
     //设置header
     XBMeHeaderView *header = [XBMeHeaderView header];
@@ -55,8 +53,11 @@
 
 - (void)chanageState
 {
-    [self.header loginStateChanged:[UserAuth shared].isLogin nickname:[UserAuth shared].userInfo.nickname avatar:[UserAuth shared].userInfo.avatar];
+    [self.header loginStateChanged:[UserAuth shared].isLogin nickname:[UserAuth shared].userInfo.nickName avatar:[UserAuth shared].userInfo.avatarUrl];
     [self.footer loginStateChanged:[UserAuth shared].isLogin];
+    
+    //设置数据
+    [self setupSections];
 }
 
 - (void)setupSections
@@ -81,13 +82,13 @@
         FJOrderGameController* gameVC = [[FJOrderGameController alloc] initWithCollectionViewLayout:flowLayout];
         [self.navigationController pushViewController:gameVC animated:YES];
     };
-    item1.img = [UIImage imageNamed:@"icon-list01"];
+    item1.img = [UIImage imageNamed:@"list_game"];
 //    item1.detailText = @"做任务赢大奖";
     item1.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
     
     XBSettingItemModel *item2 = [[XBSettingItemModel alloc]init];
     item2.funcName = @"我的攻略";
-    item2.img = [UIImage imageNamed:@"icon-list01"];
+    item2.img = [UIImage imageNamed:@"list_game"];
     item2.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
     item2.executeCode = ^{
         NSLog(@"我的攻略");
@@ -95,7 +96,7 @@
     
     XBSettingItemModel *item3 = [[XBSettingItemModel alloc]init];
     item3.funcName = @"我的收藏";
-    item3.img = [UIImage imageNamed:@"icon-list01"];
+    item3.img = [UIImage imageNamed:@"list_collection"];
     item3.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
     item3.executeCode = ^{
         if (![CommTool isLogined]) {
@@ -106,15 +107,33 @@
         [self.navigationController pushViewController:collectVC animated:YES];
     };
     
+    XBSettingItemModel *item4 = [[XBSettingItemModel alloc]init];
+    item4.funcName = @"我的推广";
+    item4.img = [UIImage imageNamed:@"list_promotion"];
+    item4.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
+    item4.executeCode = ^{
+        if (![CommTool isLogined]) {
+            [CommTool showLoginPageWithNavVC:self.navigationController];
+            return ;
+        }
+        FJPromotionController* promotionVC = [[FJPromotionController alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:promotionVC animated:YES];
+    };
+    
     XBSettingSectionModel *section1 = [[XBSettingSectionModel alloc]init];
     section1.sectionHeaderHeight = 1;
-    section1.itemArray = @[item1,item3];
+    if ([UserAuth shared].isLogin && [UserAuth shared].userInfo.isSpreader){//是推广员，并且登录
+        section1.itemArray = @[item1, item3, item4];
+    } else {
+        section1.itemArray = @[item1, item3];
+    }
     
     XBSettingItemModel *item5 = [[XBSettingItemModel alloc]init];
     item5.funcName = @"获得帮助";
-    item5.img = [UIImage imageNamed:@"icon-list01"];
+    item5.img = [UIImage imageNamed:@"list_help"];
     item5.executeCode = ^{
         FJWebViewController* vc = [FJWebViewController new];
+        vc.title = @"帮助";
         vc.htmlString = [CommTool contentForFileName:@"me_help" ofType:@"html"];
         [self.navigationController pushViewController:vc animated:YES];
     };
@@ -130,9 +149,10 @@
     
     XBSettingItemModel *item7 = [[XBSettingItemModel alloc]init];
     item7.funcName = @"关于我们";
-    item7.img = [UIImage imageNamed:@"icon-list01"];
+    item7.img = [UIImage imageNamed:@"list_about"];
     item7.executeCode = ^{
         FJWebViewController* vc = [FJWebViewController new];
+        vc.title = @"关于我们";
         vc.htmlString = [CommTool contentForFileName:@"me_aboutme" ofType:@"html"];
         [self.navigationController pushViewController:vc animated:YES];
     };
@@ -144,6 +164,8 @@
     section2.itemArray = @[item5, item7];
     
     self.sectionArray = @[section1,section2];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - XBMeHeaderView delegate
@@ -155,7 +177,7 @@
         [self.navigationController pushViewController:vc animated:YES];
     } else if (type == XBMeHeaderViewButtonTypeUserinfo) {
         DLog(@"点击显示用户资料");
-        FJModifyViewController* vc = [[FJModifyViewController alloc] init];
+        FJModifyViewController* vc = [[FJModifyViewController alloc] initWithStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

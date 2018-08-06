@@ -36,7 +36,11 @@
     
     self.titleLabelView.text = news.title;
     self.timeLabel.text = [news.creattime timeFormat];
-    self.authorLabel.text = [NSString stringWithFormat:@"作者：%@", news.creatUser];
+    NSString* author = news.creatUser;
+    if (author == nil || [author isNullString] || [author isKindOfClass:[NSNull class]]) {
+        author = @"未知";
+    }
+    self.authorLabel.text = [NSString stringWithFormat:@"%@", author];
     
 //    [self.iconView sd_setImageWithURL:[NSURL URLWithString:news.imageurl] placeholderImage:[UIImage imageNamed:@"img_place_holder"]];
 }

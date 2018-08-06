@@ -93,16 +93,14 @@
 #pragma mark 显示图片浏览器
 - (void)showPhotoBrowser
 {
-   
     _scrollView.hidden = YES;
     _indexLabel.hidden = YES;
     _saveButton.hidden = YES;
     _hasShowedPhotoBrowser = YES;
  
-        _scrollView.hidden = NO;
-        _indexLabel.hidden = NO;
-        _saveButton.hidden = YES;
- 
+    _scrollView.hidden = NO;
+    _indexLabel.hidden = NO;
+    _saveButton.hidden = YES;
 }
 
 #pragma mark 添加scrollview
@@ -191,22 +189,20 @@
 
 }
 
-- (void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
-    
+- (void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
     if (!error) {
         
-        
-        
-    }else
-    {
+    } else {
       
-        
-        
     }
 }
--(void)goback{
+
+-(void)goback
+{
      [self dismissViewControllerAnimated:NO completion:nil];
 }
+
 - (void)show
 {
     [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:self animated:NO completion:nil];
@@ -215,10 +211,7 @@
 #pragma mark 单击退出图片浏览器
 - (void)hidePhotoBrowser:(UITapGestureRecognizer *)recognizer
 {
- 
-    
     [self dismissViewControllerAnimated:NO completion:nil];
- 
 }
 
 #pragma mark 网络加载图片
@@ -235,7 +228,8 @@
 }
 
 #pragma mark 获取控制器的view
-- (UIView *)getParsentView:(UIView *)view{
+- (UIView *)getParsentView:(UIView *)view
+{
     if ([[view nextResponder] isKindOfClass:[UIViewController class]] || view == nil) {
         return view;
     }

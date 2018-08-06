@@ -12,6 +12,11 @@
 #import "KNBannerViewModel.h"
 #import "FJGameDetail.h"
 
+#define kDefaultText @"---"
+#define kDefaultHeight 670
+
+CGFloat g_height = kDefaultHeight;
+
 @interface HeadLineView()
 
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -32,12 +37,19 @@
 
 + (CGFloat)height
 {
-    return 470 + 200;
+    return g_height;
 }
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    g_height = kDefaultHeight;
+    
+    self.name.text = @"xxx";
+    self.content.text = kDefaultText;
+    self.company.text = kDefaultText;
+    self.date.text = kDefaultText;
 }
 
 - (void)setDetail:(FJGameDetail *)detail
@@ -71,7 +83,17 @@
     self.name.text = detail.gameInfo.gameName;
     self.company.text = detail.gameInfo.company;
     self.date.text = detail.gameInfo.openTime;
+    
     self.content.text = detail.gameInfo.desc;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObject:self.content.font forKey:NSFontAttributeName];
+    CGSize size = [self.content.text boundingRectWithSize:CGSizeMake(self.content.frame.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
+    [self.content mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo([NSNumber numberWithFloat:size.height]);
+    }];
+    
+    g_height = 470 + size.height;
+    NSLog(@"g_height = %f", g_height);
+    g_height = g_height < 650 ? 650 : g_height;
     
 }
 

@@ -26,7 +26,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="f8O-11-OnN"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" patternImage="label:NNE-9p-BUG:patternImage" colorSpace="pattern"/>
                         <nil key="highlightedColor"/>
                     </label>

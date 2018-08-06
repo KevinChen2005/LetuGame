@@ -100,7 +100,7 @@
             make.right.equalTo(self);
             make.top.equalTo(self);
             make.width.mas_equalTo(ShareBtnWidth);
-            make.height.mas_equalTo(ToolBarHeigth);
+            make.height.mas_equalTo(ToolBarHeight);
         }];
         view;
     });
@@ -122,6 +122,7 @@
 //        }];
 //        view;
 //    });
+    
     FJBadgeButton *commentNumBtn = ({
 //        FJBadgeButton *view = [FJBadgeButton buttonWithType:UIButtonTypeCustom];
         FJBadgeButton *view = [[FJBadgeButton alloc]init];
@@ -132,9 +133,9 @@
         [self addSubview:view];
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(CollectionBtn.mas_left);
-            make.top.equalTo(self);
+            make.top.mas_equalTo(self).offset(2);
             make.width.mas_equalTo(ShareBtnWidth);
-            make.height.mas_equalTo(ToolBarHeigth);
+            make.height.mas_equalTo(ToolBarHeight);
         }];
         view;
     });
@@ -187,7 +188,7 @@
 
 - (void)clickCollectionBtn:(UIButton *)btn
 {
-    btn.selected = !btn.selected;
+//    btn.selected = !btn.selected;
     
     if ([self.delegate respondsToSelector:@selector(detailToolbarOnClickFavorite:)]) {
         [self.delegate detailToolbarOnClickFavorite:self];

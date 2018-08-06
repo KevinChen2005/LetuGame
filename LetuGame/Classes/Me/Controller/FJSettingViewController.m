@@ -17,6 +17,8 @@
 
 @end
 
+//////////暂时不用这个页面/////////////
+
 @implementation FJSettingViewController
 
 - (void)viewDidLoad
@@ -72,7 +74,7 @@
     
     XBSettingItemModel *item4 = [[XBSettingItemModel alloc]init];
     item4.funcName = @"给我们打分";
-    item4.detailImage = [UIImage imageNamed:@"icon-new"];
+    item4.detailImage = @"icon-new";
     item4.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
     
     XBSettingItemModel *item5 = [[XBSettingItemModel alloc]init];

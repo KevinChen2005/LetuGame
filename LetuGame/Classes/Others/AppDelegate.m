@@ -42,7 +42,19 @@
             DLog(@"verifyLoginState success retObj = %@", retObj);
             NSDictionary* retDict = retObj;
             NSString* code = [NSString stringWithFormat:@"%@", retDict[@"code"]];
-            if ([code isEqualToString:@"1"] == NO) { //1 token有效，其他为无效需删除本地登录状态，重新登录
+            if ([code isEqualToString:@"1"]) { //1 token有效，其他为无效需删除本地登录状态，重新登录
+                UserModel* user = [UserModel mj_objectWithKeyValues:retDict[@"data"]];
+                if (user) {
+                    UserModel* userInfo = [UserAuth shared].userInfo;
+                    userInfo.userId = user.userId;
+                    userInfo.phone = user.phone;
+                    userInfo.nickName = user.nickName;
+                    userInfo.avatarUrl = user.avatarUrl;
+                    userInfo.isSpreader = user.isSpreader;
+                    
+                    [UserAuth saveUserInfo:userInfo];
+                }
+            } else {
                 [UserAuth clean]; //删除登录状态
             }
         } failure:^(NSError *error) {

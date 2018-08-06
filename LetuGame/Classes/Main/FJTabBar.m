@@ -72,6 +72,7 @@
         CGFloat buttonX = buttonW * index;
         button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
         
+        
         if (added == NO) {
             // 设置tag
             button.tag = index;

@@ -36,6 +36,11 @@
     }
 }
 
+- (NSArray*)resultForRegularString:(NSString*)regular
+{
+    return nil;
+}
+
 - (BOOL)isPhoneNumber
 {
     if (self.length != 11) {
@@ -76,7 +81,7 @@
     
     //秒转分钟
     NSInteger small = time / 60;
-    if (small == 0) {
+    if (small == 0 || time <= 0) { //time <= 0 的情况可能是服务器创建时间比客户端时间快
         return [NSString stringWithFormat:@"刚刚"];
     }
     

@@ -7,15 +7,14 @@
 //
 
 #import "HttpTool.h"
+#import "AFNetworking.h"
+#import "UIImage+Wechat.h"
 
 @interface HttpTool()
 
 @end
 
-static AFHTTPSessionManager* mgr = nil;
-
 @implementation HttpTool
-
 
 #pragma mark - 统一接口
 /**
@@ -23,11 +22,9 @@ static AFHTTPSessionManager* mgr = nil;
  */
 + (void)getWithURL:(NSString *)url success:(successBlock)success failure:(failureBlock)failure
 {
-    if (mgr == nil) {
-        mgr = [AFHTTPSessionManager manager];
-    }
+    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
     
-    [mgr GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) {
@@ -45,12 +42,10 @@ static AFHTTPSessionManager* mgr = nil;
  */
 + (void)postWithURL:(NSString *)url params:(NSDictionary *)params success:(successBlock)success failure:(failureBlock)failure
 {
-    if (mgr == nil) {
-        mgr = [AFHTTPSessionManager manager];
-    }
-    mgr.requestSerializer.timeoutInterval = 10.0; //设置请求超时10s
-    NSLog(@"mgr = %@", mgr);
-    [mgr POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 10.0; //设置请求超时10s
+   
+    [manager POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) {
@@ -68,7 +63,7 @@ static AFHTTPSessionManager* mgr = nil;
  */
 + (void)getShowToastWithURL:(NSString *)url success:(successBlock)success failure:(failureBlock)failure
 {
-    [FJProgressHUB showWithMessage:nil];
+    [FJProgressHUB showWithMaskMessage:nil];
     
     [self getWithURL:url success:^(id retObj) {
         [FJProgressHUB dismiss];
@@ -88,7 +83,7 @@ static AFHTTPSessionManager* mgr = nil;
  */
 + (void)postShowToastWithURL:(NSString *)url params:(NSDictionary *)params success:(successBlock)success failure:(failureBlock)failure
 {
-    [FJProgressHUB showWithMessage:nil];
+    [FJProgressHUB showWithMaskMessage:nil];
     
     [self postWithURL:url params:params success:^(id retObj) {
         [FJProgressHUB dismiss];
@@ -104,15 +99,49 @@ static AFHTTPSessionManager* mgr = nil;
 }
 
 /**
+ POST上传图片
+ */
++ (void)uploadImageWithURL:(NSString *)url image:(UIImage*)image params:(NSDictionary *)params success:(successBlock)success failure:(failureBlock)failure
+{
+    AFHTTPSessionManager *session=[AFHTTPSessionManager manager];
+    session.requestSerializer.timeoutInterval = 15.0;
+    [session.requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
+    
+    [FJProgressHUB showWithMaskMessage:@"正在上传......"];
+    
+    [session POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
+//        [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 0.8) name:@"file" fileName:fileName mimeType:@"image/png"];
+        UIImage* img = [image wcTimelineCompress];
+        [formData appendPartWithFileData:UIImageJPEGRepresentation(img, 0.9) name:@"file" fileName:fileName mimeType:@"image/png"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        NSLog(@"%f",uploadProgress.fractionCompleted);
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [FJProgressHUB dismiss];
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [FJProgressHUB dismiss];
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+/**
  取消请求
  */
 + (void)cancel
 {
-    NSLog(@"cancel mgr = %@", mgr);
-    [mgr.operationQueue cancelAllOperations];
 }
 
-#pragma mark - 详细接口
+#pragma mark - 登录注册接口
 
 /**
  注册
@@ -152,6 +181,7 @@ static AFHTTPSessionManager* mgr = nil;
     [self postWithURL:kUrl(@"user/veryfiyToken") params:params success:success failure:failure];
 }
 
+#pragma mark - 攻略相关接口
 /**
  获取攻略列表
  */
@@ -202,7 +232,7 @@ static AFHTTPSessionManager* mgr = nil;
                              @"typeOne"  : [CommTool safeString:typeOne],
                              @"typeTwo"  : [CommTool safeString:typeTwo],
                              };
-    [self postWithURL:kUrl(@"news/add") params:params success:success failure:failure];
+    [self postShowToastWithURL:kUrl(@"news/add") params:params success:success failure:failure];
 }
 
 /**
@@ -222,6 +252,7 @@ static AFHTTPSessionManager* mgr = nil;
     [self postWithURL:kUrl(@"news/update") params:params success:success failure:failure];
 }
 
+#pragma mark - 游戏相关接口
 /**
  获取游戏列表
  */
@@ -247,6 +278,7 @@ static AFHTTPSessionManager* mgr = nil;
     [self postShowToastWithURL:kUrl(@"game/detail") params:params success:success failure:failure];
 }
 
+#pragma mark - 评论相关接口
 /**
  获取评论列表
  */
@@ -290,6 +322,7 @@ static AFHTTPSessionManager* mgr = nil;
     [self postWithURL:kUrl(@"comment/update") params:params success:success failure:failure];
 }
 
+#pragma mark - 点赞
 /**
  点赞
  */
@@ -303,6 +336,7 @@ static AFHTTPSessionManager* mgr = nil;
     [self postWithURL:kUrl(@"like/add") params:params success:success failure:failure];
 }
 
+#pragma mark - 收藏
 /**
  收藏
  */
@@ -341,6 +375,7 @@ static AFHTTPSessionManager* mgr = nil;
     [self postWithURL:kUrl(@"collect/list") params:params success:success failure:failure];
 }
 
+#pragma mark - 我要玩游戏
 /**
  我要玩游戏
  */
@@ -354,6 +389,7 @@ static AFHTTPSessionManager* mgr = nil;
     [self postWithURL:kUrl(@"user/wantPlayGame") params:params success:success failure:failure];
 }
 
+#pragma mark - 获取注册验证码
 /**
  获取注册验证码
  */
@@ -365,17 +401,19 @@ static AFHTTPSessionManager* mgr = nil;
     [self postWithURL:kUrl(@"user/getRegistCode") params:params success:success failure:failure];
 }
 
+#pragma mark - 获取Banner
 /**
  获取Banner
  */
 + (void)fetchBannerWithType:(NSString*)bannerType Success:(successBlock)success failure:(failureBlock)failure
 {
     NSDictionary* params = @{
-                             @"bannerType"   : [CommTool safeString:bannerType],
+                             @"bannerType" : [CommTool safeString:bannerType],
                              };
     [self postWithURL:kUrl(@"banner/list") params:params success:success failure:failure];
 }
 
+#pragma mark - 获取我的游戏预约列表
 /**
  获取我的游戏预约列表
  */
@@ -386,6 +424,109 @@ static AFHTTPSessionManager* mgr = nil;
                              };
     [self postWithURL:kUrl(@"user/listMyGame") params:params success:success failure:failure];
 }
+
+#pragma mark - 获取我的推广列表
+/**
+ 获取我的推广列表（仅推广员用户适用）
+ */
++ (void)fetchPromotionListSuccess:(successBlock)success failure:(failureBlock)failure
+{
+    NSDictionary* params = @{
+                             @"token"   : [CommTool safeString:[UserAuth shared].userInfo.token],
+                             };
+    [self postShowToastWithURL:kUrl(@"user/spread") params:params success:success failure:failure];
+}
+
+#pragma mark - 个人中心
+/**
+ 修改个人信息
+ */
++ (void)modifyUserInfoWithNickName:(NSString*)nickname avatar:(NSString*)avatar Success:(successBlock)success failure:(failureBlock)failure
+{
+    NSDictionary* params = @{
+                             @"token"     : [CommTool safeString:[UserAuth shared].userInfo.token],
+                             @"nickName"  : [CommTool safeString:nickname],
+                             @"avatarUrl" : [CommTool safeString:avatar],
+                             };
+    [self postShowToastWithURL:kUrl(@"user/updateUserInfo") params:params success:success failure:failure];
+}
+
+/**
+ 修改昵称
+ */
++ (void)modifyUserNickName:(NSString*)nickname Success:(successBlock)success failure:(failureBlock)failure
+{
+    [self modifyUserInfoWithNickName:nickname avatar:[UserAuth shared].userInfo.avatarUrl Success:success failure:failure];
+}
+
+/**
+ 修改头像
+ */
++ (void)modifyUserAvatar:(NSString*)avatar Success:(successBlock)success failure:(failureBlock)failure
+{
+    [self modifyUserInfoWithNickName:[UserAuth shared].userInfo.nickName avatar:avatar Success:success failure:failure];
+}
+
+/**
+ 修改头像，会上传图片+修改个人信息，返回修改后的头像地址
+ */
++ (void)modifyUserAvatarWithImage:(UIImage*)image Success:(successBlock)success failure:(failureBlock)failure
+{
+    if (image == nil) {
+        return;
+    }
+    
+    NSDictionary* params = @{
+                             @"token"  : [CommTool safeString:[UserAuth shared].userInfo.token],
+                             };
+    [self uploadImageWithURL:kUrl(@"upload/userAvatar") image:image params:params success:success failure:failure];
+}
+
+/**
+ 修改密码
+ */
++ (void)modifyPasswordWithOldPwd:(NSString*)oldPassword newPwd:(NSString*)newPassword Success:(successBlock)success failure:(failureBlock)failure
+{
+    NSDictionary* params = @{
+                             @"token"        : [CommTool safeString:[UserAuth shared].userInfo.token],
+                             @"oldPassword"  : [CommTool safeString:oldPassword],
+                             @"newPassword"  : [CommTool safeString:newPassword],
+                             };
+    [self postShowToastWithURL:kUrl(@"user/updatePassword") params:params success:success failure:failure];
+}
+
+/**
+ 找回密码
+ */
++ (void)findPasswordWithVerifyCode:(NSString*)verifyCode newPwd:(NSString*)newPassword Success:(successBlock)success failure:(failureBlock)failure
+{
+    NSDictionary* params = @{
+                             @"token"        : [CommTool safeString:[UserAuth shared].userInfo.token],
+                             @"verifyCode"   : [CommTool safeString:verifyCode],//短信验证码
+                             @"newPassword"  : [CommTool safeString:newPassword],
+                             };
+    [self postShowToastWithURL:kUrl(@"user/forgetPassword") params:params success:success failure:failure];
+}
+
+#pragma mark - 上传图片
+/**
+ 上传图片
+ */
++ (void)uploadPicWithType:(NSString*)type image:(UIImage*)image Success:(successBlock)success failure:(failureBlock)failure
+{
+    if (image == nil || type == nil || [type isNullString]) {
+        return;
+    }
+    
+    NSDictionary* params = @{
+                             @"token"  : [CommTool safeString:[UserAuth shared].userInfo.token],
+                             @"type"   : [CommTool safeString:type],//图片类型 头像：avatar
+                             };
+    [self uploadImageWithURL:kUrl(@"upload/image") image:image params:params success:success failure:failure];
+}
+
 @end
+
+
 
 

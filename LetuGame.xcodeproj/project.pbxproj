@@ -7,9 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8406417A2109742400F88007 /* FJFindPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840641782109742400F88007 /* FJFindPwdViewController.m */; };
+		8406417B2109742400F88007 /* FJFindPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840641792109742400F88007 /* FJFindPwdViewController.xib */; };
+		8406418C210AFDEE00F88007 /* ZHNheadImageLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406418B210AFDEE00F88007 /* ZHNheadImageLoadViewController.m */; };
+		8406418F210B1D3B00F88007 /* FJBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406418E210B1D3B00F88007 /* FJBanner.m */; };
+		840641A2210B36DD00F88007 /* FJMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84064191210B36DD00F88007 /* FJMeViewController.m */; };
+		840641A3210B36DD00F88007 /* FJModifyNicknameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84064192210B36DD00F88007 /* FJModifyNicknameController.m */; };
+		840641A4210B36DD00F88007 /* FJModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84064193210B36DD00F88007 /* FJModifyViewController.m */; };
+		840641A5210B36DD00F88007 /* FJModifyAvatarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84064195210B36DD00F88007 /* FJModifyAvatarController.m */; };
+		840641A6210B36DD00F88007 /* FJSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84064196210B36DD00F88007 /* FJSettingViewController.m */; };
+		840641A7210B36DD00F88007 /* FJOrderGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84064197210B36DD00F88007 /* FJOrderGameController.m */; };
+		840641A8210B36DD00F88007 /* FJModifyPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406419B210B36DD00F88007 /* FJModifyPwdController.m */; };
+		840641A9210B36DD00F88007 /* FJModifyPwdController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8406419F210B36DD00F88007 /* FJModifyPwdController.xib */; };
+		840641AA210B36DD00F88007 /* FJCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840641A0210B36DD00F88007 /* FJCollectionViewController.m */; };
+		840641AF210F27C300F88007 /* FJPromotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840641AE210F27C300F88007 /* FJPromotionController.m */; };
+		840641B8210FFB5800F88007 /* FJPromotionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840641B6210FFB5800F88007 /* FJPromotionCell.m */; };
+		840641B9210FFB5800F88007 /* FJPromotionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840641B7210FFB5800F88007 /* FJPromotionCell.xib */; };
+		840641BC210FFDCB00F88007 /* FJPromotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 840641BB210FFDCB00F88007 /* FJPromotion.m */; };
+		840641C02110126500F88007 /* FJPromotionDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840641BE2110126500F88007 /* FJPromotionDetailController.m */; };
+		840641C12110126500F88007 /* FJPromotionDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840641BF2110126500F88007 /* FJPromotionDetailController.xib */; };
+		840641D521105ADA00F88007 /* FJDownloadBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 840641D421105ADA00F88007 /* FJDownloadBean.m */; };
 		84451D6520EDF5AE001044FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84451D6420EDF5AE001044FD /* Assets.xcassets */; };
 		84451D6820EDF5AE001044FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84451D6620EDF5AE001044FD /* LaunchScreen.storyboard */; };
-		84451D8120EDF7D1001044FD /* FJMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451D8020EDF7D1001044FD /* FJMeViewController.m */; };
 		84451D9F20EDFA40001044FD /* FJConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451D9E20EDFA40001044FD /* FJConst.m */; };
 		84451E4E20EDFAE4001044FD /* MJPropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451DA620EDFAE4001044FD /* MJPropertyType.m */; };
 		84451E4F20EDFAE4001044FD /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451DA920EDFAE4001044FD /* NSObject+MJKeyValue.m */; };
@@ -87,7 +106,6 @@
 		84451EB720EDFFE7001044FD /* XBSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451EAC20EDFFE7001044FD /* XBSettingCell.m */; };
 		84451EB820EDFFE7001044FD /* XBMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451EAD20EDFFE7001044FD /* XBMeHeaderView.m */; };
 		84451EB920EDFFE7001044FD /* XBMeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84451EAE20EDFFE7001044FD /* XBMeHeaderView.xib */; };
-		84451EBE20EE0097001044FD /* FJSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451EBD20EE0097001044FD /* FJSettingViewController.m */; };
 		84451EC620EE0E60001044FD /* FJNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451EC120EE0E60001044FD /* FJNavigationController.m */; };
 		84451EC720EE0E60001044FD /* FJTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451EC220EE0E60001044FD /* FJTabBar.m */; };
 		84451EC820EE0E60001044FD /* FJTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451EC420EE0E60001044FD /* FJTabBarController.m */; };
@@ -131,11 +149,9 @@
 		84503A2020FE0D8A0007437B /* FJWriteStrategyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84503A1E20FE0D8A0007437B /* FJWriteStrategyController.m */; };
 		84503A2420FEE82D0007437B /* FJNewsDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 84503A2320FEE82D0007437B /* FJNewsDetail.m */; };
 		84503A2720FF32E30007437B /* FJBaseRefreshTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84503A2620FF32E30007437B /* FJBaseRefreshTableController.m */; };
-		84503A3020FF62110007437B /* FJCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84503A2F20FF62110007437B /* FJCollectionViewController.m */; };
 		84503A3520FF66850007437B /* FJOrderGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 84503A3420FF66850007437B /* FJOrderGame.m */; };
 		84503A3920FF67040007437B /* FJOrderGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84503A3720FF67040007437B /* FJOrderGameCell.m */; };
 		84503A3A20FF67040007437B /* FJOrderGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84503A3820FF67040007437B /* FJOrderGameCell.xib */; };
-		84503A3D20FF69440007437B /* FJOrderGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84503A3C20FF69440007437B /* FJOrderGameController.m */; };
 		84503A57210087C50007437B /* NewsHtml.html in Resources */ = {isa = PBXBuildFile; fileRef = 84503A50210087C40007437B /* NewsHtml.html */; };
 		84503A58210087C50007437B /* me_aboutme.html in Resources */ = {isa = PBXBuildFile; fileRef = 84503A52210087C40007437B /* me_aboutme.html */; };
 		84503A59210087C50007437B /* help.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84503A54210087C40007437B /* help.jpg */; };
@@ -154,7 +170,6 @@
 		84A3EF3420F30CB700879FB7 /* NSDate+FJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3EF2D20F30CB700879FB7 /* NSDate+FJExtension.m */; };
 		84A3EF3520F30CB700879FB7 /* UIImage+FJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3EF2E20F30CB700879FB7 /* UIImage+FJExtension.m */; };
 		84A3EF3920F30E6300879FB7 /* FJPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3EF3820F30E6300879FB7 /* FJPopView.m */; };
-		84A3EF3C20F3301A00879FB7 /* FJModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3EF3A20F3301A00879FB7 /* FJModifyViewController.m */; };
 		84A3EF4220F3335400879FB7 /* FJBaseSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3EF4020F3335400879FB7 /* FJBaseSettingController.m */; };
 		84A3EF5820F34FAB00879FB7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 84A3EF4420F34FAB00879FB7 /* LICENSE */; };
 		84A3EF5920F34FAB00879FB7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 84A3EF4520F34FAB00879FB7 /* README.md */; };
@@ -203,7 +218,6 @@
 		84A3F00520F60BF000879FB7 /* FJSendCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F00420F60BF000879FB7 /* FJSendCommentController.m */; };
 		84A3F01020F6ED3F00879FB7 /* FJDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F00F20F6ED3F00879FB7 /* FJDetailHeader.m */; };
 		84A3F02820F7543700879FB7 /* FJSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F02720F7543700879FB7 /* FJSectionHeader.m */; };
-		84A3F02B20F76CE800879FB7 /* FJTimerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F02A20F76CE800879FB7 /* FJTimerButton.m */; };
 		84A3F03320F84CBF00879FB7 /* NavHeadTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F02D20F84CBF00879FB7 /* NavHeadTitleView.m */; };
 		84A3F03420F84CBF00879FB7 /* HeadLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F03020F84CBF00879FB7 /* HeadLineView.m */; };
 		84A3F03520F84CBF00879FB7 /* HeadImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F03220F84CBF00879FB7 /* HeadImageView.m */; };
@@ -233,15 +247,61 @@
 		84A3F07320F89D0500879FB7 /* CommTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F07120F89D0500879FB7 /* CommTool.m */; };
 		84A3F07620F89FFE00879FB7 /* FJProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F07520F89FFE00879FB7 /* FJProgressHUB.m */; };
 		84A3F07920F8AD7F00879FB7 /* NSString+FJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F07820F8AD7F00879FB7 /* NSString+FJ.m */; };
+		84B2A8B821142B8800BEB5A8 /* PictureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8A721142B8800BEB5A8 /* PictureModel.m */; };
+		84B2A8B921142B8800BEB5A8 /* UIColor+HEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8AC21142B8800BEB5A8 /* UIColor+HEX.m */; };
+		84B2A8BA21142B8800BEB5A8 /* ArchiveFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8AE21142B8800BEB5A8 /* ArchiveFile.m */; };
+		84B2A8BB21142B8800BEB5A8 /* ImageTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8AF21142B8800BEB5A8 /* ImageTextAttachment.m */; };
+		84B2A8BC21142B8800BEB5A8 /* NSAttributedString+RichText.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8B021142B8800BEB5A8 /* NSAttributedString+RichText.m */; };
+		84B2A8BD21142B8800BEB5A8 /* NSAttributedString+html.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8B121142B8800BEB5A8 /* NSAttributedString+html.m */; };
+		84B2A8BE21142B8800BEB5A8 /* NSString+Regular.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8B521142B8800BEB5A8 /* NSString+Regular.m */; };
+		84B2A8BF21142B8800BEB5A8 /* RichText.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B2A8B621142B8800BEB5A8 /* RichText.storyboard */; };
+		84B2A8C021142B8800BEB5A8 /* RichTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8B721142B8800BEB5A8 /* RichTextViewController.m */; };
+		84B2A8C521142D7D00BEB5A8 /* NSJSON+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C121142D7C00BEB5A8 /* NSJSON+Extension.m */; };
+		84B2A8C621142D7D00BEB5A8 /* NSString+CaclSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C321142D7D00BEB5A8 /* NSString+CaclSize.m */; };
+		84B2A8C92117EA4200BEB5A8 /* UIImage+Wechat.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C72117EA4200BEB5A8 /* UIImage+Wechat.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		840641772109742300F88007 /* FJFindPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJFindPwdViewController.h; sourceTree = "<group>"; };
+		840641782109742400F88007 /* FJFindPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJFindPwdViewController.m; sourceTree = "<group>"; };
+		840641792109742400F88007 /* FJFindPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJFindPwdViewController.xib; sourceTree = "<group>"; };
+		8406418A210AFDEE00F88007 /* ZHNheadImageLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZHNheadImageLoadViewController.h; path = LetuGame/Classes/Others/ZHNheadImageLoadViewController.h; sourceTree = SOURCE_ROOT; };
+		8406418B210AFDEE00F88007 /* ZHNheadImageLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZHNheadImageLoadViewController.m; path = LetuGame/Classes/Others/ZHNheadImageLoadViewController.m; sourceTree = SOURCE_ROOT; };
+		8406418D210B1D3B00F88007 /* FJBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJBanner.h; sourceTree = "<group>"; };
+		8406418E210B1D3B00F88007 /* FJBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJBanner.m; sourceTree = "<group>"; };
+		84064191210B36DD00F88007 /* FJMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJMeViewController.m; sourceTree = "<group>"; };
+		84064192210B36DD00F88007 /* FJModifyNicknameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJModifyNicknameController.m; sourceTree = "<group>"; };
+		84064193210B36DD00F88007 /* FJModifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJModifyViewController.m; sourceTree = "<group>"; };
+		84064194210B36DD00F88007 /* FJModifyPwdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJModifyPwdController.h; sourceTree = "<group>"; };
+		84064195210B36DD00F88007 /* FJModifyAvatarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJModifyAvatarController.m; sourceTree = "<group>"; };
+		84064196210B36DD00F88007 /* FJSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJSettingViewController.m; sourceTree = "<group>"; };
+		84064197210B36DD00F88007 /* FJOrderGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJOrderGameController.m; sourceTree = "<group>"; };
+		84064198210B36DD00F88007 /* FJCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJCollectionViewController.h; sourceTree = "<group>"; };
+		84064199210B36DD00F88007 /* FJModifyNicknameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJModifyNicknameController.h; sourceTree = "<group>"; };
+		8406419A210B36DD00F88007 /* FJMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJMeViewController.h; sourceTree = "<group>"; };
+		8406419B210B36DD00F88007 /* FJModifyPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJModifyPwdController.m; sourceTree = "<group>"; };
+		8406419C210B36DD00F88007 /* FJModifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJModifyViewController.h; sourceTree = "<group>"; };
+		8406419D210B36DD00F88007 /* FJSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJSettingViewController.h; sourceTree = "<group>"; };
+		8406419E210B36DD00F88007 /* FJModifyAvatarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJModifyAvatarController.h; sourceTree = "<group>"; };
+		8406419F210B36DD00F88007 /* FJModifyPwdController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJModifyPwdController.xib; sourceTree = "<group>"; };
+		840641A0210B36DD00F88007 /* FJCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJCollectionViewController.m; sourceTree = "<group>"; };
+		840641A1210B36DD00F88007 /* FJOrderGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJOrderGameController.h; sourceTree = "<group>"; };
+		840641AD210F27C300F88007 /* FJPromotionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJPromotionController.h; sourceTree = "<group>"; };
+		840641AE210F27C300F88007 /* FJPromotionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJPromotionController.m; sourceTree = "<group>"; };
+		840641B5210FFB5800F88007 /* FJPromotionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJPromotionCell.h; sourceTree = "<group>"; };
+		840641B6210FFB5800F88007 /* FJPromotionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJPromotionCell.m; sourceTree = "<group>"; };
+		840641B7210FFB5800F88007 /* FJPromotionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FJPromotionCell.xib; sourceTree = "<group>"; };
+		840641BA210FFDCB00F88007 /* FJPromotion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJPromotion.h; sourceTree = "<group>"; };
+		840641BB210FFDCB00F88007 /* FJPromotion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJPromotion.m; sourceTree = "<group>"; };
+		840641BD2110126500F88007 /* FJPromotionDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJPromotionDetailController.h; sourceTree = "<group>"; };
+		840641BE2110126500F88007 /* FJPromotionDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJPromotionDetailController.m; sourceTree = "<group>"; };
+		840641BF2110126500F88007 /* FJPromotionDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FJPromotionDetailController.xib; sourceTree = "<group>"; };
+		840641D321105ADA00F88007 /* FJDownloadBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJDownloadBean.h; sourceTree = "<group>"; };
+		840641D421105ADA00F88007 /* FJDownloadBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJDownloadBean.m; sourceTree = "<group>"; };
 		84451D5820EDF5AD001044FD /* LetuGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetuGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84451D6420EDF5AE001044FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84451D6720EDF5AE001044FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84451D6920EDF5AE001044FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84451D7F20EDF7D1001044FD /* FJMeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJMeViewController.h; sourceTree = "<group>"; };
-		84451D8020EDF7D1001044FD /* FJMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJMeViewController.m; sourceTree = "<group>"; };
 		84451D9C20EDF8D8001044FD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		84451D9D20EDFA3F001044FD /* FJConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJConst.h; sourceTree = "<group>"; };
 		84451D9E20EDFA40001044FD /* FJConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJConst.m; sourceTree = "<group>"; };
@@ -392,8 +452,6 @@
 		84451EAD20EDFFE7001044FD /* XBMeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMeHeaderView.m; sourceTree = "<group>"; };
 		84451EAE20EDFFE7001044FD /* XBMeHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBMeHeaderView.xib; sourceTree = "<group>"; };
 		84451EAF20EDFFE7001044FD /* XBSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSettingCell.h; sourceTree = "<group>"; };
-		84451EBC20EE0096001044FD /* FJSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJSettingViewController.h; sourceTree = "<group>"; };
-		84451EBD20EE0097001044FD /* FJSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJSettingViewController.m; sourceTree = "<group>"; };
 		84451EC020EE0E60001044FD /* FJTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJTabBarController.h; sourceTree = "<group>"; };
 		84451EC120EE0E60001044FD /* FJNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJNavigationController.m; sourceTree = "<group>"; };
 		84451EC220EE0E60001044FD /* FJTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJTabBar.m; sourceTree = "<group>"; };
@@ -477,15 +535,11 @@
 		84503A2320FEE82D0007437B /* FJNewsDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJNewsDetail.m; sourceTree = "<group>"; };
 		84503A2520FF32E30007437B /* FJBaseRefreshTableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJBaseRefreshTableController.h; sourceTree = "<group>"; };
 		84503A2620FF32E30007437B /* FJBaseRefreshTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJBaseRefreshTableController.m; sourceTree = "<group>"; };
-		84503A2E20FF62110007437B /* FJCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJCollectionViewController.h; sourceTree = "<group>"; };
-		84503A2F20FF62110007437B /* FJCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJCollectionViewController.m; sourceTree = "<group>"; };
 		84503A3320FF66850007437B /* FJOrderGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJOrderGame.h; sourceTree = "<group>"; };
 		84503A3420FF66850007437B /* FJOrderGame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJOrderGame.m; sourceTree = "<group>"; };
 		84503A3620FF67040007437B /* FJOrderGameCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJOrderGameCell.h; sourceTree = "<group>"; };
 		84503A3720FF67040007437B /* FJOrderGameCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJOrderGameCell.m; sourceTree = "<group>"; };
 		84503A3820FF67040007437B /* FJOrderGameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FJOrderGameCell.xib; sourceTree = "<group>"; };
-		84503A3B20FF69440007437B /* FJOrderGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJOrderGameController.h; sourceTree = "<group>"; };
-		84503A3C20FF69440007437B /* FJOrderGameController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJOrderGameController.m; sourceTree = "<group>"; };
 		84503A50210087C40007437B /* NewsHtml.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = NewsHtml.html; sourceTree = "<group>"; };
 		84503A52210087C40007437B /* me_aboutme.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = me_aboutme.html; sourceTree = "<group>"; };
 		84503A54210087C40007437B /* help.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = help.jpg; sourceTree = "<group>"; };
@@ -517,8 +571,6 @@
 		84A3EF2E20F30CB700879FB7 /* UIImage+FJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FJExtension.m"; sourceTree = "<group>"; };
 		84A3EF3720F30E6300879FB7 /* FJPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJPopView.h; sourceTree = "<group>"; };
 		84A3EF3820F30E6300879FB7 /* FJPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJPopView.m; sourceTree = "<group>"; };
-		84A3EF3A20F3301A00879FB7 /* FJModifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJModifyViewController.m; sourceTree = "<group>"; };
-		84A3EF3B20F3301A00879FB7 /* FJModifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJModifyViewController.h; sourceTree = "<group>"; };
 		84A3EF4020F3335400879FB7 /* FJBaseSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJBaseSettingController.m; sourceTree = "<group>"; };
 		84A3EF4120F3335400879FB7 /* FJBaseSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJBaseSettingController.h; sourceTree = "<group>"; };
 		84A3EF4420F34FAB00879FB7 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -614,8 +666,6 @@
 		84A3F00F20F6ED3F00879FB7 /* FJDetailHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJDetailHeader.m; sourceTree = "<group>"; };
 		84A3F02620F7543700879FB7 /* FJSectionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJSectionHeader.h; sourceTree = "<group>"; };
 		84A3F02720F7543700879FB7 /* FJSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJSectionHeader.m; sourceTree = "<group>"; };
-		84A3F02920F76CE800879FB7 /* FJTimerButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJTimerButton.h; sourceTree = "<group>"; };
-		84A3F02A20F76CE800879FB7 /* FJTimerButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJTimerButton.m; sourceTree = "<group>"; };
 		84A3F02D20F84CBF00879FB7 /* NavHeadTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavHeadTitleView.m; sourceTree = "<group>"; };
 		84A3F02E20F84CBF00879FB7 /* HeadLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadLineView.h; sourceTree = "<group>"; };
 		84A3F02F20F84CBF00879FB7 /* HeadImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadImageView.h; sourceTree = "<group>"; };
@@ -661,6 +711,30 @@
 		84A3F07520F89FFE00879FB7 /* FJProgressHUB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJProgressHUB.m; sourceTree = "<group>"; };
 		84A3F07720F8AD7F00879FB7 /* NSString+FJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+FJ.h"; sourceTree = "<group>"; };
 		84A3F07820F8AD7F00879FB7 /* NSString+FJ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+FJ.m"; sourceTree = "<group>"; };
+		84B2A8A521142B8800BEB5A8 /* RichTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichTextViewController.h; sourceTree = "<group>"; };
+		84B2A8A721142B8800BEB5A8 /* PictureModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureModel.m; sourceTree = "<group>"; };
+		84B2A8A821142B8800BEB5A8 /* NSAttributedString+html.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+html.h"; sourceTree = "<group>"; };
+		84B2A8A921142B8800BEB5A8 /* NSAttributedString+RichText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RichText.h"; sourceTree = "<group>"; };
+		84B2A8AA21142B8800BEB5A8 /* ImageTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTextAttachment.h; sourceTree = "<group>"; };
+		84B2A8AB21142B8800BEB5A8 /* ArchiveFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveFile.h; sourceTree = "<group>"; };
+		84B2A8AC21142B8800BEB5A8 /* UIColor+HEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HEX.m"; sourceTree = "<group>"; };
+		84B2A8AD21142B8800BEB5A8 /* NSString+Regular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Regular.h"; sourceTree = "<group>"; };
+		84B2A8AE21142B8800BEB5A8 /* ArchiveFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveFile.m; sourceTree = "<group>"; };
+		84B2A8AF21142B8800BEB5A8 /* ImageTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTextAttachment.m; sourceTree = "<group>"; };
+		84B2A8B021142B8800BEB5A8 /* NSAttributedString+RichText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+RichText.m"; sourceTree = "<group>"; };
+		84B2A8B121142B8800BEB5A8 /* NSAttributedString+html.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+html.m"; sourceTree = "<group>"; };
+		84B2A8B221142B8800BEB5A8 /* PictureModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureModel.h; sourceTree = "<group>"; };
+		84B2A8B321142B8800BEB5A8 /* UIColor+HEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HEX.h"; sourceTree = "<group>"; };
+		84B2A8B421142B8800BEB5A8 /* utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utility.h; sourceTree = "<group>"; };
+		84B2A8B521142B8800BEB5A8 /* NSString+Regular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Regular.m"; sourceTree = "<group>"; };
+		84B2A8B621142B8800BEB5A8 /* RichText.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RichText.storyboard; sourceTree = "<group>"; };
+		84B2A8B721142B8800BEB5A8 /* RichTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichTextViewController.m; sourceTree = "<group>"; };
+		84B2A8C121142D7C00BEB5A8 /* NSJSON+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSJSON+Extension.m"; sourceTree = "<group>"; };
+		84B2A8C221142D7D00BEB5A8 /* NSString+CaclSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CaclSize.h"; sourceTree = "<group>"; };
+		84B2A8C321142D7D00BEB5A8 /* NSString+CaclSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CaclSize.m"; sourceTree = "<group>"; };
+		84B2A8C421142D7D00BEB5A8 /* NSJSON+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSON+Extension.h"; sourceTree = "<group>"; };
+		84B2A8C72117EA4200BEB5A8 /* UIImage+Wechat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Wechat.m"; sourceTree = "<group>"; };
+		84B2A8C82117EA4200BEB5A8 /* UIImage+Wechat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Wechat.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -674,6 +748,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84064190210B36DD00F88007 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8406419A210B36DD00F88007 /* FJMeViewController.h */,
+				84064191210B36DD00F88007 /* FJMeViewController.m */,
+				8406419C210B36DD00F88007 /* FJModifyViewController.h */,
+				84064193210B36DD00F88007 /* FJModifyViewController.m */,
+				84064199210B36DD00F88007 /* FJModifyNicknameController.h */,
+				84064192210B36DD00F88007 /* FJModifyNicknameController.m */,
+				84064194210B36DD00F88007 /* FJModifyPwdController.h */,
+				8406419B210B36DD00F88007 /* FJModifyPwdController.m */,
+				8406419F210B36DD00F88007 /* FJModifyPwdController.xib */,
+				8406419E210B36DD00F88007 /* FJModifyAvatarController.h */,
+				84064195210B36DD00F88007 /* FJModifyAvatarController.m */,
+				8406419D210B36DD00F88007 /* FJSettingViewController.h */,
+				84064196210B36DD00F88007 /* FJSettingViewController.m */,
+				84064198210B36DD00F88007 /* FJCollectionViewController.h */,
+				840641A0210B36DD00F88007 /* FJCollectionViewController.m */,
+				840641A1210B36DD00F88007 /* FJOrderGameController.h */,
+				84064197210B36DD00F88007 /* FJOrderGameController.m */,
+				840641AD210F27C300F88007 /* FJPromotionController.h */,
+				840641AE210F27C300F88007 /* FJPromotionController.m */,
+				840641BD2110126500F88007 /* FJPromotionDetailController.h */,
+				840641BE2110126500F88007 /* FJPromotionDetailController.m */,
+				840641BF2110126500F88007 /* FJPromotionDetailController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		84451D4F20EDF5AD001044FD = {
 			isa = PBXGroup;
 			children = (
@@ -750,18 +853,9 @@
 			isa = PBXGroup;
 			children = (
 				84451E9F20EDFFE7001044FD /* XBSettingController */,
+				84064190210B36DD00F88007 /* Controller */,
 				84503A3120FF66480007437B /* Model */,
 				84503A3220FF66480007437B /* View */,
-				84451D7F20EDF7D1001044FD /* FJMeViewController.h */,
-				84451D8020EDF7D1001044FD /* FJMeViewController.m */,
-				84A3EF3B20F3301A00879FB7 /* FJModifyViewController.h */,
-				84A3EF3A20F3301A00879FB7 /* FJModifyViewController.m */,
-				84451EBC20EE0096001044FD /* FJSettingViewController.h */,
-				84451EBD20EE0097001044FD /* FJSettingViewController.m */,
-				84503A2E20FF62110007437B /* FJCollectionViewController.h */,
-				84503A2F20FF62110007437B /* FJCollectionViewController.m */,
-				84503A3B20FF69440007437B /* FJOrderGameController.h */,
-				84503A3C20FF69440007437B /* FJOrderGameController.m */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1145,8 +1239,9 @@
 				84451ED820F0656F001044FD /* FJRegisterViewController.h */,
 				84451ED620F0656F001044FD /* FJRegisterViewController.m */,
 				84451ED720F0656F001044FD /* FJRegisterViewController.xib */,
-				84A3F02920F76CE800879FB7 /* FJTimerButton.h */,
-				84A3F02A20F76CE800879FB7 /* FJTimerButton.m */,
+				840641772109742300F88007 /* FJFindPwdViewController.h */,
+				840641782109742400F88007 /* FJFindPwdViewController.m */,
+				840641792109742400F88007 /* FJFindPwdViewController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1268,6 +1363,10 @@
 			children = (
 				84503A3320FF66850007437B /* FJOrderGame.h */,
 				84503A3420FF66850007437B /* FJOrderGame.m */,
+				840641BA210FFDCB00F88007 /* FJPromotion.h */,
+				840641BB210FFDCB00F88007 /* FJPromotion.m */,
+				840641D321105ADA00F88007 /* FJDownloadBean.h */,
+				840641D421105ADA00F88007 /* FJDownloadBean.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1278,6 +1377,9 @@
 				84503A3620FF67040007437B /* FJOrderGameCell.h */,
 				84503A3720FF67040007437B /* FJOrderGameCell.m */,
 				84503A3820FF67040007437B /* FJOrderGameCell.xib */,
+				840641B5210FFB5800F88007 /* FJPromotionCell.h */,
+				840641B6210FFB5800F88007 /* FJPromotionCell.m */,
+				840641B7210FFB5800F88007 /* FJPromotionCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1340,6 +1442,8 @@
 				84A3EF2220F30CB700879FB7 /* UIBarButtonItem+FJExtension.m */,
 				84A3EF2520F30CB700879FB7 /* UIImage+FJExtension.h */,
 				84A3EF2E20F30CB700879FB7 /* UIImage+FJExtension.m */,
+				84B2A8C82117EA4200BEB5A8 /* UIImage+Wechat.h */,
+				84B2A8C72117EA4200BEB5A8 /* UIImage+Wechat.m */,
 				84A3EF2720F30CB700879FB7 /* NSDate+FJExtension.h */,
 				84A3EF2D20F30CB700879FB7 /* NSDate+FJExtension.m */,
 				84A3EF2820F30CB700879FB7 /* UIImageView+FJExtension.h */,
@@ -1353,6 +1457,8 @@
 		84A3EF3620F30D8C00879FB7 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				8406418A210AFDEE00F88007 /* ZHNheadImageLoadViewController.h */,
+				8406418B210AFDEE00F88007 /* ZHNheadImageLoadViewController.m */,
 				84A3EFD020F5A04B00879FB7 /* IMYWebView */,
 				84A3EF3720F30E6300879FB7 /* FJPopView.h */,
 				84A3EF3820F30E6300879FB7 /* FJPopView.m */,
@@ -1445,6 +1551,8 @@
 				84503A2320FEE82D0007437B /* FJNewsDetail.m */,
 				84A3EF6D20F3669900879FB7 /* FJComment.h */,
 				84A3EF6E20F3669900879FB7 /* FJComment.m */,
+				8406418D210B1D3B00F88007 /* FJBanner.h */,
+				8406418E210B1D3B00F88007 /* FJBanner.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1557,6 +1665,7 @@
 		84A3EFF220F5E7FA00879FB7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84B2A8A421142B8800BEB5A8 /* RichVC */,
 				84A3F02C20F84CBF00879FB7 /* Views */,
 				84A3EFF520F5E8DA00879FB7 /* FJGameViewController.h */,
 				84A3EFF620F5E8DA00879FB7 /* FJGameViewController.m */,
@@ -1665,6 +1774,43 @@
 			path = Tool;
 			sourceTree = "<group>";
 		};
+		84B2A8A421142B8800BEB5A8 /* RichVC */ = {
+			isa = PBXGroup;
+			children = (
+				84B2A8A621142B8800BEB5A8 /* RichVCUtil */,
+				84B2A8C421142D7D00BEB5A8 /* NSJSON+Extension.h */,
+				84B2A8C121142D7C00BEB5A8 /* NSJSON+Extension.m */,
+				84B2A8C221142D7D00BEB5A8 /* NSString+CaclSize.h */,
+				84B2A8C321142D7D00BEB5A8 /* NSString+CaclSize.m */,
+				84B2A8A521142B8800BEB5A8 /* RichTextViewController.h */,
+				84B2A8B721142B8800BEB5A8 /* RichTextViewController.m */,
+				84B2A8B621142B8800BEB5A8 /* RichText.storyboard */,
+			);
+			path = RichVC;
+			sourceTree = "<group>";
+		};
+		84B2A8A621142B8800BEB5A8 /* RichVCUtil */ = {
+			isa = PBXGroup;
+			children = (
+				84B2A8A721142B8800BEB5A8 /* PictureModel.m */,
+				84B2A8A821142B8800BEB5A8 /* NSAttributedString+html.h */,
+				84B2A8A921142B8800BEB5A8 /* NSAttributedString+RichText.h */,
+				84B2A8AA21142B8800BEB5A8 /* ImageTextAttachment.h */,
+				84B2A8AB21142B8800BEB5A8 /* ArchiveFile.h */,
+				84B2A8AC21142B8800BEB5A8 /* UIColor+HEX.m */,
+				84B2A8AD21142B8800BEB5A8 /* NSString+Regular.h */,
+				84B2A8AE21142B8800BEB5A8 /* ArchiveFile.m */,
+				84B2A8AF21142B8800BEB5A8 /* ImageTextAttachment.m */,
+				84B2A8B021142B8800BEB5A8 /* NSAttributedString+RichText.m */,
+				84B2A8B121142B8800BEB5A8 /* NSAttributedString+html.m */,
+				84B2A8B221142B8800BEB5A8 /* PictureModel.h */,
+				84B2A8B321142B8800BEB5A8 /* UIColor+HEX.h */,
+				84B2A8B421142B8800BEB5A8 /* utility.h */,
+				84B2A8B521142B8800BEB5A8 /* NSString+Regular.m */,
+			);
+			path = RichVCUtil;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1726,11 +1872,14 @@
 				84503A59210087C50007437B /* help.jpg in Resources */,
 				84A3F06A20F88F3F00879FB7 /* u84.png in Resources */,
 				84A3EFFB20F5ED1100879FB7 /* FJGameCell.xib in Resources */,
+				840641A9210B36DD00F88007 /* FJModifyPwdController.xib in Resources */,
 				84A3F06C20F891A300879FB7 /* FJGameToolbar.xib in Resources */,
 				84A3F04720F8508000879FB7 /* Setting-click@2x.png in Resources */,
 				84A3EFC820F4AAFF00879FB7 /* FJNewsCell.xib in Resources */,
 				84503A3A20FF67040007437B /* FJOrderGameCell.xib in Resources */,
 				84503A57210087C50007437B /* NewsHtml.html in Resources */,
+				84B2A8BF21142B8800BEB5A8 /* RichText.storyboard in Resources */,
+				840641B9210FFB5800F88007 /* FJPromotionCell.xib in Resources */,
 				84451E5D20EDFAE4001044FD /* README.md in Resources */,
 				84A3F04A20F8508000879FB7 /* 5.jpg in Resources */,
 				84451F0220F0C3BD001044FD /* XBMeFooterView.xib in Resources */,
@@ -1746,6 +1895,7 @@
 				84503A58210087C50007437B /* me_aboutme.html in Resources */,
 				84A3F04320F8508000879FB7 /* 29.jpg in Resources */,
 				84451E5E20EDFAE4001044FD /* LICENSE in Resources */,
+				8406417B2109742400F88007 /* FJFindPwdViewController.xib in Resources */,
 				84A3F04F20F87F1000879FB7 /* HeadLineView.xib in Resources */,
 				84A3EF5920F34FAB00879FB7 /* README.md in Resources */,
 				84503A5A210087C50007437B /* me_help.html in Resources */,
@@ -1765,6 +1915,7 @@
 				84451E5920EDFAE4001044FD /* README.md in Resources */,
 				84503A5B210087C50007437B /* me_user_protocol.html in Resources */,
 				84451E7E20EDFAE4001044FD /* LICENSE in Resources */,
+				840641C12110126500F88007 /* FJPromotionDetailController.xib in Resources */,
 				84451E7220EDFAE4001044FD /* README.md in Resources */,
 				84A3F04220F8508000879FB7 /* zrx7.jpg in Resources */,
 				84451F3620F1E7C8001044FD /* IQKeyboardManager.bundle in Resources */,
@@ -1797,13 +1948,17 @@
 				84451D9F20EDFA40001044FD /* FJConst.m in Sources */,
 				84451E6B20EDFAE4001044FD /* MJRefreshStateHeader.m in Sources */,
 				84A3EF3420F30CB700879FB7 /* NSDate+FJExtension.m in Sources */,
+				840641AA210B36DD00F88007 /* FJCollectionViewController.m in Sources */,
 				84A3F03320F84CBF00879FB7 /* NavHeadTitleView.m in Sources */,
+				84B2A8C92117EA4200BEB5A8 /* UIImage+Wechat.m in Sources */,
 				84451E9D20EDFAE4001044FD /* UIView+WebCacheOperation.m in Sources */,
 				84A3F00520F60BF000879FB7 /* FJSendCommentController.m in Sources */,
 				84451F3C20F1E7C8001044FD /* IQUIView+Hierarchy.m in Sources */,
+				840641A2210B36DD00F88007 /* FJMeViewController.m in Sources */,
 				84451E5F20EDFAE4001044FD /* UIScrollView+MJRefresh.m in Sources */,
 				84A3EFA120F4644900879FB7 /* MASConstraint.m in Sources */,
 				84A3F06520F889A900879FB7 /* KNBannerViewModel.m in Sources */,
+				840641AF210F27C300F88007 /* FJPromotionController.m in Sources */,
 				84503A1C20FE06450007437B /* FJStrategyController.m in Sources */,
 				84A3EFC720F4AAFF00879FB7 /* FJNewsCell.m in Sources */,
 				84451E8920EDFAE4001044FD /* AFURLResponseSerialization.m in Sources */,
@@ -1813,30 +1968,33 @@
 				84451E9720EDFAE4001044FD /* SDWebImageCompat.m in Sources */,
 				84A3EF5F20F34FAB00879FB7 /* TAAnimatedDotView.m in Sources */,
 				84A3F03520F84CBF00879FB7 /* HeadImageView.m in Sources */,
+				840641A3210B36DD00F88007 /* FJModifyNicknameController.m in Sources */,
 				84A3EFFC20F5ED1100879FB7 /* FJGameCell.m in Sources */,
 				84451E9820EDFAE4001044FD /* SDWebImagePrefetcher.m in Sources */,
 				84A3EFD520F5A04B00879FB7 /* IMYWebView.m in Sources */,
 				84451E8A20EDFAE4001044FD /* AFHTTPSessionManager.m in Sources */,
+				840641A8210B36DD00F88007 /* FJModifyPwdController.m in Sources */,
 				84A3EF3320F30CB700879FB7 /* UITextField+PlaceStringColor.m in Sources */,
 				84451E8220EDFAE4001044FD /* AFNetworkActivityIndicatorManager.m in Sources */,
 				84451E9C20EDFAE4001044FD /* UIImageView+WebCache.m in Sources */,
 				84A3F01020F6ED3F00879FB7 /* FJDetailHeader.m in Sources */,
-				84451D8120EDF7D1001044FD /* FJMeViewController.m in Sources */,
-				84A3EF3C20F3301A00879FB7 /* FJModifyViewController.m in Sources */,
 				84451ECC20EE0E9E001044FD /* AppDelegate.m in Sources */,
 				84A3EF9E20F4644900879FB7 /* MASLayoutConstraint.m in Sources */,
 				84451E8120EDFAE4001044FD /* UIRefreshControl+AFNetworking.m in Sources */,
 				84A3EFEC20F5B69F00879FB7 /* FJCommentCell.m in Sources */,
+				840641C02110126500F88007 /* FJPromotionDetailController.m in Sources */,
 				84451F3720F1E7C8001044FD /* IQKeyboardManager.m in Sources */,
 				84A3EF3120F30CB700879FB7 /* UIImageView+FJExtension.m in Sources */,
 				84A3EF3020F30CB700879FB7 /* UIBarButtonItem+FJExtension.m in Sources */,
 				84451E7020EDFAE4001044FD /* MJRefreshAutoFooter.m in Sources */,
 				84A3EFF720F5E8DA00879FB7 /* FJGameViewController.m in Sources */,
+				84B2A8B921142B8800BEB5A8 /* UIColor+HEX.m in Sources */,
 				84451E9620EDFAE4001044FD /* UIImage+MultiFormat.m in Sources */,
 				84451EEC20F0AAD4001044FD /* NSUserDefaults+SecureAdditions.m in Sources */,
 				84451E6320EDFAE4001044FD /* UIView+MJExtension.m in Sources */,
 				84451E8020EDFAE4001044FD /* UIProgressView+AFNetworking.m in Sources */,
 				84451F3E20F1E7C8001044FD /* IQKeyboardReturnKeyHandler.m in Sources */,
+				840641B8210FFB5800F88007 /* FJPromotionCell.m in Sources */,
 				84A3EFE820F5AABF00879FB7 /* FJWebViewController.m in Sources */,
 				84451F3420F1E7C8001044FD /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				84A3EF7820F4592B00879FB7 /* FJBaseViewController.m in Sources */,
@@ -1849,18 +2007,21 @@
 				84A3EF5E20F34FAB00879FB7 /* TAPageControl.m in Sources */,
 				84A3F07320F89D0500879FB7 /* CommTool.m in Sources */,
 				84A3EF9F20F4644900879FB7 /* NSArray+MASAdditions.m in Sources */,
+				840641A7210B36DD00F88007 /* FJOrderGameController.m in Sources */,
+				84B2A8BC21142B8800BEB5A8 /* NSAttributedString+RichText.m in Sources */,
+				8406418C210AFDEE00F88007 /* ZHNheadImageLoadViewController.m in Sources */,
 				84A3EFDF20F5A0F000879FB7 /* HZIndicatorView.m in Sources */,
 				84A3F06720F889A900879FB7 /* KNWeekProxy.m in Sources */,
 				84451F3220F1E7C8001044FD /* IQTitleBarButtonItem.m in Sources */,
-				84503A3D20FF69440007437B /* FJOrderGameController.m in Sources */,
 				84451EEB20F0AAD4001044FD /* CocoaSecurity.m in Sources */,
 				84A3EF3920F30E6300879FB7 /* FJPopView.m in Sources */,
+				84B2A8C621142D7D00BEB5A8 /* NSString+CaclSize.m in Sources */,
 				84451E8720EDFAE4001044FD /* AFAutoPurgingImageCache.m in Sources */,
-				84451EBE20EE0097001044FD /* FJSettingViewController.m in Sources */,
 				84503A3920FF67040007437B /* FJOrderGameCell.m in Sources */,
 				84451E5620EDFAE4001044FD /* MJPropertyKey.m in Sources */,
 				84A3F07220F89D0500879FB7 /* HttpTool.m in Sources */,
 				84A3F07620F89FFE00879FB7 /* FJProgressHUB.m in Sources */,
+				840641A4210B36DD00F88007 /* FJModifyViewController.m in Sources */,
 				84A3F06820F889A900879FB7 /* KNCustomPageControl.m in Sources */,
 				84451E4F20EDFAE4001044FD /* NSObject+MJKeyValue.m in Sources */,
 				84451E6920EDFAE4001044FD /* MJRefreshAutoNormalFooter.m in Sources */,
@@ -1873,13 +2034,14 @@
 				84A3EF3220F30CB700879FB7 /* UIColor+ColorValue.m in Sources */,
 				84451E9E20EDFAE4001044FD /* UIButton+WebCache.m in Sources */,
 				84451E4E20EDFAE4001044FD /* MJPropertyType.m in Sources */,
+				840641BC210FFDCB00F88007 /* FJPromotion.m in Sources */,
 				84A3EF9A20F4644900879FB7 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				84451F3520F1E7C8001044FD /* IQPreviousNextView.m in Sources */,
 				84503A0D20FDBC070007437B /* FJBadgeButton.m in Sources */,
 				84A3EFF020F5E6E700879FB7 /* FJOrderViewController.m in Sources */,
 				84451E6420EDFAE4001044FD /* MJRefreshBackGifFooter.m in Sources */,
+				84B2A8BA21142B8800BEB5A8 /* ArchiveFile.m in Sources */,
 				84A3EF3520F30CB700879FB7 /* UIImage+FJExtension.m in Sources */,
-				84503A3020FF62110007437B /* FJCollectionViewController.m in Sources */,
 				84451E6A20EDFAE4001044FD /* MJRefreshNormalHeader.m in Sources */,
 				84451E8520EDFAE4001044FD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				84451E9120EDFAE4001044FD /* SDWebImageManager.m in Sources */,
@@ -1891,13 +2053,17 @@
 				84A3EFE120F5A0F000879FB7 /* HZPhotoBrowserView.m in Sources */,
 				84A3EF7220F3671B00879FB7 /* FJDetailViewController.m in Sources */,
 				84451EC620EE0E60001044FD /* FJNavigationController.m in Sources */,
+				84B2A8BB21142B8800BEB5A8 /* ImageTextAttachment.m in Sources */,
 				84451E8320EDFAE4001044FD /* UIImageView+AFNetworking.m in Sources */,
+				8406418F210B1D3B00F88007 /* FJBanner.m in Sources */,
 				84451ED220EE2391001044FD /* FJLoginViewController.m in Sources */,
 				84503A1320FDDB840007437B /* FJGamePic.m in Sources */,
 				84451E6820EDFAE4001044FD /* MJRefreshAutoGifFooter.m in Sources */,
+				8406417A2109742400F88007 /* FJFindPwdViewController.m in Sources */,
 				84451E5020EDFAE4001044FD /* MJProperty.m in Sources */,
 				84503A1020FDDB720007437B /* FJGameInfo.m in Sources */,
 				84A3EF4220F3335400879FB7 /* FJBaseSettingController.m in Sources */,
+				840641D521105ADA00F88007 /* FJDownloadBean.m in Sources */,
 				84451EB420EDFFE7001044FD /* UIView+XBExtension.m in Sources */,
 				846550FA20FB2B6000A3202A /* SVProgressAnimatedView.m in Sources */,
 				84451E9520EDFAE4001044FD /* UIImage+GIF.m in Sources */,
@@ -1907,11 +2073,13 @@
 				84451F3920F1E7C8001044FD /* IQUIWindow+Hierarchy.m in Sources */,
 				84451E5320EDFAE4001044FD /* NSObject+MJProperty.m in Sources */,
 				84451EB520EDFFE7001044FD /* XBSettingItemModel.m in Sources */,
+				84B2A8BD21142B8800BEB5A8 /* NSAttributedString+html.m in Sources */,
 				84A3EFA320F4644900879FB7 /* MASViewAttribute.m in Sources */,
 				84A3EF5C20F34FAB00879FB7 /* SDCollectionViewCell.m in Sources */,
 				84A3F04D20F87DD100879FB7 /* FJGameToolbar.m in Sources */,
 				84451E6020EDFAE4001044FD /* MJRefreshConst.m in Sources */,
 				84503A1620FDE0A70007437B /* FJGameDetail.m in Sources */,
+				84B2A8BE21142B8800BEB5A8 /* NSString+Regular.m in Sources */,
 				84451E6C20EDFAE4001044FD /* MJRefreshGifHeader.m in Sources */,
 				84451E8B20EDFAE4001044FD /* AFURLSessionManager.m in Sources */,
 				84451E7120EDFAE4001044FD /* MJRefreshComponent.m in Sources */,
@@ -1929,23 +2097,26 @@
 				846550FB20FB2B6000A3202A /* SVProgressHUD.m in Sources */,
 				846550F920FB2B6000A3202A /* SVRadialGradientLayer.m in Sources */,
 				84A3F07920F8AD7F00879FB7 /* NSString+FJ.m in Sources */,
-				84A3F02B20F76CE800879FB7 /* FJTimerButton.m in Sources */,
 				84A3EF9C20F4644900879FB7 /* MASCompositeConstraint.m in Sources */,
 				84A3EFA720F47EB800879FB7 /* FJDetailToolbar.m in Sources */,
+				84B2A8C021142B8800BEB5A8 /* RichTextViewController.m in Sources */,
 				84451F3D20F1E7C8001044FD /* IQUIViewController+Additions.m in Sources */,
 				84451E5420EDFAE4001044FD /* NSObject+MJClass.m in Sources */,
 				84451E5220EDFAE4001044FD /* MJExtensionConst.m in Sources */,
 				84451E5520EDFAE4001044FD /* NSString+MJExtension.m in Sources */,
 				84503A2020FE0D8A0007437B /* FJWriteStrategyController.m in Sources */,
 				84A3EFA020F4644900879FB7 /* View+MASAdditions.m in Sources */,
+				84B2A8B821142B8800BEB5A8 /* PictureModel.m in Sources */,
 				84A3F03420F84CBF00879FB7 /* HeadLineView.m in Sources */,
 				84A3EFA220F4644900879FB7 /* MASViewConstraint.m in Sources */,
 				84451EC820EE0E60001044FD /* FJTabBarController.m in Sources */,
 				84A3EF6B20F3652C00879FB7 /* FJNews.m in Sources */,
 				84503A2720FF32E30007437B /* FJBaseRefreshTableController.m in Sources */,
 				84451E8C20EDFAE4001044FD /* AFURLRequestSerialization.m in Sources */,
+				840641A5210B36DD00F88007 /* FJModifyAvatarController.m in Sources */,
 				84A3EF6F20F3669900879FB7 /* FJComment.m in Sources */,
 				84451E6220EDFAE4001044FD /* UIScrollView+MJExtension.m in Sources */,
+				840641A6210B36DD00F88007 /* FJSettingViewController.m in Sources */,
 				84A3EFE020F5A0F000879FB7 /* HZPhotoBrowser.m in Sources */,
 				84451E5720EDFAE4001044FD /* MJFoundation.m in Sources */,
 				84451E8620EDFAE4001044FD /* UIWebView+AFNetworking.m in Sources */,
@@ -1958,6 +2129,7 @@
 				84451ECD20EE0E9E001044FD /* main.m in Sources */,
 				84451EE920F0AAD4001044FD /* UserAuth.m in Sources */,
 				84A3F06320F889A900879FB7 /* KNBannerViewText.m in Sources */,
+				84B2A8C521142D7D00BEB5A8 /* NSJSON+Extension.m in Sources */,
 				84451E5B20EDFAE4001044FD /* DALabeledCircularProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

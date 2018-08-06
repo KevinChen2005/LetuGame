@@ -36,7 +36,8 @@
             NSArray* arr = retDict[@"data"][@"newsList"];
             if (arr == nil || [arr isEqual:[NSNull null]] || arr.count <= 0) {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
-                [self showRefreshStaus:@"没有更多数据"];
+//                [self showRefreshStaus:@"没有更多数据"];
+//                [FJProgressHUB showInfoWithMessage:@"没有更多数据" withTimeInterval:kTimeHubError];
                 return;
             }
             [self.datas removeAllObjects];
@@ -45,12 +46,14 @@
             
             [self.tableView reloadData];
         } else {
-            [self showRefreshStaus:@"刷新失败"];
+//            [self showRefreshStaus:@"刷新失败"];
+//            [FJProgressHUB showErrorWithMessage:@"刷新失败" withTimeInterval:kTimeHubError];
         }
     } failure:^(NSError *error) {
         DLog(@"error = %@", error);
         [self.tableView.mj_header endRefreshing];
-        [self showRefreshStaus:@"刷新失败，请检查网络"];
+//        [self showRefreshStaus:@"刷新失败，请检查网络"];
+//        [FJProgressHUB showErrorWithMessage:@"刷新失败，请检查网络" withTimeInterval:kTimeHubError];
     }];
 }
 

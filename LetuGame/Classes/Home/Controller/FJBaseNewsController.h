@@ -11,7 +11,7 @@
 
 @interface FJBaseNewsController : FJBaseRefreshTableController
 
-@property (nonnull, nonatomic, strong) NSMutableArray* datas;
+
 
 /**
  跳转到详情控制器

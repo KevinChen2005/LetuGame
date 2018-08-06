@@ -148,7 +148,7 @@
                         <constraint firstAttribute="height" constant="45" id="341-DW-jYg"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="注册">
+                    <state key="normal" title="注  册">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -162,10 +162,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8v-Gm-dUo">
-                    <rect key="frame" x="175" y="432" width="70" height="30"/>
+                    <rect key="frame" x="183" y="432" width="65" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="YI8-8v-cON"/>
-                        <constraint firstAttribute="width" constant="70" id="f8b-kU-IqP"/>
+                        <constraint firstAttribute="width" constant="65" id="f8b-kU-IqP"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="我同意" image="reg_btn_radio">
@@ -177,10 +177,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzK-9e-M7G">
-                    <rect key="frame" x="245" y="432" width="90" height="30"/>
+                    <rect key="frame" x="248" y="432" width="87" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="ubq-8K-pbS"/>
-                        <constraint firstAttribute="width" constant="90" id="v1e-d3-Aay"/>
+                        <constraint firstAttribute="width" constant="87" id="v1e-d3-Aay"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="《用户协议》">
@@ -194,10 +194,10 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8h-12-jMt">
-                    <rect key="frame" x="249" y="457" width="80" height="1"/>
+                    <rect key="frame" x="253" y="457" width="76" height="1"/>
                     <color key="backgroundColor" red="1" green="0.1647950115" blue="0.27055283629999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="80" id="JRz-gm-cUZ"/>
+                        <constraint firstAttribute="width" constant="76" id="JRz-gm-cUZ"/>
                         <constraint firstAttribute="height" constant="1" id="Jbd-WV-npT"/>
                     </constraints>
                 </view>
@@ -251,7 +251,7 @@
         </view>
     </objects>
     <resources>
-        <image name="reg_btn_radio" width="24" height="24"/>
-        <image name="reg_btn_radio_on" width="24" height="24"/>
+        <image name="reg_btn_radio" width="22" height="22"/>
+        <image name="reg_btn_radio_on" width="22" height="22"/>
     </resources>
 </document>

@@ -40,6 +40,13 @@
 
 #define FJNavbarItemFont [UIFont systemFontOfSize:15]
 
+//富文本编辑 图片标识
+#define RICHTEXT_IMAGE (@"[UIImageView]")
+
+//-----------------通知相关宏-------------
+#define kNotificationModifyNicknameSuccess @"kNotificationModifyNicknameSuccess"
+#define kNotificationModifyAvatarSuccess @"kNotificationModifyAvatarSuccess"
+
 //-------------------系统----------------
 #pragma mark - 系统
 //当前系统版本
@@ -80,7 +87,8 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
-#define ToolBarHeigth 44
+#define ToolBarHeight 44
+#define kBannerHeight 160
 
 //获取状态栏和导航栏高度
 

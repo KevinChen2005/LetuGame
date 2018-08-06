@@ -35,23 +35,23 @@
         if ([retDict[@"code"] isEqualToString:@"1"]) {
             
             NSArray* arr = retDict[@"data"];
-            if (arr == nil || [arr isEqual:[NSNull null]] || arr.count<=0) {
-                [strongSelf showRefreshStaus:@"没有新数据"];
-                return ;
+            NSArray* tempArr = [FJNews mj_objectArrayWithKeyValuesArray:arr];
+            if (tempArr.count == 0) {
+                return;
             }
             [strongSelf.datas removeAllObjects];
-            NSArray* tempArr = [FJNews mj_objectArrayWithKeyValuesArray:arr];
             [strongSelf.datas addObjectsFromArray:tempArr];
-            
             [strongSelf.tableView reloadData];
         } else {
-            [strongSelf showRefreshStaus:@"刷新失败"];
+//            [strongSelf showRefreshStaus:@"刷新失败"];
+//            [FJProgressHUB showErrorWithMessage:@"刷新失败" withTimeInterval:kTimeHubError];
         }
     } failure:^(NSError *error) {
         STRONGSELF
         DLog(@"error = %@", error);
         [strongSelf.tableView.mj_header endRefreshing];
-        [strongSelf showRefreshStaus:@"刷新失败，请检查网络"];
+//        [strongSelf showRefreshStaus:@"刷新失败，请检查网络"];
+//        [FJProgressHUB showErrorWithMessage:@"刷新失败，请检查网络" withTimeInterval:kTimeHubError];
     }];
 }
 

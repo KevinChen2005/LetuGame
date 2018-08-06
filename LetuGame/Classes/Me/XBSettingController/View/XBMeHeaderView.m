@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *usernameView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
+@property (weak, nonatomic) IBOutlet UIImageView *editView;
 
 @end
 
@@ -33,14 +34,18 @@
 
 - (void)awakeFromNib
 {
-    [self setupHeaderCircle];
-    
     [super awakeFromNib];
+    
+    [self setupHeaderCircle];
 }
 
 - (void)setupHeaderCircle
 {
     _isLogin = NO;
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickLoginBtn:)];
+    self.editView.userInteractionEnabled = YES;
+    [self.editView addGestureRecognizer:singleTap];
 }
 
 - (void)loginStateChanged:(BOOL)loginState nickname:(NSString*)nickname avatar:(NSString*)avatar
@@ -50,17 +55,23 @@
     self.noLoginView.hidden = loginState;
     self.alreadyLoginView.hidden = !loginState;
     
-    NSString* avatarName = @"avator_default";
-    NSString* nickName = @"点击登录";
-    UIColor* textColor = [UIColor lightGrayColor];
+    NSString* avatarName = @"avatar_default";
     if (loginState) { //登录状态
-        avatarName = [avatar isNullString] ? @"avator_default" : avatar;
-        nickName = [nickname isNullString] ? @"xxxxxx" : nickname;
-        textColor = [UIColor blackColor];
+        avatarName = [avatar isNullString] ? @"avatar_default" : avatar;
+        
+        NSString* nickName = [nickname isNullString] ? @"xxxxxx" : nickname;
+        self.usernameView.text = nickName;
+        self.editView.hidden = NO;
+        self.usernameView.textColor = [UIColor blackColor];
+        self.usernameView.font = [UIFont boldSystemFontOfSize:17];
+        [self.avatarView sd_setImageWithURL:[NSURL URLWithString:avatar] placeholderImage:[UIImage imageNamed:@"avatar_default"]];
+    } else {
+        self.editView.hidden = YES;
+        self.usernameView.text = @"点击登录";
+        self.usernameView.textColor = [UIColor lightGrayColor];
+        self.usernameView.font = [UIFont systemFontOfSize:17];
+        self.avatarView.image = [UIImage imageNamed:avatarName];
     }
-    self.avatarView.image = [UIImage imageNamed:avatarName];
-    self.usernameView.text = nickName;
-    self.usernameView.textColor = textColor;
 }
 
 - (IBAction)clickLoginBtn:(id)sender
@@ -76,5 +87,7 @@
     }
 }
 
-
 @end
+
+
+

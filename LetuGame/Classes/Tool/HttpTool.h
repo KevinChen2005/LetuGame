@@ -40,7 +40,7 @@ typedef void(^failureBlock)(NSError* error);
  */
 + (void)cancel;
 
-#pragma mark - 详细接口
+#pragma mark - 登录注册接口
 
 /**
  注册请求
@@ -159,9 +159,56 @@ typedef void(^failureBlock)(NSError* error);
  */
 + (void)fetchBannerWithType:(NSString*)bannerType Success:(successBlock)success failure:(failureBlock)failure;
 
+#pragma mark - 获取我的游戏预约列表
 /**
  获取我的游戏预约列表
  */
 + (void)fetchMyGameListSuccess:(successBlock)success failure:(failureBlock)failure;
 
+#pragma mark - 获取我的推广列表
+/**
+ 获取我的推广列表（仅推广员用户适用）
+ */
++ (void)fetchPromotionListSuccess:(successBlock)success failure:(failureBlock)failure;
+
+#pragma mark - 个人中心
+/**
+ 修改个人信息
+ */
++ (void)modifyUserInfoWithNickName:(NSString*)nickname avatar:(NSString*)avatar Success:(successBlock)success failure:(failureBlock)failure;
+
+/**
+ 修改昵称
+ */
++ (void)modifyUserNickName:(NSString*)nickname Success:(successBlock)success failure:(failureBlock)failure;
+
+/**
+ 修改头像,仅仅个人信息，不包含上传头像图片
+ */
++ (void)modifyUserAvatar:(NSString*)avatar Success:(successBlock)success failure:(failureBlock)failure;
+
+/**
+ 修改头像，会上传图片+修改个人信息，返回修改后的头像地址
+ */
++ (void)modifyUserAvatarWithImage:(UIImage*)image Success:(successBlock)success failure:(failureBlock)failure;
+
+/**
+ 修改密码
+ */
++ (void)modifyPasswordWithOldPwd:(NSString*)oldPassword newPwd:(NSString*)newPassword Success:(successBlock)success failure:(failureBlock)failure;
+
+/**
+ 找回密码
+ */
++ (void)findPasswordWithVerifyCode:(NSString*)verifyCode newPwd:(NSString*)newPassword Success:(successBlock)success failure:(failureBlock)failure;
+
+#pragma mark - 上传图片
+/**
+ 上传图片
+ */
++ (void)uploadPicWithType:(NSString*)type image:(UIImage*)image Success:(successBlock)success failure:(failureBlock)failure;
+
 @end
+
+
+

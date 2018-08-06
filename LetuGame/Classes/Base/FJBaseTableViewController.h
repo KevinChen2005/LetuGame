@@ -10,4 +10,6 @@
 
 @interface FJBaseTableViewController : UITableViewController
 
+@property (nonnull, nonatomic, strong) NSMutableArray* datas;
+
 @end

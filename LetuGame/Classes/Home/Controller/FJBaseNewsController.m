@@ -25,12 +25,10 @@
     
     self.tableView.sectionHeaderHeight = 1;
     self.tableView.sectionFooterHeight = 1;
-    self.tableView.estimatedRowHeight = 75.0;
-    self.tableView.rowHeight = 75.0;
+    self.tableView.estimatedRowHeight = 80.0;
+    self.tableView.rowHeight = 80.0;
     
     [self.tableView registerNib:[FJNewsCell nib] forCellReuseIdentifier:NSStringFromClass([FJNewsCell class])];
-    
-    self.datas = [NSMutableArray  array];
     
     self.navigationItem.title = @"游戏攻略";
 }

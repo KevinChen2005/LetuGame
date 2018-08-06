@@ -51,6 +51,7 @@
         _imageview = [[UIImageView alloc] init];
         _imageview.frame = CGRectMake(0, 0, kAPPWidth, kAppHeight);
         _imageview.userInteractionEnabled = YES;
+//        _imageview.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _imageview;
 }

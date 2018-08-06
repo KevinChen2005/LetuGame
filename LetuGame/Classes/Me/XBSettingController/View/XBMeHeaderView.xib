@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="eTH-sl-u7g" customClass="XBMeHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZ5-cQ-vuY">
@@ -25,7 +25,7 @@
                         <action selector="clickLoginBtn:" destination="eTH-sl-u7g" eventType="touchUpInside" id="3Yy-Zg-Vyd"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avator" translatesAutoresizingMaskIntoConstraints="NO" id="HfT-MG-emD">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="HfT-MG-emD">
                     <rect key="frame" x="151" y="30" width="70" height="70"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="NjQ-Wk-J47"/>
@@ -39,21 +39,29 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="樱桃小丸子" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zf-cR-H3c">
-                    <rect key="frame" x="12" y="114" width="350" height="21"/>
+                    <rect key="frame" x="143.5" y="114" width="87" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="cge-JB-5o2"/>
-                        <constraint firstAttribute="width" constant="350" id="vbB-3x-0OD"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="nv2-WF-zXC">
+                    <rect key="frame" x="232.5" y="118" width="15" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="15" id="LOb-0z-zZk"/>
+                        <constraint firstAttribute="height" constant="15" id="oKh-57-u5J"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="HfT-MG-emD" firstAttribute="centerX" secondItem="eTH-sl-u7g" secondAttribute="centerX" constant="-1.5" id="CIv-iv-0kE"/>
                 <constraint firstItem="8zf-cR-H3c" firstAttribute="centerX" secondItem="eTH-sl-u7g" secondAttribute="centerX" id="M1y-pf-Dyd"/>
                 <constraint firstItem="HfT-MG-emD" firstAttribute="top" secondItem="eTH-sl-u7g" secondAttribute="top" constant="30" id="NkP-Fl-Lkt"/>
+                <constraint firstItem="nv2-WF-zXC" firstAttribute="leading" secondItem="8zf-cR-H3c" secondAttribute="trailing" constant="2" id="OUR-iq-Xf2"/>
+                <constraint firstItem="nv2-WF-zXC" firstAttribute="centerY" secondItem="8zf-cR-H3c" secondAttribute="centerY" constant="1" id="PbF-Y1-YqC"/>
                 <constraint firstItem="KZ5-cQ-vuY" firstAttribute="top" secondItem="eTH-sl-u7g" secondAttribute="top" constant="25" id="c0b-yy-MFt"/>
                 <constraint firstItem="KZ5-cQ-vuY" firstAttribute="centerX" secondItem="eTH-sl-u7g" secondAttribute="centerX" id="vwK-kP-vDG"/>
                 <constraint firstItem="8zf-cR-H3c" firstAttribute="top" secondItem="HfT-MG-emD" secondAttribute="bottom" constant="14" id="xCd-KV-nWF"/>
@@ -62,12 +70,14 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="avatarView" destination="HfT-MG-emD" id="4b4-OG-Efw"/>
+                <outlet property="editView" destination="nv2-WF-zXC" id="Avk-cb-Oqz"/>
                 <outlet property="usernameView" destination="8zf-cR-H3c" id="snL-RN-Wu0"/>
             </connections>
-            <point key="canvasLocation" x="241.5" y="166.5"/>
+            <point key="canvasLocation" x="159.5" y="27.5"/>
         </view>
     </objects>
     <resources>
-        <image name="avator" width="50" height="50"/>
+        <image name="avatar" width="50" height="50"/>
+        <image name="edit" width="12" height="12"/>
     </resources>
 </document>
