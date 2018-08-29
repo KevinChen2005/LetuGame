@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1NS-9m-Bgk">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="122"/>
+                        <rect key="frame" x="10" y="10" width="130" height="107"/>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNE-9p-BUG">
-                        <rect key="frame" x="0.0" y="130" width="150" height="20"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNE-9p-BUG">
+                        <rect key="frame" x="0.0" y="130" width="150" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="f8O-11-OnN"/>
                         </constraints>
@@ -30,19 +30,33 @@
                         <color key="textColor" patternImage="label:NNE-9p-BUG:patternImage" colorSpace="pattern"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQ8-z5-aJv">
+                        <rect key="frame" x="130" y="0.0" width="20" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="LmF-Mr-Ykd"/>
+                            <constraint firstAttribute="height" constant="21" id="hNk-IS-q63"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="delete"/>
+                        <connections>
+                            <action selector="onClickDelete:" destination="gTV-IL-0wX" eventType="touchUpInside" id="m8q-Xa-sMm"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="uQ8-z5-aJv" secondAttribute="trailing" id="2cR-1e-d9d"/>
                 <constraint firstItem="NNE-9p-BUG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7gN-Pj-Ttr"/>
-                <constraint firstItem="1NS-9m-Bgk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Aoo-Ty-O12"/>
-                <constraint firstItem="1NS-9m-Bgk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="L03-BC-SMB"/>
-                <constraint firstAttribute="bottom" secondItem="NNE-9p-BUG" secondAttribute="bottom" id="Sk9-4f-YWe"/>
+                <constraint firstItem="uQ8-z5-aJv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Aj9-ey-wuG"/>
+                <constraint firstItem="1NS-9m-Bgk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Aoo-Ty-O12"/>
+                <constraint firstItem="1NS-9m-Bgk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="L03-BC-SMB"/>
+                <constraint firstAttribute="bottom" secondItem="NNE-9p-BUG" secondAttribute="bottom" constant="5" id="Sk9-4f-YWe"/>
                 <constraint firstAttribute="trailing" secondItem="NNE-9p-BUG" secondAttribute="trailing" id="mLk-Mj-92j"/>
                 <constraint firstItem="NNE-9p-BUG" firstAttribute="top" secondItem="1NS-9m-Bgk" secondAttribute="bottom" constant="8" id="vPi-LU-Qjl"/>
-                <constraint firstAttribute="trailing" secondItem="1NS-9m-Bgk" secondAttribute="trailing" id="x3P-az-lr7"/>
+                <constraint firstAttribute="trailing" secondItem="1NS-9m-Bgk" secondAttribute="trailing" constant="10" id="x3P-az-lr7"/>
             </constraints>
             <size key="customSize" width="196" height="165"/>
             <connections>
+                <outlet property="deleteBtn" destination="uQ8-z5-aJv" id="sae-AB-td1"/>
                 <outlet property="iconView" destination="1NS-9m-Bgk" id="vxG-gw-bgC"/>
                 <outlet property="titleView" destination="NNE-9p-BUG" id="brl-y7-KSp"/>
             </connections>
@@ -50,6 +64,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="delete" width="15" height="16"/>
         <image name="label:NNE-9p-BUG:patternImage" width="512" height="512">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU

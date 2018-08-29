@@ -5,7 +5,8 @@
             <meta name="viewport"
                 content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
                 <style type='text/css'>
-                    html { font-family:Helvetica; color:#292929; background: #ffffff}
+                    html { font-family:Helvetica; color:#5D5D5D; background: #ffffff}
+                    /*html { font-family:Helvetica; color:#292929; background: #ffffff}*/
                     h1 { color:steelblue; font-size:24px; margin-top:24px; }
                     button { margin:0 3px 10px; font-size:12px; }
                     .logLine { border-bottom:1px solid #ccc; padding:4px 2px; font-family:courier; font-size:11px; }
@@ -15,9 +16,14 @@
                     p.light { font-weight: 0 }
                     p.subtitle { font-weight: 0 ; font-size: 80%; color:#c8c8c8;}
                     p { font-size: 108% }
-                    h2 { font-size: 120% }
+                    h2 { font-size: 140% }
                     h3 { font-size: 80% ; color:#c8c8c8;}
                     h3.light {font-weight: 0}
+                    
+                    .divBody{
+                        margin:0 auto;
+                        width:96%;
+                    }
                     </style>
     </head>
     <body>
@@ -25,7 +31,7 @@
             window.onload = function(){
                 var $img = document.getElementsByTagName('img');
                 for(var p in  $img){
-                $img[p].style.maxWidth = '100%';
+                $img[p].style.width = '100%';
                 $img[p].style.height ='auto'
                 }
             }
@@ -109,6 +115,8 @@
                                        }
                                        })
             </script>
-        <p>mainnews</p>
+        <div class="divBody">
+          <p>mainnews</p>
+        </div>
     </body>
 </html>

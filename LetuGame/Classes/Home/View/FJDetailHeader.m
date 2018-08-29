@@ -68,6 +68,7 @@
         htmlWebView.scrollView.scrollEnabled = NO;//设置webview不可滚动，让tableview本身滚动即可
         htmlWebView.scrollView.bounces = NO;
         htmlWebView.opaque = NO;
+        htmlWebView.scrollView.scrollsToTop = NO;
         htmlWebView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         self.htmlWebView = htmlWebView;
         [self addSubview:htmlWebView];
@@ -212,7 +213,7 @@
 - (UIImage *)photoBrowser:(HZPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index
 {
     //图片浏览时，未加载出图片的占位图
-    return [UIImage imageNamed:@"gg_pic@2x"];
+    return [UIImage imageNamed:@"img_place_holder2"];
 }
 
 - (NSURL *)photoBrowser:(HZPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index

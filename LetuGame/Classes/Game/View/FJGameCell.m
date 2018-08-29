@@ -33,8 +33,14 @@
     _game = game;
     
     self.titleLabelView.text = game.name;
-    self.subtitleLabel.text = [CommTool safeString:game.desc];
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:game.icon] placeholderImage:[UIImage imageNamed:@"img_place_holder"]];
+    NSString* desc = [CommTool safeString:game.desc];
+    desc = [desc stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    while ([desc hasPrefix:@"\r\n"]) {
+        desc = [desc substringFromIndex:2];
+    }
+    
+    self.subtitleLabel.text = desc;
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:game.icon] placeholderImage:[UIImage imageNamed:@"img_place_holder_icon"]];
 }
 
 - (IBAction)clickWantPlay:(id)sender

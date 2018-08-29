@@ -87,7 +87,7 @@
         NSString* code = [NSString stringWithFormat:@"%@", retDict[@"code"]];
         NSString* message = [NSString stringWithFormat:@"%@", retDict[@"message"]];
         if ([code isEqualToString:@"1"]) { //成功
-            [FJProgressHUB showInfoWithMessage:@"请求成功，游戏信息将以短信形式下发，请注意查收！" withTimeInterval:2.0f];
+            [FJProgressHUB showInfoWithMessage:@"请求成功，游戏信息将以短信形式下发，请注意查收！" withTimeInterval:3.0f];
         } else {
             [FJProgressHUB showInfoWithMessage:message withTimeInterval:1.5f];
         }
@@ -103,7 +103,7 @@
     NSCalendarUnit unit = NSCalendarUnitMinute;//只计算分
     NSDateComponents *compas = [calendar components:unit fromDate:startDate toDate:endDate options:0];
     
-    NSLog(@"minute = %ld", compas.minute);
+    NSLog(@"minute = %ld", (long)compas.minute);
     return compas.minute;
 }
 

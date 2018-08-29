@@ -19,13 +19,30 @@
  *  是否为今年
  */
 - (BOOL)isThisYear;
+
 /**
  *  是否为今天
  */
 - (BOOL)isToday;
+
 /**
  *  是否为昨天
  */
 - (BOOL)isYesterday;
+
+/**
+ 格式化输出
+ */
+- (NSString*)formatString:(NSString*)formatter;
+
+/**
+ 返回当前月的第一天零点时刻
+ */
+- (NSDate*)firstDayOfCurrentMonth;
+
+/**
+ 返回当前月的最后一天最后一秒钟时刻
+ */
+- (NSDate*)lastDayOfCurrentMonth;
 
 @end

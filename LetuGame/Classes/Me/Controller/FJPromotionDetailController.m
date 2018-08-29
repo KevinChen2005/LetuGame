@@ -8,14 +8,14 @@
 
 #import "FJPromotionDetailController.h"
 #import "FJPromotion.h"
+#import "FJPromotionDeteilHeader.h"
+#import "FJPromotionDetailModel.h"
+#import "FJPromotionDetailCell.h"
 
 @interface FJPromotionDetailController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *name;
-@property (weak, nonatomic) IBOutlet UILabel *regNum;
-@property (weak, nonatomic) IBOutlet UILabel *money;
-@property (weak, nonatomic) IBOutlet UILabel *code;
-@property (weak, nonatomic) IBOutlet UITextView *promotionLink;
+@property (nonatomic, strong)UILabel* footerNoData;
+@property (nonatomic, strong)UIView* footerLine;
 
 @end
 
@@ -25,32 +25,97 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"推广详情";
+    self.title = [NSString stringWithFormat:@"《%@》- 推广详情", self.promotion.gameName];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    self.name.text = self.promotion.gameName;
-    self.regNum.text = [NSString stringWithFormat:@"%ld", (long)self.promotion.registNum];
-    self.money.text = [NSString stringWithFormat:@"%0.2f", self.promotion.payMoney];
-    self.code.text = self.promotion.code;
+    self.tableView.rowHeight = [FJPromotionDetailCell height];
+    [self.tableView registerNib:[FJPromotionDetailCell nib] forCellReuseIdentifier:[FJPromotionDetailCell reuseId]];
     
-    NSMutableString* linkInfo = [NSMutableString string];
-    NSArray* links = self.promotion.downloadBean;
-    [links enumerateObjectsUsingBlock:^(FJDownloadBean*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [linkInfo appendString:[CommTool safeString:obj.os]];
-        [linkInfo appendString:@"下载地址: \n"];
-        [linkInfo appendString:[CommTool safeString:obj.url]];
-        [linkInfo appendString:@"\n"];
-    }];
-    self.promotionLink.text = linkInfo;
+    // 添加头视图
+    FJPromotionDeteilHeader* header = [FJPromotionDeteilHeader header];
+    header.promotion = self.promotion;
+    header.frame = CGRectMake(0, 0, self.tableView.fj_width, [FJPromotionDeteilHeader height]);
+    self.tableView.tableHeaderView = header;
+    
+    //设置tableview的footerview为UILabel
+    UILabel* footerNoData = [UILabel new];
+    footerNoData.text = @"暂无数据!";
+    footerNoData.font = [UIFont systemFontOfSize:16];
+    footerNoData.frame = CGRectMake(20, 0, kScreenWidth, 60);
+    self.tableView.tableFooterView = footerNoData;
+    self.footerNoData = footerNoData;
+    
+    //设置tableview的footerview为一条灰线
+    UIView* footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.8)];
+    footer.backgroundColor = FJRGBColor(230, 230, 230);
+    self.tableView.tableFooterView = footer;
+    self.footerLine = footer;
+    
+    [self requestPromotionListWithStartTime:self.promotion.startDate endTime:self.promotion.endDate];
 }
 
-- (IBAction)onClickShare:(id)sender
+- (void)requestPromotionListWithStartTime:(NSDate*)startDate endTime:(NSDate*)endDate
 {
-    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    NSString* shareInfo = [NSString stringWithFormat:@"欢迎下载体验《%@》\n推广码：%@ \n%@", self.promotion.gameName, self.promotion.code, self.promotionLink.text];
-    pasteboard.string = shareInfo;
-    
-    [FJProgressHUB showInfoWithMessage:@"复制成功" withTimeInterval:1.5f];
+    WEAKSELF
+    [HttpTool fetchPromotionDetailListWithGameId:self.promotion.gameId startTime:startDate endTime:endDate Success:^(id retObj) {
+        STRONGSELF
+        DLog(@"retObj = %@", retObj);
+        NSDictionary* retDict = retObj;
+        if ([retDict[@"code"] isEqualToString:@"1"]) {
+            NSArray* arr = retDict[@"data"];
+            if (arr == nil || [arr isEqual:[NSNull null]] || arr.count <= 0) {
+//                [FJProgressHUB showInfoWithMessage:@"暂无数据！" withTimeInterval:1.5f];
+                strongSelf.tableView.tableFooterView = self.footerNoData;
+                return ;
+            }
+            [strongSelf.datas removeAllObjects];
+            
+            NSArray* arrTmp = [FJPromotionDetailModel mj_objectArrayWithKeyValuesArray:arr];
+            [strongSelf.datas addObjectsFromArray:arrTmp];
+            [strongSelf.tableView reloadData];
+        } else {
+            [FJProgressHUB showInfoWithMessage:@"加载用户数据失败！" withTimeInterval:1.5f];
+            strongSelf.tableView.tableFooterView = self.footerNoData;
+            strongSelf.footerNoData.text = @"加载用户失败";
+        }
+    } failure:^(NSError *error) {
+        STRONGSELF
+        DLog(@"fetchPromotionList error = %@", error);
+        [FJProgressHUB showErrorWithMessage:@"加载用户失败，请检查网络！" withTimeInterval:1.5f];
+        strongSelf.tableView.tableFooterView = self.footerNoData;
+        strongSelf.footerNoData.text = @"加载用户失败，请检查网络！";
+    }];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FJPromotionDetailCell* cell = [tableView dequeueReusableCellWithIdentifier:[FJPromotionDetailCell reuseId] forIndexPath:indexPath];
+    
+    cell.promotionDetail = [self.datas objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    FJPromotionDetailCell *header = [FJPromotionDetailCell cell];
+    header.backgroundColor  = FJRGBColor(249, 249, 249);
+    
+    return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return [FJPromotionDetailCell height];
+}
 
 @end
+
+

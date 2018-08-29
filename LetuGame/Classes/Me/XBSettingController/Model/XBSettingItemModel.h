@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger, XBSettingAccessoryType) {
 @property (nonatomic,strong) UIImage *detailImage;  /**< 更多信息-提示图片  */
 @property (nonatomic,copy) NSString *detailImageURL;  /**< 更多信息-提示图片  */
 @property (nonatomic,assign) BOOL isAvatar;  /**< 提示图片是否为头像  */
+@property (nonatomic,assign) BOOL isForbidSelect; /**< 是否禁止点击  */
 
 
 @property (nonatomic,assign) XBSettingAccessoryType  accessoryType;    /**< accessory */

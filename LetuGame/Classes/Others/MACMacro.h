@@ -34,6 +34,13 @@
 #endif
 #define kUrl(sub) [NSString stringWithFormat:@"%@/%@", URL_MAIN, sub]
 
+//检查版本更新
+#define kAppleID @"1176462740"
+#define kUrlCheckVersion [NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=%@", kAppleID]
+
+//闪屏后启动时间（广告时间）
+#define kLaunchCountDown 4
+
 //-------------------颜色和字体----------------
 #define FJRGBColor(r, g, b) [UIColor colorWithRed:(r) / 255.0 green:(g) / 255.0 blue:(b) / 255.0 alpha:1]
 #define FJGlobalBG FJRGBColor(245, 245, 245)
@@ -87,8 +94,8 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
-#define ToolBarHeight 44
-#define kBannerHeight 160
+#define ToolBarHeight 49.5
+#define kBannerHeight (kScreenWidth*0.5)
 
 //获取状态栏和导航栏高度
 

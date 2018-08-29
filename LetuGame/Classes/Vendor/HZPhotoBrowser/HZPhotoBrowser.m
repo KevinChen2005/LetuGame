@@ -76,6 +76,7 @@
     _backButton.textAlignment = 1;
     _backButton.font = [UIFont systemFontOfSize:20];
     _backButton.textColor = [UIColor whiteColor];
+    _backButton.hidden = YES;
     _scrollView.contentSize = CGSizeMake(_scrollView.subviews.count * _scrollView.frame.size.width, kAppHeight);
     _scrollView.contentOffset = CGPointMake(self.currentImageIndex * _scrollView.frame.size.width, 0);
     
@@ -305,5 +306,18 @@
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 }
 @end

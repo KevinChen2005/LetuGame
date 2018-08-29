@@ -155,6 +155,7 @@
         [view setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         view.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         view.contentEdgeInsets = UIEdgeInsetsMake(0, 7, 0, 0);
+        view.backgroundColor = FJRGBColor(252, 252, 252);
         
         [view addTarget:self action:@selector(clickWriteCommentBtn:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -163,8 +164,8 @@
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.mas_left).offset(10);
             make.right.equalTo(commentNumBtn.mas_left).offset(-10);
-            make.top.equalTo(self.mas_top).offset(6);
-            make.bottom.equalTo(self.mas_bottom).offset(-5);
+            make.top.equalTo(self.mas_top).offset(8);
+            make.bottom.equalTo(self.mas_bottom).offset(-8);
         }];
         view;
     });

@@ -89,6 +89,7 @@ static const CGFloat maxScale = 2;
     CGPathAddRect(path, nil, CGRectMake(0, (viewHeight + viewWeidth)/2, viewWeidth, (viewHeight - viewWeidth)/2));
     maskLayer.path = path;
     maskView.layer.mask = maskLayer;
+    CGPathRelease(path);
     
     // 框
     UIView * boardView = [[UIView alloc]init];

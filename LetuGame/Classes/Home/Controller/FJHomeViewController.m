@@ -10,7 +10,7 @@
 #import "SDCycleScrollView.h"
 #import "FJBanner.h"
 
-@interface FJHomeViewController () <SDCycleScrollViewDelegate>
+@interface FJHomeViewController () <SDCycleScrollViewDelegate, UINavigationBarDelegate>
 
 @property (nonatomic, strong)SDCycleScrollView* banner;
 @property (nonatomic, strong)NSMutableArray* bannerArray;
@@ -141,7 +141,7 @@
 {
     FJBanner* banner = [self.bannerArray objectAtIndex:index];
     FJNews* news = [FJNews new];
-    news.ID = banner.ID;
+    news.ID = banner.href;
     [self gotoDetailVC:news];
 }
 

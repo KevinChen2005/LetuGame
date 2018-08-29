@@ -13,7 +13,6 @@
 #import "FJWebViewController.h"
 #import "FJComment.h"
 #import "FJCommentCell.h"
-#import "FJOrderViewController.h"
 #import "FJSendCommentController.h"
 #import "FJNavigationController.h"
 #import "FJDetailHeader.h"
@@ -43,6 +42,8 @@
 @property(nonatomic, strong)FJDetailToolbar* toolbar;
 @property(nonatomic, strong)FJNewsDetail* newsDetail;
 @property(nonatomic, strong)MJRefreshFooter* mj_footer;
+
+@property(nonatomic, strong)UIWindow* coverWindow;
 
 @end
 
@@ -82,8 +83,15 @@
     toolbar.delegate = self;
     [self.view insertSubview:toolbar atIndex:0];
     [toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self.view);
+        make.left.right.equalTo(self.view);
         make.height.mas_equalTo(ToolBarHeight);
+        
+        if (iphoneX) {
+            make.bottom.equalTo(self.view).offset(-14);
+        } else {
+            make.bottom.equalTo(self.view);
+        }
+        
     }];
     self.toolbar = toolbar;
 
@@ -91,6 +99,7 @@
     UITableView* tableView = [[UITableView alloc] init];
     tableView.dataSource = self;
     tableView.delegate = self;
+    tableView.scrollsToTop = YES;
     tableView.tableHeaderView = [[UIView alloc] init];
     // tableView 偏移20/64适配
     self.extendedLayoutIncludesOpaqueBars = YES;
@@ -99,7 +108,7 @@
     }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(iphoneX?88:64, 0, 0, 0);
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     self.tableView.sectionHeaderHeight = 15;
     self.tableView.sectionFooterHeight = 1;
@@ -109,13 +118,12 @@
     
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
-        make.top.equalTo(@64);
+        make.top.equalTo([NSNumber numberWithInt:iphoneX?88:64]);
         make.bottom.mas_equalTo(toolbar.mas_top);
     }];
     self.tableView = tableView;
     
     [self.tableView registerNib:[FJCommentCell nib] forCellReuseIdentifier:NSStringFromClass([FJCommentCell class])];
-    
     
     // 集成上拉加载更多评论
     WEAKSELF
@@ -166,7 +174,6 @@
 //        self.isPushInto = NO;
 //        [FJProgressHUB showWithMessage:nil];
 //    }
-    
     
     // 加载评论数据
     NSInteger start = 0;
@@ -287,6 +294,52 @@
     NSString* strAdd = [NSString stringWithFormat:@"%@ %@", titleFormat, contentTemp];
     [appHtml replaceOccurrencesOfString:@"<p>mainnews</p>" withString:strAdd options:NSCaseInsensitiveSearch range:[appHtml rangeOfString:@"<p>mainnews</p>"]];
     
+    /*替换html中的格式代码------begin*/
+    NSString* repStringBefore = nil;
+    NSString* repStringAfter = nil;
+    NSRange range = NSMakeRange(0, 0);
+    
+    repStringBefore = @"margin: 0px 0px 0px -2em;";
+    repStringAfter = @"margin: 0px 0px 0px 0em;";
+    range = [appHtml rangeOfString:repStringBefore];
+    // 替换所有
+    while (range.length > 0) {
+        [appHtml replaceOccurrencesOfString:repStringBefore withString:repStringAfter options:NSCaseInsensitiveSearch range:range];
+
+        range = [appHtml rangeOfString:repStringBefore];
+    }
+
+    repStringBefore = @"margin: 0px 0px 0px 2em;";
+    repStringAfter = @"margin: 0px 0px 0px 0em;";
+    range = [appHtml rangeOfString:repStringBefore];
+    // 替换所有
+    while (range.length > 0) {
+        [appHtml replaceOccurrencesOfString:repStringBefore withString:repStringAfter options:NSCaseInsensitiveSearch range:range];
+
+        range = [appHtml rangeOfString:repStringBefore];
+    }
+
+    repStringBefore = @"text-indent: 2em;";
+    repStringAfter = @"text-indent: 0em;";
+    range = [appHtml rangeOfString:repStringBefore];
+    // 替换所有
+    while (range.length > 0) {
+        [appHtml replaceOccurrencesOfString:repStringBefore withString:repStringAfter options:NSCaseInsensitiveSearch range:range];
+
+        range = [appHtml rangeOfString:repStringBefore];
+    }
+
+    repStringBefore = @"text-align: center;";
+    repStringAfter = @"text-align: left;";
+    range = [appHtml rangeOfString:repStringBefore];
+    // 替换所有
+    while (range.length > 0) {
+        [appHtml replaceOccurrencesOfString:repStringBefore withString:repStringAfter options:NSCaseInsensitiveSearch range:range];
+
+        range = [appHtml rangeOfString:repStringBefore];
+    }
+    /*替换html中的格式代码------end*/
+    
     // 构建header
     __weak typeof(self) weakSelf = self;
     FJDetailHeader* header = [[FJDetailHeader alloc] initWithLoadHtmlString:appHtml CompleteBlock:^(NSInteger height) {
@@ -373,20 +426,6 @@
     return [[UIView alloc] init];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGFloat sectionHeaderHeight = [FJSectionHeader height];
-    
-    if (scrollView.contentOffset.y <= sectionHeaderHeight &&
-        scrollView.contentOffset.y >= 0) {
-        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
-    } else if (scrollView.contentOffset.y >= sectionHeaderHeight) {
-        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
-    } else {
-        scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    }
-}
-
 #pragma mark - FJDetailToolbarDelegate
 - (void)detailToolbarOnClickShowCommentList:(FJDetailToolbar *)toolBar
 {
@@ -412,7 +451,10 @@
         if (CGPointEqualToPoint(_offset, self.tableView.contentOffset)) { //如果滚动前已处在底部，再次点击就回顶部
             [self.tableView setContentOffset:CGPointMake(0,0) animated:YES];
         } else {
-            [self.tableView setContentOffset:_offset];
+            [UIView animateWithDuration:0.3 animations:^{
+                [self.tableView setContentOffset:self->_offset];
+            }];
+            
         }
     }
 }

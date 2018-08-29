@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, XBMeHeaderViewButtonType) {
 @interface XBMeHeaderView : UIView
 
 @property (nonatomic,weak) id<XBMeHeaderViewDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIImageView *bgView;
 
 + (instancetype)header;
 

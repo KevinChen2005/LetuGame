@@ -28,7 +28,15 @@
 
 @property (nonatomic, assign)CGFloat payMoney;
 
+@property (nonatomic, assign)CGFloat agentMoney;
+
+@property (nonatomic, copy)NSString* radio;//分成比
+
 @property (nonatomic, strong)NSArray<FJDownloadBean*>* downloadBean;
+
+@property (nonatomic, strong)NSDate* startDate;
+
+@property (nonatomic, strong)NSDate* endDate;
 
 @end
 

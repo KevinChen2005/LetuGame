@@ -8,8 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, FJNetworkStatusType) {
+    /// 未知网络
+    FJNetworkStatusUnknown,
+    /// 无网络
+    FJNetworkStatusNotReachable,
+    /// 手机网络
+    FJNetworkStatusReachableViaWWAN,
+    /// WIFI网络
+    FJNetworkStatusReachableViaWiFi
+};
+
 typedef void(^successBlock)(id retObj);
 typedef void(^failureBlock)(NSError* error);
+typedef void(^FJNetworkStatusBlock)(FJNetworkStatusType networkStatus);
 
 @interface HttpTool : NSObject
 
@@ -39,6 +51,28 @@ typedef void(^failureBlock)(NSError* error);
  取消请求
  */
 + (void)cancel;
+
+#pragma mark - 网络状态相关接口
+
+/**
+ 监听网络状态
+ */
++ (void)networkStatusWithBlock:(FJNetworkStatusBlock)networkStatusBlock;
+
+/**
+ 有网YES, 无网:NO
+ */
++ (BOOL)isNetwork;
+
+/**
+ 手机网络:YES, 反之:NO
+ */
++ (BOOL)isWWANNetwork;
+
+/**
+ WiFi网络:YES, 反之:NO
+ */
++ (BOOL)isWiFiNetwork;
 
 #pragma mark - 登录注册接口
 
@@ -165,11 +199,16 @@ typedef void(^failureBlock)(NSError* error);
  */
 + (void)fetchMyGameListSuccess:(successBlock)success failure:(failureBlock)failure;
 
-#pragma mark - 获取我的推广列表
+#pragma mark - 获取我的推广
 /**
  获取我的推广列表（仅推广员用户适用）
  */
-+ (void)fetchPromotionListSuccess:(successBlock)success failure:(failureBlock)failure;
++ (void)fetchPromotionListWithStartTime:(NSDate*)startTime endTime:(NSDate*)endTime Success:(successBlock)success failure:(failureBlock)failure;
+
+/**
+ 获取我的推广详情列表（仅推广员用户适用）
+ */
++ (void)fetchPromotionDetailListWithGameId:(NSString*)gameid startTime:(NSDate*)startTime endTime:(NSDate*)endTime Success:(successBlock)success failure:(failureBlock)failure;
 
 #pragma mark - 个人中心
 /**
@@ -207,6 +246,12 @@ typedef void(^failureBlock)(NSError* error);
  上传图片
  */
 + (void)uploadPicWithType:(NSString*)type image:(UIImage*)image Success:(successBlock)success failure:(failureBlock)failure;
+
+#pragma mark - 版本更新检测（通过AppStore）
+/**
+ 版本更新检测（通过AppStore）
+ */
++ (void)checkVersionFromAppstoreSuccess:(successBlock)success failure:(failureBlock)failure;
 
 @end
 

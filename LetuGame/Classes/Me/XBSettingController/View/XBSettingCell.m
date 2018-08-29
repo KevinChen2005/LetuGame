@@ -49,13 +49,17 @@
         [self setupAccessoryType];
     }
     
+    if (self.item.detailImage || self.item.detailImageURL) {
+        [self setupDetailImage];
+    }
+    
     //detailView
     if (self.item.detailText) {
         [self setupDetailText];
     }
     
-    if (self.item.detailImage || self.item.detailImageURL) {
-        [self setupDetailImage];
+    if (self.item.isForbidSelect) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 
     //bottomLine
@@ -70,7 +74,7 @@
         self.detailImageView = [[UIImageView alloc]initWithImage:self.item.detailImage];
     } else if ([self.item.detailImageURL hasPrefix:@"http"]) {
         self.detailImageView = [[UIImageView alloc]init];
-        [self.detailImageView sd_setImageWithURL:[NSURL URLWithString:self.item.detailImageURL] placeholderImage:[UIImage imageNamed:@"img_place_holder"]];
+        [self.detailImageView sd_setImageWithURL:[NSURL URLWithString:self.item.detailImageURL] placeholderImage:[UIImage imageNamed:@"img_place_holder_icon"]];
     } else {
         self.detailImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:self.item.detailImageURL]];
     }
@@ -139,34 +143,43 @@
     
     [self.contentView addSubview:self.detailLabel];
     
-    switch (self.item.accessoryType) {
-        case XBSettingAccessoryTypeNone:
-        {
+    if (self.item.detailImage || self.item.detailImageURL) { //有详情图片，详情文字位置依赖于详情图片
+        [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(self.contentView).offset(-XBDetailViewToIndicatorGap);
+                make.right.mas_equalTo(self.detailImageView.mas_left).offset(-XBDetailViewToIndicatorGap);
                 make.centerY.mas_equalTo(self.contentView);
             }];
+        }];
+    } else { //有详情图片，详情文字位置箭头
+        switch (self.item.accessoryType) {
+            case XBSettingAccessoryTypeNone:
+            {
+                [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.right.mas_equalTo(self.contentView).offset(-XBDetailViewToIndicatorGap);
+                    make.centerY.mas_equalTo(self.contentView);
+                }];
+            }
+                break;
+            case XBSettingAccessoryTypeDisclosureIndicator:
+            {
+                [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.right.mas_equalTo(self.indicator.mas_left).offset(-XBDetailViewToIndicatorGap);
+                    make.centerY.mas_equalTo(self.contentView);
+                }];
+            }
+                break;
+            case XBSettingAccessoryTypeSwitch:
+            {
+                [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.right.mas_equalTo(self.aswitch.mas_left).offset(-XBDetailViewToIndicatorGap);
+                    make.centerY.mas_equalTo(self.contentView);
+                }];
+            }
+                break;
+            default:
+                break;
         }
-            break;
-        case XBSettingAccessoryTypeDisclosureIndicator:
-        {
-            [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(self.indicator.mas_left).offset(-XBDetailViewToIndicatorGap);
-                make.centerY.mas_equalTo(self.contentView);
-            }];
-        }
-            break;
-        case XBSettingAccessoryTypeSwitch:
-        {
-            [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(self.aswitch.mas_left).offset(-XBDetailViewToIndicatorGap);
-                make.centerY.mas_equalTo(self.contentView);
-            }];
-        }
-            break;
-        default:
-            break;
-    }   
+    }
 }
 
 - (void)setupAccessoryType

@@ -9,7 +9,11 @@
 #import "FJModifyAvatarController.h"
 #import "ZHNheadImageLoadViewController.h"
 
-#define kImageSize_1_M (1024*1024)
+#import <AVFoundation/AVCaptureDevice.h>
+#import <AVFoundation/AVMediaFormat.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+
+#define kImageSize_1_M (1024*1024) // 定义1M的大小
 
 @interface FJModifyAvatarController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -89,21 +93,51 @@
 // 拍照
 - (void)takePhotoActionMethod
 {
-    self.imagePicker = [[UIImagePickerController alloc] init];
-    self.imagePicker.delegate = self;
-    self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.imagePicker.allowsEditing = YES;
-    [self presentViewController:self.imagePicker animated:YES completion:nil];
+    //相机权限
+    
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    
+    if (authStatus ==AVAuthorizationStatusRestricted ||//此应用程序没有被授权访问的照片数据。可能是家长控制权限
+        authStatus ==AVAuthorizationStatusDenied) { //用户已经明确否认了这一照片数据的应用程序访问
+        
+        [FJPopView showConfirmViewWithTitle:@"提示" message:@"该功能需要访问相机，去设置中心开启？" okBlock:^{
+            // 无权限 引导去开启
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            if ([[UIApplication sharedApplication]canOpenURL:url]) {
+                [[UIApplication sharedApplication]openURL:url];
+            }
+        } cancelBlock:nil];
+    } else {
+        self.imagePicker = [[UIImagePickerController alloc] init];
+        self.imagePicker.delegate = self;
+        self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        self.imagePicker.allowsEditing = YES;
+        [self presentViewController:self.imagePicker animated:YES completion:nil];
+    }
 }
 
 // 从相册选择
 - (void)localPhotoActionMethod
 {
-    self.imagePicker = [[UIImagePickerController alloc] init];
-    self.imagePicker.delegate = self;
-    self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    self.imagePicker.allowsEditing = YES;
-    [self presentViewController:self.imagePicker animated:YES completion:nil];
+    //相册权限
+    ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
+    
+    if (author ==ALAuthorizationStatusRestricted || author == ALAuthorizationStatusDenied){
+        //无权限 引导去开启
+        [FJPopView showConfirmViewWithTitle:@"提示" message:@"该功能需要访问相册，去设置中心开启？" okBlock:^{
+            // 无权限 引导去开启
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            if ([[UIApplication sharedApplication]canOpenURL:url]) {
+                [[UIApplication sharedApplication]openURL:url];
+            }
+        } cancelBlock:nil];
+    } else {
+        self.imagePicker = [[UIImagePickerController alloc] init];
+        self.imagePicker.delegate = self;
+        self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        self.imagePicker.allowsEditing = YES;
+        [self presentViewController:self.imagePicker animated:YES completion:nil];
+    }
 }
 
 // 拿到照片之后调用

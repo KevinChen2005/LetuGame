@@ -208,7 +208,7 @@
 {
     FJBanner* banner = [self.bannerArray objectAtIndex:index];
     FJGame* game = [FJGame new];
-    game.gameId = banner.ID;
+    game.gameId = banner.href;
     [self gotoDetailVC:game];
 }
 

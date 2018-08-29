@@ -18,7 +18,7 @@
 #import "RichTextViewController.h"
 #import "PictureModel.h"
 
-@interface FJGameDetailController () <NavHeadTitleViewDelegate, FJGameToolbarDelegate, UITableViewDataSource, UITableViewDelegate, RichTextViewControllerDelegate>
+@interface FJGameDetailController () <NavHeadTitleViewDelegate, FJGameToolbarDelegate, UITableViewDataSource, UITableViewDelegate, RichTextViewControllerDelegate, HeadLineViewDelegate>
 {
     //头像
     UIImageView *_headerImg;
@@ -143,7 +143,8 @@
     
     NSInteger picCount = self.detail.picArray.count;
     if (picCount > 0) {
-        FJGamePic* bgPic = [self.detail.picArray objectAtIndex:picCount-1];
+        int index = picCount>1 ? 1 : 0;
+        FJGamePic* bgPic = [self.detail.picArray objectAtIndex:index];//取第一张图截图作为头部拉伸图片
         [self.backgroundImgV sd_setImageWithURL:[NSURL URLWithString:bgPic.url] placeholderImage:[UIImage imageNamed:@"img_place_holder"]];
     }
     self.headLineView.detail = self.detail;
@@ -259,6 +260,7 @@
     if (!_headLineView) {
         _headLineView=[HeadLineView headLineView];
         _headLineView.frame=CGRectMake(0, 0, kScreenWidth, [HeadLineView height]);
+        _headLineView.delegate = self;
     }
     
     return _headLineView;
@@ -428,8 +430,12 @@
             [FJProgressHUB showErrorWithMessage:@"上传失败，请检查网络" withTimeInterval:kTimeHubError];
         }];
     }
-    
-    
+}
+
+#pragma mark - HeadLineViewDelegate
+- (void)headLineView:(HeadLineView *)view onClickWantPlay:(UIButton *)wantPlayBtn
+{
+    [self NavHeadToRight];
 }
 
 @end

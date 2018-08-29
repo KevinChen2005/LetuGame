@@ -52,7 +52,7 @@
     }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.webView.scrollView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    self.webView.scrollView.contentInset = UIEdgeInsetsMake(iphoneX? 88 : 64, 0, 0, 0);
     self.webView.scrollView.scrollIndicatorInsets = self.webView.scrollView.contentInset;
 }
 
@@ -75,6 +75,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     [FJProgressHUB dismiss];
 }
 

@@ -15,6 +15,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WcX-Mf-jej" userLabel="bgImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZ5-cQ-vuY">
                     <rect key="frame" x="132" y="25" width="110" height="120"/>
                     <constraints>
@@ -57,12 +61,16 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="WcX-Mf-jej" firstAttribute="top" secondItem="eTH-sl-u7g" secondAttribute="top" id="8bo-VK-8QD"/>
                 <constraint firstItem="HfT-MG-emD" firstAttribute="centerX" secondItem="eTH-sl-u7g" secondAttribute="centerX" constant="-1.5" id="CIv-iv-0kE"/>
+                <constraint firstItem="WcX-Mf-jej" firstAttribute="leading" secondItem="eTH-sl-u7g" secondAttribute="leading" id="IYv-4a-Hq2"/>
                 <constraint firstItem="8zf-cR-H3c" firstAttribute="centerX" secondItem="eTH-sl-u7g" secondAttribute="centerX" id="M1y-pf-Dyd"/>
                 <constraint firstItem="HfT-MG-emD" firstAttribute="top" secondItem="eTH-sl-u7g" secondAttribute="top" constant="30" id="NkP-Fl-Lkt"/>
                 <constraint firstItem="nv2-WF-zXC" firstAttribute="leading" secondItem="8zf-cR-H3c" secondAttribute="trailing" constant="2" id="OUR-iq-Xf2"/>
                 <constraint firstItem="nv2-WF-zXC" firstAttribute="centerY" secondItem="8zf-cR-H3c" secondAttribute="centerY" constant="1" id="PbF-Y1-YqC"/>
+                <constraint firstAttribute="bottom" secondItem="WcX-Mf-jej" secondAttribute="bottom" id="R3H-gf-3tW"/>
                 <constraint firstItem="KZ5-cQ-vuY" firstAttribute="top" secondItem="eTH-sl-u7g" secondAttribute="top" constant="25" id="c0b-yy-MFt"/>
+                <constraint firstAttribute="trailing" secondItem="WcX-Mf-jej" secondAttribute="trailing" id="idl-Xt-Ura"/>
                 <constraint firstItem="KZ5-cQ-vuY" firstAttribute="centerX" secondItem="eTH-sl-u7g" secondAttribute="centerX" id="vwK-kP-vDG"/>
                 <constraint firstItem="8zf-cR-H3c" firstAttribute="top" secondItem="HfT-MG-emD" secondAttribute="bottom" constant="14" id="xCd-KV-nWF"/>
             </constraints>
@@ -70,6 +78,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="avatarView" destination="HfT-MG-emD" id="4b4-OG-Efw"/>
+                <outlet property="bgView" destination="WcX-Mf-jej" id="WTe-vG-fD1"/>
                 <outlet property="editView" destination="nv2-WF-zXC" id="Avk-cb-Oqz"/>
                 <outlet property="usernameView" destination="8zf-cR-H3c" id="snL-RN-Wu0"/>
             </connections>

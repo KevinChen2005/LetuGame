@@ -10,4 +10,6 @@
 
 @interface FJOrderGameController : UICollectionViewController
 
++ (instancetype)create;
+
 @end

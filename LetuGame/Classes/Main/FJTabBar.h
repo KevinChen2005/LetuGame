@@ -12,7 +12,7 @@
 
 @interface FJTabBar : UITabBar
 
-@property(nonatomic, weak, nullable) id<FJTabBarDelegate> delegate;
+@property(nonatomic, weak) id<FJTabBarDelegate> delegate;
 
 @end
 

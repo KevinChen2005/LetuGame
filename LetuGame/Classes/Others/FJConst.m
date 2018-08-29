@@ -1,3 +1,5 @@
 #import "FJConst.h"
 
-NSString* FJHostURL = URL_MAIN;
+NSString* fjUrlHost = URL_MAIN;
+
+NSString* fjAppleID = @"1234567890";

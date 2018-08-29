@@ -16,4 +16,6 @@
 
 @property (nonatomic, copy)NSString* icon;
 
+@property (nonatomic, assign)BOOL isEdit;
+
 @end

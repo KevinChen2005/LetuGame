@@ -12,12 +12,18 @@
 #import "FJGame.h"
 #import "FJGameDetailController.h"
 
-@interface FJOrderGameController ()
+@interface FJOrderGameController ()<FJOrderGameCellDelegate>
+{
+    BOOL _isEditModel;
+}
 
 @property (nonatomic, strong)NSMutableArray* datas;
+@property (nonatomic, strong)MJRefreshHeader* mjHeaderView;
 
 @property (nonatomic, strong)NSDate* startDate;
 @property (nonatomic, strong)NSDate* endDate;
+
+@property (nonatomic, strong)UIButton* editButton;
 
 @end
 
@@ -25,11 +31,31 @@
 
 static NSString * const reuseIdentifier = @"Cell";
 
++ (instancetype)create
+{
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    CGFloat w = (kScreenWidth - 20*2 - 20*2)/3;
+    flowLayout.itemSize = CGSizeMake(w, w);
+    flowLayout.minimumInteritemSpacing = 20;
+    flowLayout.minimumLineSpacing = 20;
+    flowLayout.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
+    flowLayout.itemSize = CGSizeMake(w, w+25);
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    
+    return [[FJOrderGameController alloc] initWithCollectionViewLayout:flowLayout];
+}
+
+- (void)dealloc
+{
+    DLog(@"---dealloc---");
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.title = @"我的游戏";
+    _isEditModel = NO;
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.collectionView.backgroundColor = [UIColor whiteColor];
@@ -44,7 +70,7 @@ static NSString * const reuseIdentifier = @"Cell";
     }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.collectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+    self.collectionView.contentInset = UIEdgeInsetsMake(iphoneX? 88 : 64, 0, 0, 0);
     self.collectionView.scrollIndicatorInsets = self.collectionView.contentInset;
     
     // 初始化日期
@@ -61,6 +87,20 @@ static NSString * const reuseIdentifier = @"Cell";
         [strongSelf loadNewDatas];
     }];
     self.collectionView.mj_header = mjHeader;
+    self.mjHeaderView = mjHeader;
+    
+    // 右上角“编辑”
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"编辑" forState:UIControlStateNormal];
+    [button setTitle:@"完成" forState:UIControlStateSelected];
+    [button setTitleColor:FJRGBColor(0, 130, 188) forState:UIControlStateNormal];
+    [button sizeToFit];
+    [button.titleLabel setFont:FJNavbarItemFont];
+    [button addTarget:self action:@selector(onClickEdit:) forControlEvents:UIControlEventTouchUpInside];
+    self.editButton = button;
+    
+    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = rightItem;
 }
 
 - (void)loadNewDatas
@@ -80,6 +120,7 @@ static NSString * const reuseIdentifier = @"Cell";
             [strongSelf.datas removeAllObjects];
             NSArray* tempArr = [FJOrderGame mj_objectArrayWithKeyValuesArray:arr];
             [strongSelf.datas addObjectsFromArray:tempArr];
+            
             [strongSelf.collectionView reloadData];
         } else {
 //            [strongSelf showRefreshStaus:@"刷新失败"];
@@ -106,6 +147,31 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
+- (void)onClickEdit:(UIButton*)btn
+{
+    btn.selected = !btn.selected;
+    
+    BOOL isEdit = btn.selected;
+    _isEditModel = isEdit;
+    
+    [self changeState:isEdit];
+}
+
+- (void)changeState:(BOOL)isEdit
+{
+    if (isEdit) { //编辑模式去掉下拉刷新
+        self.collectionView.mj_header = nil;
+    } else {
+        self.collectionView.mj_header = self.mjHeaderView;
+    }
+    
+    [self.datas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        FJOrderGame* game = obj;
+        game.isEdit = isEdit;
+    }];
+    [self.collectionView reloadData];
+}
+
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -124,6 +190,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     FJOrderGameCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     cell.game = self.datas[indexPath.row];
+    cell.delegate = self;
     
     return cell;
 }
@@ -144,6 +211,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (_isEditModel) { //如果是编辑模式就不跳转详情页
+        return;
+    }
+    
     FJOrderGame* orderGame = [self.datas objectAtIndex:indexPath.row];
     FJGame* game = [FJGame new];
     game.gameId = orderGame.gameid;
@@ -155,6 +226,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
+#pragma mark - 提示用户刷新状态
 /**
  *  提示用户刷新状态
  */
@@ -212,9 +284,16 @@ static NSString * const reuseIdentifier = @"Cell";
     }];
 }
 
-- (void)dealloc
+#pragma mark - FJOrderGameCellDelegate
+- (void)orderGameCellOnDeleteAction:(FJOrderGameCell *)cell
 {
-    DLog(@"---dealloc---");
+    [self.datas removeObject:cell.game];
+    [self.collectionView reloadData];
+}
+
+- (void)orderGameCellOnLongPressAction:(FJOrderGameCell *)cell
+{
+    [self onClickEdit:self.editButton];
 }
 
 @end

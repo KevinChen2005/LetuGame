@@ -24,6 +24,8 @@
 
 @property (nonatomic, copy)NSString* gameId;
 
+@property (nonatomic, assign)NSInteger readTimes; //阅读量
+
 @property (nonatomic, assign)NSInteger score;
 
 @property (nonatomic, copy)NSString* source;

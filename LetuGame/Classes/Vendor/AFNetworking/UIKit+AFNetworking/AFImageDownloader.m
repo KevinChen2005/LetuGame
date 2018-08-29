@@ -28,8 +28,8 @@
 
 @interface AFImageDownloaderResponseHandler : NSObject
 @property (nonatomic, strong) NSUUID *uuid;
-@property (nonatomic, copy) void (^successBlock)(NSURLRequest*, NSHTTPURLResponse*, UIImage*);
-@property (nonatomic, copy) void (^failureBlock)(NSURLRequest*, NSHTTPURLResponse*, NSError*);
+@property (nonatomic, copy) void (^successBlock)(NSURLRequest *, NSHTTPURLResponse *, UIImage *);
+@property (nonatomic, copy) void (^failureBlock)(NSURLRequest *, NSHTTPURLResponse *, NSError *);
 @end
 
 @implementation AFImageDownloaderResponseHandler
@@ -71,11 +71,11 @@
     return self;
 }
 
-- (void)addResponseHandler:(AFImageDownloaderResponseHandler*)handler {
+- (void)addResponseHandler:(AFImageDownloaderResponseHandler *)handler {
     [self.responseHandlers addObject:handler];
 }
 
-- (void)removeResponseHandler:(AFImageDownloaderResponseHandler*)handler {
+- (void)removeResponseHandler:(AFImageDownloaderResponseHandler *)handler {
     [self.responseHandlers removeObject:handler];
 }
 
@@ -106,10 +106,20 @@
 
 @end
 
-
 @implementation AFImageDownloader
 
 + (NSURLCache *)defaultURLCache {
+    
+    // It's been discovered that a crash will occur on certain versions
+    // of iOS if you customize the cache.
+    //
+    // More info can be found here: https://devforums.apple.com/message/1102182#1102182
+    //
+    // When iOS 7 support is dropped, this should be modified to use
+    // NSProcessInfo methods instead.
+    if ([[[UIDevice currentDevice] systemVersion] compare:@"8.2" options:NSNumericSearch] == NSOrderedAscending) {
+        return [NSURLCache sharedURLCache];
+    }
     return [[NSURLCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
                                          diskCapacity:150 * 1024 * 1024
                                              diskPath:@"com.alamofire.imagedownloader"];
@@ -133,7 +143,11 @@
 
 - (instancetype)init {
     NSURLSessionConfiguration *defaultConfiguration = [self.class defaultURLSessionConfiguration];
-    AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:defaultConfiguration];
+    return [self initWithSessionConfiguration:defaultConfiguration];
+}
+
+- (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration {
+    AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
     sessionManager.responseSerializer = [AFImageResponseSerializer serializer];
 
     return [self initWithSessionManager:sessionManager
@@ -235,27 +249,31 @@
 
         createdTask = [self.sessionManager
                        dataTaskWithRequest:request
+                       uploadProgress:nil
+                       downloadProgress:nil
                        completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
                            dispatch_async(self.responseQueue, ^{
                                __strong __typeof__(weakSelf) strongSelf = weakSelf;
-                               AFImageDownloaderMergedTask *mergedTask = self.mergedTasks[URLIdentifier];
+                               AFImageDownloaderMergedTask *mergedTask = [strongSelf safelyGetMergedTask:URLIdentifier];
                                if ([mergedTask.identifier isEqual:mergedTaskIdentifier]) {
                                    mergedTask = [strongSelf safelyRemoveMergedTaskWithURLIdentifier:URLIdentifier];
                                    if (error) {
                                        for (AFImageDownloaderResponseHandler *handler in mergedTask.responseHandlers) {
                                            if (handler.failureBlock) {
                                                dispatch_async(dispatch_get_main_queue(), ^{
-                                                   handler.failureBlock(request, (NSHTTPURLResponse*)response, error);
+                                                   handler.failureBlock(request, (NSHTTPURLResponse *)response, error);
                                                });
                                            }
                                        }
                                    } else {
-                                       [strongSelf.imageCache addImage:responseObject forRequest:request withAdditionalIdentifier:nil];
+                                       if ([strongSelf.imageCache shouldCacheImage:responseObject forRequest:request withAdditionalIdentifier:nil]) {
+                                           [strongSelf.imageCache addImage:responseObject forRequest:request withAdditionalIdentifier:nil];
+                                       }
 
                                        for (AFImageDownloaderResponseHandler *handler in mergedTask.responseHandlers) {
                                            if (handler.successBlock) {
                                                dispatch_async(dispatch_get_main_queue(), ^{
-                                                   handler.successBlock(request, (NSHTTPURLResponse*)response, responseObject);
+                                                   handler.successBlock(request, (NSHTTPURLResponse *)response, responseObject);
                                                });
                                            }
                                        }
@@ -322,7 +340,7 @@
     });
 }
 
-- (AFImageDownloaderMergedTask*)safelyRemoveMergedTaskWithURLIdentifier:(NSString *)URLIdentifier {
+- (AFImageDownloaderMergedTask *)safelyRemoveMergedTaskWithURLIdentifier:(NSString *)URLIdentifier {
     __block AFImageDownloaderMergedTask *mergedTask = nil;
     dispatch_sync(self.synchronizationQueue, ^{
         mergedTask = [self removeMergedTaskWithURLIdentifier:URLIdentifier];
@@ -384,6 +402,14 @@
 
 - (BOOL)isActiveRequestCountBelowMaximumLimit {
     return self.activeRequestCount < self.maximumActiveDownloads;
+}
+
+- (AFImageDownloaderMergedTask *)safelyGetMergedTask:(NSString *)URLIdentifier {
+    __block AFImageDownloaderMergedTask *mergedTask;
+    dispatch_sync(self.synchronizationQueue, ^(){
+        mergedTask = self.mergedTasks[URLIdentifier];
+    });
+    return mergedTask;
 }
 
 @end

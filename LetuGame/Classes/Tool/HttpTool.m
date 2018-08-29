@@ -16,6 +16,11 @@
 
 @implementation HttpTool
 
++ (void)load
+{
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+}
+
 #pragma mark - 统一接口
 /**
  GET请求
@@ -139,6 +144,46 @@
  */
 + (void)cancel
 {
+}
+
+#pragma mark - 开始监听网络
++ (void)networkStatusWithBlock:(FJNetworkStatusBlock)networkStatusBlock {
+    
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+                networkStatusBlock ? networkStatusBlock(FJNetworkStatusUnknown) : nil;
+                DLog(@"未知网络");
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+                networkStatusBlock ? networkStatusBlock(FJNetworkStatusNotReachable) : nil;
+                DLog(@"无网络");
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                networkStatusBlock ? networkStatusBlock(FJNetworkStatusReachableViaWWAN) : nil;
+                DLog(@"移动数据网络");
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                networkStatusBlock ? networkStatusBlock(FJNetworkStatusReachableViaWiFi) : nil;
+                DLog(@"WIFI");
+                break;
+        }
+    }];
+}
+
++ (BOOL)isNetwork
+{
+    return [AFNetworkReachabilityManager sharedManager].reachable;
+}
+
++ (BOOL)isWWANNetwork
+{
+    return [AFNetworkReachabilityManager sharedManager].reachableViaWWAN;
+}
+
++ (BOOL)isWiFiNetwork
+{
+    return [AFNetworkReachabilityManager sharedManager].reachableViaWiFi;
 }
 
 #pragma mark - 登录注册接口
@@ -429,12 +474,32 @@
 /**
  获取我的推广列表（仅推广员用户适用）
  */
-+ (void)fetchPromotionListSuccess:(successBlock)success failure:(failureBlock)failure
++ (void)fetchPromotionListWithStartTime:(NSDate*)startTime endTime:(NSDate*)endTime Success:(successBlock)success failure:(failureBlock)failure
 {
+    NSString* startTimeStr = [startTime formatString:@"yyyy-MM-dd hh:mm:ss"];
+    NSString* endTimeStr = [endTime formatString:@"yyyy-MM-dd hh:mm:ss"];
     NSDictionary* params = @{
                              @"token"   : [CommTool safeString:[UserAuth shared].userInfo.token],
+                             @"startTime" : [CommTool safeString:startTimeStr],
+                             @"endTime" : [CommTool safeString:endTimeStr],
                              };
     [self postShowToastWithURL:kUrl(@"user/spread") params:params success:success failure:failure];
+}
+
+/**
+ 获取我的推广详情列表（仅推广员用户适用）
+ */
++ (void)fetchPromotionDetailListWithGameId:(NSString*)gameid startTime:(NSDate*)startTime endTime:(NSDate*)endTime Success:(successBlock)success failure:(failureBlock)failure
+{
+    NSString* startTimeStr = [startTime formatString:@"yyyy-MM-dd hh:mm:ss"];
+    NSString* endTimeStr = [endTime formatString:@"yyyy-MM-dd hh:mm:ss"];
+    NSDictionary* params = @{
+                             @"token"    : [CommTool safeString:[UserAuth shared].userInfo.token],
+                             @"gameid"   : [CommTool safeString:gameid],
+                             @"startTime" : [CommTool safeString:startTimeStr],
+                             @"endTime" : [CommTool safeString:endTimeStr],
+                             };
+    [self postShowToastWithURL:kUrl(@"user/spreadIncome") params:params success:success failure:failure];
 }
 
 #pragma mark - 个人中心
@@ -523,6 +588,15 @@
                              @"type"   : [CommTool safeString:type],//图片类型 头像：avatar
                              };
     [self uploadImageWithURL:kUrl(@"upload/image") image:image params:params success:success failure:failure];
+}
+
+#pragma mark - 版本更新检测（通过AppStore）
+/**
+ 版本更新检测（通过AppStore）
+ */
++ (void)checkVersionFromAppstoreSuccess:(successBlock)success failure:(failureBlock)failure
+{
+    [self getWithURL:kUrlCheckVersion success:success failure:failure];
 }
 
 @end

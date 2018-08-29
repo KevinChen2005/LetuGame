@@ -23,11 +23,13 @@
     self.extendedLayoutIncludesOpaqueBars = YES;
     if (@available(iOS 11.0, *)) {
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;//UIScrollView也适用
+        self.tableView.contentInset = UIEdgeInsetsMake(iphoneX?84:64, 0, iphoneX?83:49, 0);
     }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
+        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     }
     
-    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+    
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
     self.view.backgroundColor = FJGlobalBG;
@@ -40,6 +42,7 @@
     self.tableView.showsVerticalScrollIndicator = NO;
 //    //去掉分割线
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

@@ -6,11 +6,11 @@
 //  Copyright © 2018年 com.langlun. All rights reserved.
 //
 
-#import "FJBaseViewController.h"
+#import "FJBaseTableViewController.h"
 
 @class FJPromotion;
 
-@interface FJPromotionDetailController : FJBaseViewController
+@interface FJPromotionDetailController : FJBaseTableViewController
 
 @property (nonatomic, strong)FJPromotion* promotion;
 

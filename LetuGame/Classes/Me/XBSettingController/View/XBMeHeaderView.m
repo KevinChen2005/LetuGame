@@ -55,10 +55,7 @@
     self.noLoginView.hidden = loginState;
     self.alreadyLoginView.hidden = !loginState;
     
-    NSString* avatarName = @"avatar_default";
     if (loginState) { //登录状态
-        avatarName = [avatar isNullString] ? @"avatar_default" : avatar;
-        
         NSString* nickName = [nickname isNullString] ? @"xxxxxx" : nickname;
         self.usernameView.text = nickName;
         self.editView.hidden = NO;
@@ -70,7 +67,7 @@
         self.usernameView.text = @"点击登录";
         self.usernameView.textColor = [UIColor lightGrayColor];
         self.usernameView.font = [UIFont systemFontOfSize:17];
-        self.avatarView.image = [UIImage imageNamed:avatarName];
+        self.avatarView.image = [UIImage imageNamed:@"avatar_default"];
     }
 }
 

@@ -15,6 +15,10 @@
 
 #import "FJGame.h"
 
+#import <AVFoundation/AVCaptureDevice.h>
+#import <AVFoundation/AVMediaFormat.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+
 //Image default max size，图片显示的最大宽度
 #define IMAGE_MAX_SIZE (150)
 #define DefaultFont (16)
@@ -415,17 +419,26 @@
 
 -(void)selectedImage
 {
-    NSUInteger sourceType =UIImagePickerControllerSourceTypePhotoLibrary;
+    //相册权限
+    ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
     
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    
-    imagePickerController.delegate = self;
-    
-    imagePickerController.allowsEditing = NO;
-    
-    imagePickerController.sourceType = sourceType;
-    
-    [self presentViewController:imagePickerController animated:YES completion:^{}];
+    if (author ==ALAuthorizationStatusRestricted || author == ALAuthorizationStatusDenied){
+        //无权限 引导去开启
+        [FJPopView showConfirmViewWithTitle:@"提示" message:@"该功能需要访问相册，去设置中心开启？" okBlock:^{
+            // 无权限 引导去开启
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            if ([[UIApplication sharedApplication]canOpenURL:url]) {
+                [[UIApplication sharedApplication]openURL:url];
+            }
+        } cancelBlock:nil];
+    } else {
+        NSUInteger sourceType =UIImagePickerControllerSourceTypePhotoLibrary;
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing = NO;
+        imagePickerController.sourceType = sourceType;
+        [self presentViewController:imagePickerController animated:YES completion:^{}];
+    }
 }
 
 #pragma mark - image picker delegte

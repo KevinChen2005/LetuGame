@@ -14,6 +14,7 @@
 #import "FJConst.h"
 #import "UIImage+FJExtension.h"
 #import "UIImageView+FJExtension.h"
+#import "NSDate+FJExtension.h"
 #import "MACMacro.h"
 #import "Singelton.h"
 #import "UserAuth.h"
@@ -27,5 +28,7 @@
 #import "CommTool.h"
 #import "FJProgressHUB.h"
 #import "NSString+FJ.h"
+#import "FJAppModel.h"
+#import "FJVersionCheck.h"
 
 #endif /* PrefixHeader_pch */

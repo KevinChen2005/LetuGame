@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kTimeHubInfo 1.0f
+#define kTimeHubInfo 1.5f
 #define kTimeHubSuccess 1.5f
 #define kTimeHubError 1.5f
 

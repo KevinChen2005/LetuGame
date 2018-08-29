@@ -60,34 +60,28 @@
 {
     [super viewDidLoad];
     // 添加子控制器
-    [self addChildController:[[FJHomeViewController alloc] init] withTitle:@"首页" withName:@"essence"];
+    [self addChildController:[[FJHomeViewController alloc] init] withTitle:@"首页" withName:@"home"];
 
-    [self addChildController:[[FJGameViewController alloc] init] withTitle:@"游戏" withName:@"new"];
+    [self addChildController:[[FJGameViewController alloc] init] withTitle:@"游戏" withName:@"game"];
 
-//    [self addChildController:[[UIViewController alloc] init] withTitle:@"互动" withName:@"friendTrends"];
-
-    [self addChildController:[[FJMeViewController alloc] initWithStyle:UITableViewStyleGrouped] withTitle:@"我" withName:@"me"];
+    [self addChildController:[[FJMeViewController alloc] initWithStyle:UITableViewStyleGrouped] withTitle:@"我的" withName:@"me"];
     
     // 更换tabBar
     FJTabBar* tabBar = [[FJTabBar alloc] init];
     tabBar.delegate = self;
     [self setValue:tabBar forKey:@"tabBar"];
-
 }
 
-- (void)viewWillAppear:(BOOL)animated
+-(void)viewWillLayoutSubviews
 {
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
+    [super viewWillLayoutSubviews];
+    
+    if (iphoneX) { //适配iPhone X 的图标/title位置
+        for (UITabBarItem *item in self.tabBar.items) {
+            item.imageInsets = UIEdgeInsetsMake(-15, 0, 15, 0);
+            [item setTitlePositionAdjustment:UIOffsetMake(0, -34)];
+        }
+    }
 }
 
 #pragma mark - FJTabBarDelegate
@@ -95,5 +89,14 @@
 {
 //    NSLog(@"fj_tabBar didSelectedItemIndex %ld", (long)index);
 }
+
+-(BOOL)prefersHomeIndicatorAutoHidden
+{
+    return YES;
+}
+
+
+
+
 
 @end

@@ -9,9 +9,10 @@
 #import "FJSendCommentController.h"
 #import "FJNews.h"
 
-@interface FJSendCommentController ()
+@interface FJSendCommentController () <UITextViewDelegate>
 
 @property (nonatomic, strong)UITextView* inputView;
+@property (nonatomic, strong)UILabel* placeholder;
 
 @end
 
@@ -25,11 +26,31 @@
     
     // 评论输入框
     UITextView* inputView = [UITextView new];
-    inputView.font = [UIFont systemFontOfSize:18];
+    inputView.font = [UIFont systemFontOfSize:17];
+    inputView.backgroundColor = [UIColor clearColor];
+    inputView.delegate = self;
     [self.view addSubview:inputView];
     self.inputView = inputView;
     [inputView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
+    }];
+    
+    // 评论占位符
+    UILabel* placeholder = [UILabel new];
+    placeholder.font = [UIFont systemFontOfSize:16];
+    placeholder.text = @"输入你想要说的...";
+    placeholder.textColor = [UIColor lightGrayColor];
+    [self.view addSubview:placeholder];
+    self.placeholder = placeholder;
+    [placeholder mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.inputView).offset(10);
+        make.width.mas_equalTo(self.inputView);
+        make.height.mas_equalTo(@30);
+        if (iphoneX) {
+            make.top.mas_equalTo(self.inputView).offset(88+3);
+        } else {
+            make.top.mas_equalTo(self.inputView).offset(64+3);
+        }
     }];
     
     // 返回按钮
@@ -57,8 +78,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     
+    // 输入框获得焦点
     [self.inputView becomeFirstResponder];
 }
 
@@ -66,6 +88,7 @@
 {
     [super viewWillDisappear:animated];
     
+    // 输入框失去焦点
     [self.inputView resignFirstResponder];
 }
 
@@ -83,6 +106,7 @@
         return;
     }
     
+    // 提交评论内容
     [HttpTool addCommentWithType:@"news" kindId:self.news.ID content:content Success:^(id retObj) {
         DLog(@"addComment success retObj- %@", retObj);
         NSDictionary* retDict = retObj;
@@ -99,7 +123,16 @@
     } failure:^(NSError *error) {
         DLog(@"addComment failed - %@", error);
     }];
-    
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    // 输入框有文本变化，对占位符改变隐藏状态
+    if (self.inputView.text.length > 0) {
+        self.placeholder.hidden = YES;
+    } else {
+        self.placeholder.hidden = NO;
+    }
 }
 
 

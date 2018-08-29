@@ -37,7 +37,7 @@
     
     self.name.text = _promotion.gameName;
     self.registerion.text = [NSString stringWithFormat:@"%ld", (long)_promotion.registNum];
-    self.money.text = [NSString stringWithFormat:@"%0.2f", _promotion.payMoney];
+    self.money.text = [NSString stringWithFormat:@"%0.2f", _promotion.agentMoney];
     self.code.text = _promotion.code;
 }
 

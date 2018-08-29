@@ -8,8 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FJPromotionHeaderDelegate;
+
 @interface FJPromotionHeader : UIView
 
+@property (nonatomic, weak)id<FJPromotionHeaderDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIImageView *bgView;
+
 + (instancetype)header;
+
+@end
+
+@protocol FJPromotionHeaderDelegate <NSObject>
+
+@optional
+- (void)promotionHeader:(FJPromotionHeader*)header onClickSearchWithBeginDate:(NSDate*)beginDate endDate:(NSDate*)endDate;
 
 @end

@@ -45,6 +45,7 @@
             [self.datas addObjectsFromArray:tempArr];
             
             [self.tableView reloadData];
+            [self.tableView.mj_footer endRefreshing];
         } else {
 //            [self showRefreshStaus:@"刷新失败"];
 //            [FJProgressHUB showErrorWithMessage:@"刷新失败" withTimeInterval:kTimeHubError];
@@ -70,8 +71,8 @@
         if ([retDict[@"code"] isEqualToString:@"1"]) {
             NSArray* arr = retDict[@"data"][@"newsList"];
             if (arr == nil || [arr isEqual:[NSNull null]] || arr.count <= 0) {
-                [self.tableView.mj_footer endRefreshing];
-                [FJProgressHUB showInfoWithMessage:@"没有更多数据" withTimeInterval:1.0f];
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+//                [FJProgressHUB showInfoWithMessage:@"没有更多数据" withTimeInterval:1.0f];
                 return;
             }
             [self.tableView.mj_footer endRefreshing];

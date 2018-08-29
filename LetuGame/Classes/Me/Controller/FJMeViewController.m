@@ -71,15 +71,7 @@
             return ;
         }
         
-        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        CGFloat w = (self.view.bounds.size.width-20*2-20*2)/3;
-        flowLayout.itemSize = CGSizeMake(w, w);
-        flowLayout.minimumInteritemSpacing = 20;
-        flowLayout.minimumLineSpacing = 20;
-        flowLayout.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
-        flowLayout.itemSize = CGSizeMake(w, w+30);
-        flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        FJOrderGameController* gameVC = [[FJOrderGameController alloc] initWithCollectionViewLayout:flowLayout];
+        FJOrderGameController* gameVC = [FJOrderGameController create];
         [self.navigationController pushViewController:gameVC animated:YES];
     };
     item1.img = [UIImage imageNamed:@"list_game"];
@@ -158,10 +150,27 @@
     };
     item7.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
     
+    XBSettingItemModel *item8 = [[XBSettingItemModel alloc]init];
+    item8.funcName = @"当前版本";
+    item8.img = [UIImage imageNamed:@"list_version"];
+    item8.detailText = [FJVersionCheck shareInstance].currentVersion;
+    item8.executeCode = ^{
+        if ([FJVersionCheck shareInstance].isNeedUpdate) {
+            [[FJVersionCheck shareInstance] gotoUpdate];
+        }
+    };
+    item8.isForbidSelect = YES;
+    if ([FJVersionCheck shareInstance].isNeedUpdate) {
+        item8.detailImage = [UIImage imageNamed:@"icon-new"];
+        item8.isForbidSelect = NO;
+        item8.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
+    }
+    
     XBSettingSectionModel *section2 = [[XBSettingSectionModel alloc]init];
     section2.sectionHeaderHeight = 15;
     section2.sectionFooterHeight = 15;
     section2.itemArray = @[item5, item7];
+//    section2.itemArray = @[item5, item7, item8];
     
     self.sectionArray = @[section1,section2];
     
@@ -197,6 +206,22 @@
     if (type == XBMeFooterViewButtonTypeLogin) {
         FJLoginViewController* vc = [[FJLoginViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+#pragma mark - UISCrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //获取偏移量
+    CGPoint offset = scrollView.contentOffset;
+    
+    //判断是否改变
+    if (offset.y < 0) {
+        CGRect rect = self.header.bgView.frame;
+        //我们只需要改变图片的y值和高度即可
+        rect.origin.y = offset.y;
+        rect.size.height = 70 - offset.y;
+        self.header.bgView.frame = rect;
     }
 }
 

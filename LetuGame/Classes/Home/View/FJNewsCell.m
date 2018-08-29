@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabelView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *readTimesLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *readTimesImage;
 
 @end
 
@@ -41,6 +43,7 @@
         author = @"未知";
     }
     self.authorLabel.text = [NSString stringWithFormat:@"%@", author];
+    self.readTimesLabel.text = [NSString stringWithFormat:@"%d", news.readTimes];
     
 //    [self.iconView sd_setImageWithURL:[NSURL URLWithString:news.imageurl] placeholderImage:[UIImage imageNamed:@"img_place_holder"]];
 }

@@ -123,12 +123,13 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     [_collectionView reloadData]; // 重新给 数组赋值,则刷新 collectionView
     _netWorkImgArr = netWorkImgArr;
     for (NSInteger i = 0; i < netWorkImgArr.count; i++) {
-        BOOL isHttpString = false;
-        isHttpString = [netWorkImgArr[i] isKindOfClass:[NSString class]];
-        if([netWorkImgArr[i] hasPrefix:@"http"] || [netWorkImgArr[i] hasPrefix:@"https"]){
-            isHttpString = true;
+        BOOL isHttpString = YES;
+        NSString* name = netWorkImgArr[i];
+        if(name && [name isKindOfClass:[NSString class]] &&
+           ( [name hasPrefix:@"http"] || [name hasPrefix:@"https"] )){
+            isHttpString = YES;
         }else{
-            isHttpString = false;
+            isHttpString = NO;
         }
         NSAssert(isHttpString, @"\n **加载网络图片,NetWorkImgArr 内必须添加 图片URL的绝对路径** \n");
         [self.imageArr addObject:netWorkImgArr[i]];
@@ -320,9 +321,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     if(![self isEmptyArray:_bannerViewModel.bgChangeColorArr]){
         [_bannerViewModel.bgChangeColorArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if(![obj isKindOfClass:[UIColor class]]){
-                if (DEBUG){
-                    NSLog(@"需要传入 UIColor 对象");
-                }
+                NSLog(@"需要传入 UIColor 对象");
             }
         }];
     }
@@ -591,10 +590,8 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 }
 
 - (void)dealloc{
-    if(DEBUG){
-        // 这里可以测试 BannerView是否能正常销毁
-        NSLog(@"KNBannerView dealloc");
-    }
+    // 这里可以测试 BannerView是否能正常销毁
+    NSLog(@"KNBannerView dealloc");
 }
 
 @end
