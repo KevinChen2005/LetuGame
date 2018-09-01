@@ -154,7 +154,7 @@
 //拉伸顶部图片
 -(void)lashenBgView
 {
-    _backgroundImgV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 240)];
+    _backgroundImgV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kBannerHeight*2)];
     _backgroundImgV.image=[UIImage imageNamed:@"img_place_holder"];
     _backgroundImgV.userInteractionEnabled=YES;
     [self.view addSubview:_backgroundImgV];
@@ -204,7 +204,7 @@
 {
     if (!_headImageView) {
         _headImageView=[[HeadImageView alloc]init];
-        _headImageView.frame=CGRectMake(0, 64, kScreenWidth, 170);
+        _headImageView.frame=CGRectMake(0, 64, kScreenWidth, kBannerHeight);
         _headImageView.backgroundColor=[UIColor clearColor];
     }
     

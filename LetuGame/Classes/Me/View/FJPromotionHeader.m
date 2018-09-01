@@ -13,8 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSelectDate; // 日期选择按钮
 
-@property (strong, nonatomic) NSDate* selectedDate; //选择的日期
-@property (strong, nonatomic) NSDateComponents* selectedDateComponents; //选择的日期（DateComponents）
+@property (strong, nonatomic) NSDate* selectedDate; //选择的日期期（DateComponents）
 
 @end
 
@@ -26,7 +25,7 @@
     
     self.selectedDate = [NSDate date]; //初始化选择日期为now
     
-    NSString* infoEnd = [NSString stringWithFormat:@"%@", [self.selectedDate formatString:@"yyyy-MM"]];
+    NSString* infoEnd = [self.selectedDate formatString:@"yyyy-MM"];
     [self.btnSelectDate setTitle:infoEnd forState:UIControlStateNormal];
 }
 
@@ -76,10 +75,53 @@
     NSString* info = [NSString stringWithFormat:@"%ld-%02ld", (long)dateComponents.year, (long)dateComponents.month];
     [self.btnSelectDate setTitle:info forState:UIControlStateNormal];
     
-    NSCalendar * calendar = [NSCalendar currentCalendar];
+    self.selectedDate = [self dateFromComponents:dateComponents];
+    NSLog(@"selectedDate = %@", self.selectedDate);
+}
+
+- (NSDate*)dateFromComponents:(NSDateComponents*)dateComponents
+{
+    NSDateComponents* components = dateComponents;
     
-    self.selectedDate = [calendar dateFromComponents:dateComponents];
-    self.selectedDateComponents = dateComponents;
+    NSCalendar * calendar = [NSCalendar currentCalendar];
+    calendar.timeZone = [NSTimeZone systemTimeZone];
+    
+    if (components.month == 4 || components.month == 6 ||
+        components.month == 9 || components.month == 11) {
+        if (components.day >= 31) {
+            components.day = 30;
+        }
+    } else if (components.month == 2) {
+        if ([self leapYear:components.year] == YES && components.day >= 30) {
+            components.day = 29;
+        }
+        
+        if ([self leapYear:components.year] == NO && components.day >= 29) {
+            components.day = 28;
+        }
+    } else {
+        if (components.day >= 32) {
+            components.day = 31;
+        }
+    }
+    
+    return [calendar dateFromComponents:dateComponents];
+}
+
+// 判断闰年
+- (BOOL)leapYear:(NSInteger)year
+{
+    if (year <= 0 || year >= 9999) {
+        return NO;
+    }
+    
+    if ((year%4 == 0 && year % 100 !=0) || year%400==0) {
+        return YES;
+    }else {
+        return NO;
+    }
+    
+    return NO;
 }
 
 @end

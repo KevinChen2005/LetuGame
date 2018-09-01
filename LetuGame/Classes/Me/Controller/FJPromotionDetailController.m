@@ -74,14 +74,14 @@
             [strongSelf.datas addObjectsFromArray:arrTmp];
             [strongSelf.tableView reloadData];
         } else {
-            [FJProgressHUB showInfoWithMessage:@"加载用户数据失败！" withTimeInterval:1.5f];
+//            [FJProgressHUB showInfoWithMessage:@"加载用户数据失败！" withTimeInterval:1.5f];
             strongSelf.tableView.tableFooterView = self.footerNoData;
             strongSelf.footerNoData.text = @"加载用户失败";
         }
     } failure:^(NSError *error) {
         STRONGSELF
         DLog(@"fetchPromotionList error = %@", error);
-        [FJProgressHUB showErrorWithMessage:@"加载用户失败，请检查网络！" withTimeInterval:1.5f];
+//        [FJProgressHUB showErrorWithMessage:@"加载用户失败，请检查网络！" withTimeInterval:1.5f];
         strongSelf.tableView.tableFooterView = self.footerNoData;
         strongSelf.footerNoData.text = @"加载用户失败，请检查网络！";
     }];

@@ -73,6 +73,7 @@
 - (NSString *)formatString:(NSString *)formatter
 {
     NSDateFormatter* fmt = [[NSDateFormatter alloc] init];
+    fmt.timeZone = [NSTimeZone systemTimeZone];
     fmt.dateFormat = formatter;
     
     return [fmt stringFromDate:self];
@@ -85,12 +86,13 @@
     NSCalendar *calendar = [NSCalendar currentCalendar];
     [calendar rangeOfUnit:NSCalendarUnitMonth startDate:&firstDate interval:&interval forDate:self];
     
-    //转换时区
-    NSTimeZone *zone = [NSTimeZone systemTimeZone];
-    interval = [zone secondsFromGMTForDate: firstDate];
-    NSDate *localeDate = [firstDate  dateByAddingTimeInterval: interval];
+    return firstDate;
     
-    return localeDate;
+    //转换时区
+//    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+//    interval = [zone secondsFromGMTForDate: firstDate];
+//    NSDate *localeDate = [firstDate  dateByAddingTimeInterval: interval];
+//    return localeDate;
 }
 
 - (NSDate*)lastDayOfCurrentMonth
@@ -100,7 +102,6 @@
     NSDate *firstDate = nil;
     NSDate *lastDate = nil;
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    [calendar setTimeZone:[NSTimeZone localTimeZone]];
     
     BOOL OK = [calendar rangeOfUnit:NSCalendarUnitMonth startDate:&firstDate interval:&interval forDate:newDate];
     
@@ -108,12 +109,14 @@
         lastDate = [firstDate dateByAddingTimeInterval:interval - 1];
     }
     
-    //转换时区
-    NSTimeZone *zone = [NSTimeZone systemTimeZone];
-    interval = [zone secondsFromGMTForDate: lastDate];
-    NSDate *localeDate = [lastDate  dateByAddingTimeInterval: interval];
+    return lastDate;
     
-    return localeDate;
+    //转换时区
+//    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+//    interval = [zone secondsFromGMTForDate: lastDate];
+//    NSDate *localeDate = [lastDate  dateByAddingTimeInterval: interval];
+//
+//    return localeDate;
 }
 
 @end

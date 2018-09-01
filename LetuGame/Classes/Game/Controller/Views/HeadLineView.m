@@ -29,6 +29,8 @@ CGFloat g_height = kDefaultHeight;
 
 @property (nonatomic, strong)NSMutableArray* bannerArray;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerHoldViewHeightConstraint;
+
 @end
 
 @implementation HeadLineView
@@ -53,6 +55,9 @@ CGFloat g_height = kDefaultHeight;
     self.content.text = kDefaultText;
     self.company.text = kDefaultText;
     self.date.text = kDefaultText;
+    
+    self.bannerHoldViewHeightConstraint.constant = kBannerHeight;
+    g_height = g_height - 150 + kBannerHeight*2;
 }
 
 - (IBAction)clickWantPlay:(id)sender
@@ -103,6 +108,7 @@ CGFloat g_height = kDefaultHeight;
     }];
     
     g_height = 470 + size.height;
+    g_height = g_height - 150 + kBannerHeight*2;
     NSLog(@"g_height = %f", g_height);
     
     CGFloat flag = iphoneX ? 750 : 650;

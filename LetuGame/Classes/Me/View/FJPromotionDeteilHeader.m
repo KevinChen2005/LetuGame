@@ -9,7 +9,7 @@
 #import "FJPromotionDeteilHeader.h"
 #import "FJPromotion.h"
 
-#define kPromotionDetailHeaderHeight 440.0
+#define kPromotionDetailHeaderHeight 470.0
 
 static CGFloat g_height = kPromotionDetailHeaderHeight;
 
@@ -21,10 +21,12 @@ static CGFloat g_height = kPromotionDetailHeaderHeight;
 @property (weak, nonatomic) IBOutlet UILabel *radio;
 @property (weak, nonatomic) IBOutlet UILabel *money;
 @property (weak, nonatomic) IBOutlet UILabel *code;
+@property (weak, nonatomic) IBOutlet UILabel *isPayLabel;
 @property (weak, nonatomic) IBOutlet UITextView *promotionLink;
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *shareBtnHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *detailHeightConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *promotionMonth;
 
 @end
 
@@ -60,15 +62,17 @@ static CGFloat g_height = kPromotionDetailHeaderHeight;
 {
     _promotion = promotion;
     
-    self.name.text = self.promotion.gameName;
-    self.regNum.text = [NSString stringWithFormat:@"%ld", (long)self.promotion.registNum];
-    self.chongzhi.text = [NSString stringWithFormat:@"%0.2f", self.promotion.payMoney];
-    self.money.text = [NSString stringWithFormat:@"%0.2f", self.promotion.agentMoney];
-    self.code.text = self.promotion.code;
-    self.radio.text = self.promotion.radio;
+    self.name.text = promotion.gameName;
+    self.regNum.text = [NSString stringWithFormat:@"%ld", (long)promotion.registNum];
+    self.chongzhi.text = [NSString stringWithFormat:@"%0.2f", promotion.payMoney];
+    self.money.text = [NSString stringWithFormat:@"%0.2f", promotion.agentMoney];
+    self.code.text = promotion.code;
+    self.radio.text = promotion.radio;
+    self.isPayLabel.text = promotion.isChecked ? @"是" : @"否";
+    self.promotionMonth.text = promotion.promotionMonth;
     
     NSMutableString* linkInfo = [NSMutableString string];
-    NSArray* links = self.promotion.downloadBean;
+    NSArray* links = promotion.downloadBean;
     [links enumerateObjectsUsingBlock:^(FJDownloadBean*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.url != nil && ![obj.url isEqualToString:@""]) {
             [linkInfo appendString:[CommTool safeString:obj.os]];

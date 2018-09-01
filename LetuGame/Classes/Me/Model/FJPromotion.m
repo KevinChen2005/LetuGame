@@ -17,4 +17,27 @@
              };
 }
 
+- (void)setEndDate:(NSDate *)endDate
+{
+    _endDate = endDate;
+    
+    _promotionMonth = [endDate formatString:@"yyyy-MM"];
+}
+
+- (void)setStartDate:(NSDate *)startDate
+{
+    _startDate = startDate;
+    
+//    _promotionMonth = [startDate formatString:@"yyyy-MM"];
+}
+
+- (NSString *)promotionMonth
+{
+    if (_promotionMonth == nil) {
+        _promotionMonth = @"";
+    }
+    
+    return _promotionMonth;
+}
+
 @end

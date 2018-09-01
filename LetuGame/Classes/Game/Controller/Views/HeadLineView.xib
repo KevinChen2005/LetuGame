@@ -164,6 +164,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bannerHoldView" destination="7fu-MB-fEY" id="kSP-cr-KBB"/>
+                <outlet property="bannerHoldViewHeightConstraint" destination="6OW-wI-wdC" id="iEU-BT-teo"/>
                 <outlet property="company" destination="P3b-ce-Kqc" id="CXj-h3-fgC"/>
                 <outlet property="content" destination="fio-jH-GGf" id="L5b-0Q-MHy"/>
                 <outlet property="date" destination="fR1-DS-Tmc" id="CdV-CS-Eer"/>

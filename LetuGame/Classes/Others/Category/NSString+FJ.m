@@ -86,25 +86,25 @@
     }
     
     if (small < 60) {
-        return [NSString stringWithFormat:@"%ld分钟前",small];
+        return [NSString stringWithFormat:@"%ld分钟前",(long)small];
     }
     
     // 秒转小时
     NSInteger hours = time/3600;
     if (hours<24) {
-        return [NSString stringWithFormat:@"%ld小时前",hours];
+        return [NSString stringWithFormat:@"%ld小时前",(long)hours];
     }
     
     //秒转天数
     NSInteger days = time/3600/24;
     if (days < 30) {
-        return [NSString stringWithFormat:@"%ld天前",days];
+        return [NSString stringWithFormat:@"%ld天前",(long)days];
     }
     
     //秒转月
     NSInteger months = time/3600/24/30;
     if (months < 12) {
-        [df setDateFormat:@"yyyy-MM-dd HH:mm"];
+        [df setDateFormat:@"yyyy-MM-dd"];
         return [df stringFromDate:beDate];
         
 //        return [NSString stringWithFormat:@"%ld月前",months];
@@ -112,7 +112,7 @@
     
     //秒转年
     NSInteger years = time/3600/24/30/12;
-    return [NSString stringWithFormat:@"%ld年前",years];
+    return [NSString stringWithFormat:@"%ld年前",(long)years];
 }
 
 

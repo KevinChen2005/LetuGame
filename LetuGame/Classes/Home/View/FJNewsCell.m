@@ -40,10 +40,18 @@
     self.timeLabel.text = [news.creattime timeFormat];
     NSString* author = news.creatUser;
     if (author == nil || [author isNullString] || [author isKindOfClass:[NSNull class]]) {
-        author = @"未知";
+        author = @"官方";
     }
     self.authorLabel.text = [NSString stringWithFormat:@"%@", author];
     self.readTimesLabel.text = [NSString stringWithFormat:@"%d", news.readTimes];
+    
+    if (news.readTimes == 0) {
+        self.readTimesLabel.hidden = YES;
+        self.readTimesImage.hidden = YES;
+    } else {
+        self.readTimesLabel.hidden = NO;
+        self.readTimesImage.hidden = NO;
+    }
     
 //    [self.iconView sd_setImageWithURL:[NSURL URLWithString:news.imageurl] placeholderImage:[UIImage imageNamed:@"img_place_holder"]];
 }

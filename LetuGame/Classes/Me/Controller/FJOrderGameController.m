@@ -48,6 +48,8 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)dealloc
 {
     DLog(@"---dealloc---");
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -90,17 +92,25 @@ static NSString * const reuseIdentifier = @"Cell";
     self.mjHeaderView = mjHeader;
     
     // 右上角“编辑”
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"编辑" forState:UIControlStateNormal];
-    [button setTitle:@"完成" forState:UIControlStateSelected];
-    [button setTitleColor:FJRGBColor(0, 130, 188) forState:UIControlStateNormal];
-    [button sizeToFit];
-    [button.titleLabel setFont:FJNavbarItemFont];
-    [button addTarget:self action:@selector(onClickEdit:) forControlEvents:UIControlEventTouchUpInside];
-    self.editButton = button;
-    
-    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.rightBarButtonItem = rightItem;
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [button setTitle:@"编辑" forState:UIControlStateNormal];
+//    [button setTitle:@"完成" forState:UIControlStateSelected];
+//    [button setTitleColor:FJRGBColor(0, 130, 188) forState:UIControlStateNormal];
+//    [button sizeToFit];
+//    [button.titleLabel setFont:FJNavbarItemFont];
+//    [button addTarget:self action:@selector(onClickEdit:) forControlEvents:UIControlEventTouchUpInside];
+//    self.editButton = button;
+//    
+//    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+//    self.navigationItem.rightBarButtonItem = rightItem;
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterForeground) name:kNotificationAppWillEnterForeground object:nil];
+}
+
+// APP从后台进入前台，重新loadData，如果是编辑状态可以重新启动动画
+- (void)appEnterForeground
+{
+    [self.collectionView reloadData];
 }
 
 - (void)loadNewDatas

@@ -51,8 +51,9 @@
 #define RICHTEXT_IMAGE (@"[UIImageView]")
 
 //-----------------通知相关宏-------------
-#define kNotificationModifyNicknameSuccess @"kNotificationModifyNicknameSuccess"
-#define kNotificationModifyAvatarSuccess @"kNotificationModifyAvatarSuccess"
+#define kNotificationModifyNicknameSuccess  @"kNotificationModifyNicknameSuccess"
+#define kNotificationModifyAvatarSuccess    @"kNotificationModifyAvatarSuccess"
+#define kNotificationAppWillEnterForeground @"kNotificationAppWillEnterForeground"
 
 //-------------------系统----------------
 #pragma mark - 系统
@@ -95,7 +96,7 @@
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
 #define ToolBarHeight 49.5
-#define kBannerHeight (kScreenWidth*0.5)
+#define kBannerHeight (kScreenWidth*0.45)
 
 //获取状态栏和导航栏高度
 

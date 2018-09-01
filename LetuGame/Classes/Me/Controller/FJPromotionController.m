@@ -26,7 +26,7 @@
     
     self.title = @"我的推广";
     self.tableView.rowHeight = 60;
-    self.tableView.sectionHeaderHeight = 60;
+    self.tableView.sectionHeaderHeight = 66;
     self.view.backgroundColor = [UIColor whiteColor];
     
     //注册tableview的cell
