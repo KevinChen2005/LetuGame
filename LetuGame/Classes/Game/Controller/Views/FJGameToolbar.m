@@ -17,7 +17,7 @@
 
 + (CGFloat)height
 {
-    return 55;
+    return 50;
 }
 
 - (IBAction)showStrategyList:(id)sender

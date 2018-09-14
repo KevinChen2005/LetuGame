@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "FJTabBarController.h"
 #import "IQKeyboardManager.h"
+#import "FJAppVerServer.h"
+#import "FJAppVerAppstore.h"
 
 @interface AppDelegate ()
 
@@ -45,6 +47,8 @@
     
     //加载闪屏动画(广告)
     [self launchAnimation];
+    
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     return YES;
 }
@@ -157,19 +161,37 @@
     NSString *currentVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
     [FJVersionCheck shareInstance].currentVersion = currentVersion;;
     
-    [HttpTool checkVersionFromAppstoreSuccess:^(id retObj) {
-        DLog(@"checkVersionFromAppstoreSuccess retObj = %@", retObj);
+    //服务器检查更新
+    WEAKSELF
+    [HttpTool checkVersionSuccess:^(id retObj) {
+        STRONGSELF
+        DLog(@"checkVersionSuccess retObj = %@", retObj);
         NSDictionary* retDict = retObj;
-        NSArray* results = retDict[@"results"];
-        if (results && [results isKindOfClass:[NSArray class]] && results.count>0) {
-            FJAppModel* app = [FJAppModel mj_objectWithKeyValues:results[0]];
-            NSLog(@"version = %@, name = %@", app.version, app.trackName);
-            [FJVersionCheck shareInstance].appstoreVerInfo = app;
+        NSString* code = [NSString stringWithFormat:@"%@", retDict[@"code"]];
+        if (code && [code isEqualToString:@"1"]) {
+            FJAppVerServer* app = [FJAppVerServer mj_objectWithKeyValues:retDict[@"data"]];
+            NSLog(@"version = %@, url = %@", app.version, app.url);
+            [FJVersionCheck shareInstance].appVersionInfo = app;
         }
     } failure:^(NSError *error) {
         DLog(@"检测升级失败，连接超时 - %@", error);
     }];
+    
+    //appstore检查更新
+//    [HttpTool checkVersionFromAppstoreSuccess:^(id retObj) {
+//        DLog(@"checkVersionFromAppstoreSuccess retObj = %@", retObj);
+//        NSDictionary* retDict = retObj;
+//        NSArray* results = retDict[@"results"];
+//        if (results && [results isKindOfClass:[NSArray class]] && results.count>0) {
+//            FJAppVerAppstore* app = [FJAppVerAppstore mj_objectWithKeyValues:results[0]];
+//            NSLog(@"version = %@, name = %@, url = %@", app.version, app.trackName, app.trackViewUrl);
+//            [FJVersionCheck shareInstance].appVersionInfo = app;
+//        }
+//    } failure:^(NSError *error) {
+//        DLog(@"检测升级失败，连接超时 - %@", error);
+//    }];
 }
+
 
 #pragma mark - Private Methods
 - (void)launchAnimation
@@ -181,7 +203,6 @@
     launchView.userInteractionEnabled = YES;
     UIWindow *mainWindow = [UIApplication sharedApplication].keyWindow;
     [mainWindow addSubview:launchView];
-    mainWindow.backgroundColor = [UIColor redColor];
     mainWindow.userInteractionEnabled = YES;
     [launchView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(mainWindow);
@@ -192,6 +213,10 @@
     NSArray* subViews = launchView.subviews;
     for (UIView* v in subViews) {
         if ([v isKindOfClass:[UIImageView class]]) {
+            UIImageView* imageView = (UIImageView*)v;
+            NSString* name = [NSString stringWithFormat:@"%.fx%.f", kScreenWidthPx, kScreenHeightPx];
+            DLog(@"name=%@",name);
+            imageView.image = [UIImage imageNamed:name];
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.edges.mas_equalTo(launchView);
             }];
@@ -205,7 +230,7 @@
     [button addTarget:self action:@selector(clickSkip) forControlEvents:UIControlEventTouchUpInside];
     [launchView addSubview:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(launchView).offset(iphoneX?54:30);
+        make.bottom.mas_equalTo(launchView).offset(iphoneX?-54:-30);
         make.right.mas_equalTo(launchView).offset(-20);
         make.width.mas_equalTo(@100);
         make.height.mas_equalTo(@50);
@@ -226,8 +251,10 @@
         [UIView animateWithDuration:0.5 animations:^{
             launchView.alpha = 0.0f;
             launchView.layer.transform = CATransform3DScale(CATransform3DIdentity, 2.0f, 2.0f, 1.0f);
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         } completion:^(BOOL finished) {
             [launchView removeFromSuperview];
+            
         }];
     });
 }

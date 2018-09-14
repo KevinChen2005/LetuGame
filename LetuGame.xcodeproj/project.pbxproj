@@ -135,6 +135,19 @@
 		84503A59210087C50007437B /* help.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84503A54210087C40007437B /* help.jpg */; };
 		84503A5A210087C50007437B /* me_help.html in Resources */ = {isa = PBXBuildFile; fileRef = 84503A55210087C40007437B /* me_help.html */; };
 		84503A5B210087C50007437B /* me_user_protocol.html in Resources */ = {isa = PBXBuildFile; fileRef = 84503A56210087C40007437B /* me_user_protocol.html */; };
+		845C482C213A732100D60D22 /* SourceHanSansCN-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 845C4825213A732100D60D22 /* SourceHanSansCN-Light.otf */; };
+		845C482D213A732100D60D22 /* SourceHanSansCN-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 845C4826213A732100D60D22 /* SourceHanSansCN-Bold.otf */; };
+		845C482E213A732100D60D22 /* SourceHanSansCN-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 845C4827213A732100D60D22 /* SourceHanSansCN-Heavy.otf */; };
+		845C482F213A732100D60D22 /* SourceHanSansCN-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 845C4828213A732100D60D22 /* SourceHanSansCN-Regular.otf */; };
+		845C4830213A732100D60D22 /* SourceHanSansCN-Normal.otf in Resources */ = {isa = PBXBuildFile; fileRef = 845C4829213A732100D60D22 /* SourceHanSansCN-Normal.otf */; };
+		845C4831213A732100D60D22 /* SourceHanSansCN-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 845C482A213A732100D60D22 /* SourceHanSansCN-ExtraLight.otf */; };
+		845C4832213A732100D60D22 /* SourceHanSansCN-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 845C482B213A732100D60D22 /* SourceHanSansCN-Medium.otf */; };
+		845C4835213D541B00D60D22 /* UILabel+FJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 845C4834213D541B00D60D22 /* UILabel+FJ.m */; };
+		845C4870213FB33100D60D22 /* FJNewsTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 845C486F213FB33100D60D22 /* FJNewsTitleView.m */; };
+		845C4872213FB3F300D60D22 /* FJNewsTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845C4871213FB3F300D60D22 /* FJNewsTitleView.xib */; };
+		845C487A2140C65F00D60D22 /* FDLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 845C48742140C65F00D60D22 /* FDLabelView.m */; };
+		845C487B2140C65F00D60D22 /* FDLabelConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845C48752140C65F00D60D22 /* FDLabelConfigViewController.m */; };
+		845C487C2140C65F00D60D22 /* FDFontPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845C48772140C65F00D60D22 /* FDFontPickerViewController.m */; };
 		846550F920FB2B6000A3202A /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 846550EF20FB2B6000A3202A /* SVRadialGradientLayer.m */; };
 		846550FA20FB2B6000A3202A /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846550F220FB2B6000A3202A /* SVProgressAnimatedView.m */; };
 		846550FB20FB2B6000A3202A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 846550F520FB2B6000A3202A /* SVProgressHUD.m */; };
@@ -253,16 +266,6 @@
 		84A3F03320F84CBF00879FB7 /* NavHeadTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F02D20F84CBF00879FB7 /* NavHeadTitleView.m */; };
 		84A3F03420F84CBF00879FB7 /* HeadLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F03020F84CBF00879FB7 /* HeadLineView.m */; };
 		84A3F03520F84CBF00879FB7 /* HeadImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F03220F84CBF00879FB7 /* HeadImageView.m */; };
-		84A3F04120F8508000879FB7 /* Mail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F03720F8508000879FB7 /* Mail@2x.png */; };
-		84A3F04220F8508000879FB7 /* zrx7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F03820F8508000879FB7 /* zrx7.jpg */; };
-		84A3F04320F8508000879FB7 /* 29.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F03920F8508000879FB7 /* 29.jpg */; };
-		84A3F04420F8508000879FB7 /* Mail-click@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F03A20F8508000879FB7 /* Mail-click@2x.png */; };
-		84A3F04520F8508000879FB7 /* Setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F03B20F8508000879FB7 /* Setting@2x.png */; };
-		84A3F04620F8508000879FB7 /* bg-mine.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F03C20F8508000879FB7 /* bg-mine.png */; };
-		84A3F04720F8508000879FB7 /* Setting-click@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F03D20F8508000879FB7 /* Setting-click@2x.png */; };
-		84A3F04820F8508000879FB7 /* pencil-light-shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F03E20F8508000879FB7 /* pencil-light-shadow@2x.png */; };
-		84A3F04920F8508000879FB7 /* 23.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F03F20F8508000879FB7 /* 23.jpg */; };
-		84A3F04A20F8508000879FB7 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F04020F8508000879FB7 /* 5.jpg */; };
 		84A3F04D20F87DD100879FB7 /* FJGameToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F04C20F87DD100879FB7 /* FJGameToolbar.m */; };
 		84A3F04F20F87F1000879FB7 /* HeadLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F04E20F87F1000879FB7 /* HeadLineView.xib */; };
 		84A3F06120F889A900879FB7 /* UIView+KNExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F05120F889A900879FB7 /* UIView+KNExtension.m */; };
@@ -273,12 +276,19 @@
 		84A3F06620F889A900879FB7 /* KNBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F05D20F889A900879FB7 /* KNBannerView.m */; };
 		84A3F06720F889A900879FB7 /* KNWeekProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F05E20F889A900879FB7 /* KNWeekProxy.m */; };
 		84A3F06820F889A900879FB7 /* KNCustomPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F06020F889A900879FB7 /* KNCustomPageControl.m */; };
-		84A3F06A20F88F3F00879FB7 /* u84.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F06920F88F3E00879FB7 /* u84.png */; };
 		84A3F06C20F891A300879FB7 /* FJGameToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A3F06B20F891A300879FB7 /* FJGameToolbar.xib */; };
 		84A3F07220F89D0500879FB7 /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F07020F89D0500879FB7 /* HttpTool.m */; };
 		84A3F07320F89D0500879FB7 /* CommTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F07120F89D0500879FB7 /* CommTool.m */; };
 		84A3F07620F89FFE00879FB7 /* FJProgressHUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F07520F89FFE00879FB7 /* FJProgressHUB.m */; };
 		84A3F07920F8AD7F00879FB7 /* NSString+FJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3F07820F8AD7F00879FB7 /* NSString+FJ.m */; };
+		84A9133C2147B09900D80E63 /* FJSettleDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9133B2147B09900D80E63 /* FJSettleDetailController.m */; };
+		84A913402147BF8C00D80E63 /* FJSettleDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9133E2147BF8C00D80E63 /* FJSettleDetailCell.m */; };
+		84A913412147BF8C00D80E63 /* FJSettleDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A9133F2147BF8C00D80E63 /* FJSettleDetailCell.xib */; };
+		84A913442147C19B00D80E63 /* FJSettleDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A913432147C19B00D80E63 /* FJSettleDetailModel.m */; };
+		84A913D2214906BA00D80E63 /* FJAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A913CF214906BA00D80E63 /* FJAppModel.m */; };
+		84A913D3214906BA00D80E63 /* FJVersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A913D0214906BA00D80E63 /* FJVersionCheck.m */; };
+		84A913D62149070A00D80E63 /* FJAppVerAppstore.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A913D52149070A00D80E63 /* FJAppVerAppstore.m */; };
+		84A913D92149072A00D80E63 /* FJAppVerServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A913D82149072A00D80E63 /* FJAppVerServer.m */; };
 		84B2A8B821142B8800BEB5A8 /* PictureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8A721142B8800BEB5A8 /* PictureModel.m */; };
 		84B2A8B921142B8800BEB5A8 /* UIColor+HEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8AC21142B8800BEB5A8 /* UIColor+HEX.m */; };
 		84B2A8BA21142B8800BEB5A8 /* ArchiveFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8AE21142B8800BEB5A8 /* ArchiveFile.m */; };
@@ -291,8 +301,6 @@
 		84B2A8C521142D7D00BEB5A8 /* NSJSON+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C121142D7C00BEB5A8 /* NSJSON+Extension.m */; };
 		84B2A8C621142D7D00BEB5A8 /* NSString+CaclSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C321142D7D00BEB5A8 /* NSString+CaclSize.m */; };
 		84B2A8C92117EA4200BEB5A8 /* UIImage+Wechat.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C72117EA4200BEB5A8 /* UIImage+Wechat.m */; };
-		84B2AAD1211D369400BEB5A8 /* FJAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2AAD0211D369400BEB5A8 /* FJAppModel.m */; };
-		84B2AAD4211D630C00BEB5A8 /* FJVersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2AAD3211D630C00BEB5A8 /* FJVersionCheck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -541,6 +549,24 @@
 		84503A54210087C40007437B /* help.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = help.jpg; sourceTree = "<group>"; };
 		84503A55210087C40007437B /* me_help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = me_help.html; sourceTree = "<group>"; };
 		84503A56210087C40007437B /* me_user_protocol.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = me_user_protocol.html; sourceTree = "<group>"; };
+		845C4825213A732100D60D22 /* SourceHanSansCN-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceHanSansCN-Light.otf"; sourceTree = "<group>"; };
+		845C4826213A732100D60D22 /* SourceHanSansCN-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceHanSansCN-Bold.otf"; sourceTree = "<group>"; };
+		845C4827213A732100D60D22 /* SourceHanSansCN-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceHanSansCN-Heavy.otf"; sourceTree = "<group>"; };
+		845C4828213A732100D60D22 /* SourceHanSansCN-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceHanSansCN-Regular.otf"; sourceTree = "<group>"; };
+		845C4829213A732100D60D22 /* SourceHanSansCN-Normal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceHanSansCN-Normal.otf"; sourceTree = "<group>"; };
+		845C482A213A732100D60D22 /* SourceHanSansCN-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceHanSansCN-ExtraLight.otf"; sourceTree = "<group>"; };
+		845C482B213A732100D60D22 /* SourceHanSansCN-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceHanSansCN-Medium.otf"; sourceTree = "<group>"; };
+		845C4833213D541B00D60D22 /* UILabel+FJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+FJ.h"; sourceTree = "<group>"; };
+		845C4834213D541B00D60D22 /* UILabel+FJ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+FJ.m"; sourceTree = "<group>"; };
+		845C486E213FB33100D60D22 /* FJNewsTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJNewsTitleView.h; sourceTree = "<group>"; };
+		845C486F213FB33100D60D22 /* FJNewsTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJNewsTitleView.m; sourceTree = "<group>"; };
+		845C4871213FB3F300D60D22 /* FJNewsTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FJNewsTitleView.xib; sourceTree = "<group>"; };
+		845C48742140C65F00D60D22 /* FDLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDLabelView.m; sourceTree = "<group>"; };
+		845C48752140C65F00D60D22 /* FDLabelConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDLabelConfigViewController.m; sourceTree = "<group>"; };
+		845C48762140C65F00D60D22 /* FDFontPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFontPickerViewController.h; sourceTree = "<group>"; };
+		845C48772140C65F00D60D22 /* FDFontPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFontPickerViewController.m; sourceTree = "<group>"; };
+		845C48782140C65F00D60D22 /* FDLabelConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDLabelConfigViewController.h; sourceTree = "<group>"; };
+		845C48792140C65F00D60D22 /* FDLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDLabelView.h; sourceTree = "<group>"; };
 		846550EF20FB2B6000A3202A /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		846550F020FB2B6000A3202A /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		846550F120FB2B6000A3202A /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -775,16 +801,6 @@
 		84A3F03020F84CBF00879FB7 /* HeadLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadLineView.m; sourceTree = "<group>"; };
 		84A3F03120F84CBF00879FB7 /* NavHeadTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavHeadTitleView.h; sourceTree = "<group>"; };
 		84A3F03220F84CBF00879FB7 /* HeadImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadImageView.m; sourceTree = "<group>"; };
-		84A3F03720F8508000879FB7 /* Mail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mail@2x.png"; sourceTree = "<group>"; };
-		84A3F03820F8508000879FB7 /* zrx7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zrx7.jpg; sourceTree = "<group>"; };
-		84A3F03920F8508000879FB7 /* 29.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 29.jpg; sourceTree = "<group>"; };
-		84A3F03A20F8508000879FB7 /* Mail-click@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mail-click@2x.png"; sourceTree = "<group>"; };
-		84A3F03B20F8508000879FB7 /* Setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setting@2x.png"; sourceTree = "<group>"; };
-		84A3F03C20F8508000879FB7 /* bg-mine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-mine.png"; sourceTree = "<group>"; };
-		84A3F03D20F8508000879FB7 /* Setting-click@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setting-click@2x.png"; sourceTree = "<group>"; };
-		84A3F03E20F8508000879FB7 /* pencil-light-shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil-light-shadow@2x.png"; sourceTree = "<group>"; };
-		84A3F03F20F8508000879FB7 /* 23.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 23.jpg; sourceTree = "<group>"; };
-		84A3F04020F8508000879FB7 /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
 		84A3F04B20F87DD100879FB7 /* FJGameToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJGameToolbar.h; sourceTree = "<group>"; };
 		84A3F04C20F87DD100879FB7 /* FJGameToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJGameToolbar.m; sourceTree = "<group>"; };
 		84A3F04E20F87F1000879FB7 /* HeadLineView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadLineView.xib; sourceTree = "<group>"; };
@@ -804,7 +820,6 @@
 		84A3F05E20F889A900879FB7 /* KNWeekProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNWeekProxy.m; sourceTree = "<group>"; };
 		84A3F05F20F889A900879FB7 /* KNBannerPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNBannerPageControl.h; sourceTree = "<group>"; };
 		84A3F06020F889A900879FB7 /* KNCustomPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNCustomPageControl.m; sourceTree = "<group>"; };
-		84A3F06920F88F3E00879FB7 /* u84.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = u84.png; sourceTree = "<group>"; };
 		84A3F06B20F891A300879FB7 /* FJGameToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FJGameToolbar.xib; sourceTree = "<group>"; };
 		84A3F06E20F89D0500879FB7 /* HttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpTool.h; sourceTree = "<group>"; };
 		84A3F06F20F89D0500879FB7 /* CommTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommTool.h; sourceTree = "<group>"; };
@@ -814,6 +829,21 @@
 		84A3F07520F89FFE00879FB7 /* FJProgressHUB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJProgressHUB.m; sourceTree = "<group>"; };
 		84A3F07720F8AD7F00879FB7 /* NSString+FJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+FJ.h"; sourceTree = "<group>"; };
 		84A3F07820F8AD7F00879FB7 /* NSString+FJ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+FJ.m"; sourceTree = "<group>"; };
+		84A9133A2147B09900D80E63 /* FJSettleDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJSettleDetailController.h; sourceTree = "<group>"; };
+		84A9133B2147B09900D80E63 /* FJSettleDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJSettleDetailController.m; sourceTree = "<group>"; };
+		84A9133D2147BF8C00D80E63 /* FJSettleDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJSettleDetailCell.h; sourceTree = "<group>"; };
+		84A9133E2147BF8C00D80E63 /* FJSettleDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJSettleDetailCell.m; sourceTree = "<group>"; };
+		84A9133F2147BF8C00D80E63 /* FJSettleDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FJSettleDetailCell.xib; sourceTree = "<group>"; };
+		84A913422147C19B00D80E63 /* FJSettleDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJSettleDetailModel.h; sourceTree = "<group>"; };
+		84A913432147C19B00D80E63 /* FJSettleDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJSettleDetailModel.m; sourceTree = "<group>"; };
+		84A913CE214906BA00D80E63 /* FJVersionCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJVersionCheck.h; sourceTree = "<group>"; };
+		84A913CF214906BA00D80E63 /* FJAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJAppModel.m; sourceTree = "<group>"; };
+		84A913D0214906BA00D80E63 /* FJVersionCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJVersionCheck.m; sourceTree = "<group>"; };
+		84A913D1214906BA00D80E63 /* FJAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJAppModel.h; sourceTree = "<group>"; };
+		84A913D42149070A00D80E63 /* FJAppVerAppstore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJAppVerAppstore.h; sourceTree = "<group>"; };
+		84A913D52149070A00D80E63 /* FJAppVerAppstore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJAppVerAppstore.m; sourceTree = "<group>"; };
+		84A913D72149072A00D80E63 /* FJAppVerServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJAppVerServer.h; sourceTree = "<group>"; };
+		84A913D82149072A00D80E63 /* FJAppVerServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJAppVerServer.m; sourceTree = "<group>"; };
 		84B2A8A521142B8800BEB5A8 /* RichTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichTextViewController.h; sourceTree = "<group>"; };
 		84B2A8A721142B8800BEB5A8 /* PictureModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureModel.m; sourceTree = "<group>"; };
 		84B2A8A821142B8800BEB5A8 /* NSAttributedString+html.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+html.h"; sourceTree = "<group>"; };
@@ -838,10 +868,6 @@
 		84B2A8C421142D7D00BEB5A8 /* NSJSON+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSON+Extension.h"; sourceTree = "<group>"; };
 		84B2A8C72117EA4200BEB5A8 /* UIImage+Wechat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Wechat.m"; sourceTree = "<group>"; };
 		84B2A8C82117EA4200BEB5A8 /* UIImage+Wechat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Wechat.h"; sourceTree = "<group>"; };
-		84B2AACF211D369400BEB5A8 /* FJAppModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJAppModel.h; sourceTree = "<group>"; };
-		84B2AAD0211D369400BEB5A8 /* FJAppModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJAppModel.m; sourceTree = "<group>"; };
-		84B2AAD2211D630C00BEB5A8 /* FJVersionCheck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJVersionCheck.h; sourceTree = "<group>"; };
-		84B2AAD3211D630C00BEB5A8 /* FJVersionCheck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJVersionCheck.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -879,6 +905,8 @@
 				840641AE210F27C300F88007 /* FJPromotionController.m */,
 				840641BD2110126500F88007 /* FJPromotionDetailController.h */,
 				840641BE2110126500F88007 /* FJPromotionDetailController.m */,
+				84A9133A2147B09900D80E63 /* FJSettleDetailController.h */,
+				84A9133B2147B09900D80E63 /* FJSettleDetailController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -988,6 +1016,7 @@
 		84451DA020EDFAE4001044FD /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				845C48732140C65F00D60D22 /* FDLabelView */,
 				8449581F2135691400D4890A /* AFNetworking */,
 				848D08DA212D79D8006D749B /* PGDatePicker */,
 				84772C7121267A8600029A4F /* MJRefresh */,
@@ -1376,6 +1405,8 @@
 				840641D421105ADA00F88007 /* FJDownloadBean.m */,
 				848D0838212BF9E1006D749B /* FJPromotionDetailModel.h */,
 				848D0839212BF9E1006D749B /* FJPromotionDetailModel.m */,
+				84A913422147C19B00D80E63 /* FJSettleDetailModel.h */,
+				84A913432147C19B00D80E63 /* FJSettleDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1398,6 +1429,9 @@
 				848D0833212BF9B0006D749B /* FJPromotionDetailCell.h */,
 				848D0834212BF9B0006D749B /* FJPromotionDetailCell.m */,
 				848D0835212BF9B0006D749B /* FJPromotionDetailCell.xib */,
+				84A9133D2147BF8C00D80E63 /* FJSettleDetailCell.h */,
+				84A9133E2147BF8C00D80E63 /* FJSettleDetailCell.m */,
+				84A9133F2147BF8C00D80E63 /* FJSettleDetailCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1405,6 +1439,7 @@
 		84503A4F210087C40007437B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				845C4824213A732100D60D22 /* fonts */,
 				84503A51210087C40007437B /* assets */,
 				84503A50210087C40007437B /* NewsHtml.html */,
 			);
@@ -1430,19 +1465,46 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		845C4824213A732100D60D22 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				845C4825213A732100D60D22 /* SourceHanSansCN-Light.otf */,
+				845C4826213A732100D60D22 /* SourceHanSansCN-Bold.otf */,
+				845C4827213A732100D60D22 /* SourceHanSansCN-Heavy.otf */,
+				845C4828213A732100D60D22 /* SourceHanSansCN-Regular.otf */,
+				845C4829213A732100D60D22 /* SourceHanSansCN-Normal.otf */,
+				845C482A213A732100D60D22 /* SourceHanSansCN-ExtraLight.otf */,
+				845C482B213A732100D60D22 /* SourceHanSansCN-Medium.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		845C48732140C65F00D60D22 /* FDLabelView */ = {
+			isa = PBXGroup;
+			children = (
+				845C48792140C65F00D60D22 /* FDLabelView.h */,
+				845C48742140C65F00D60D22 /* FDLabelView.m */,
+				845C48762140C65F00D60D22 /* FDFontPickerViewController.h */,
+				845C48772140C65F00D60D22 /* FDFontPickerViewController.m */,
+				845C48782140C65F00D60D22 /* FDLabelConfigViewController.h */,
+				845C48752140C65F00D60D22 /* FDLabelConfigViewController.m */,
+			);
+			path = FDLabelView;
+			sourceTree = "<group>";
+		};
 		846550EE20FB2B6000A3202A /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				846550EF20FB2B6000A3202A /* SVRadialGradientLayer.m */,
-				846550F020FB2B6000A3202A /* SVIndefiniteAnimatedView.h */,
 				846550F120FB2B6000A3202A /* SVProgressHUD.h */,
-				846550F220FB2B6000A3202A /* SVProgressAnimatedView.m */,
-				846550F320FB2B6000A3202A /* SVProgressHUD-Prefix.pch */,
-				846550F420FB2B6000A3202A /* SVRadialGradientLayer.h */,
 				846550F520FB2B6000A3202A /* SVProgressHUD.m */,
-				846550F620FB2B6000A3202A /* SVIndefiniteAnimatedView.m */,
-				846550F720FB2B6000A3202A /* SVProgressHUD.bundle */,
+				846550F420FB2B6000A3202A /* SVRadialGradientLayer.h */,
+				846550EF20FB2B6000A3202A /* SVRadialGradientLayer.m */,
 				846550F820FB2B6000A3202A /* SVProgressAnimatedView.h */,
+				846550F220FB2B6000A3202A /* SVProgressAnimatedView.m */,
+				846550F020FB2B6000A3202A /* SVIndefiniteAnimatedView.h */,
+				846550F620FB2B6000A3202A /* SVIndefiniteAnimatedView.m */,
+				846550F320FB2B6000A3202A /* SVProgressHUD-Prefix.pch */,
+				846550F720FB2B6000A3202A /* SVProgressHUD.bundle */,
 			);
 			path = SVProgressHUD;
 			sourceTree = "<group>";
@@ -1662,6 +1724,8 @@
 				84A3EF2320F30CB700879FB7 /* UIImageView+FJExtension.m */,
 				84A3EF2620F30CB700879FB7 /* UITextField+PlaceStringColor.h */,
 				84A3EF2C20F30CB700879FB7 /* UITextField+PlaceStringColor.m */,
+				845C4833213D541B00D60D22 /* UILabel+FJ.h */,
+				845C4834213D541B00D60D22 /* UILabel+FJ.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1740,6 +1804,9 @@
 			children = (
 				84A3F00E20F6ED3F00879FB7 /* FJDetailHeader.h */,
 				84A3F00F20F6ED3F00879FB7 /* FJDetailHeader.m */,
+				845C486E213FB33100D60D22 /* FJNewsTitleView.h */,
+				845C486F213FB33100D60D22 /* FJNewsTitleView.m */,
+				845C4871213FB3F300D60D22 /* FJNewsTitleView.xib */,
 				84A3EFA520F47EB800879FB7 /* FJDetailToolbar.h */,
 				84A3EFA620F47EB800879FB7 /* FJDetailToolbar.m */,
 				84A3F02620F7543700879FB7 /* FJSectionHeader.h */,
@@ -1810,14 +1877,11 @@
 		84A3EFE520F5AAA200879FB7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				84A913CD214906BA00D80E63 /* AppVersion */,
 				84A3EFE620F5AABF00879FB7 /* FJWebViewController.h */,
 				84A3EFE720F5AABF00879FB7 /* FJWebViewController.m */,
 				84A3F07420F89FFE00879FB7 /* FJProgressHUB.h */,
 				84A3F07520F89FFE00879FB7 /* FJProgressHUB.m */,
-				84B2AACF211D369400BEB5A8 /* FJAppModel.h */,
-				84B2AAD0211D369400BEB5A8 /* FJAppModel.m */,
-				84B2AAD2211D630C00BEB5A8 /* FJVersionCheck.h */,
-				84B2AAD3211D630C00BEB5A8 /* FJVersionCheck.m */,
 				8449572F212E5C0300D4890A /* FJEditToolBar.h */,
 				84495730212E5C0300D4890A /* FJEditToolBar.m */,
 			);
@@ -1879,7 +1943,6 @@
 		84A3F02C20F84CBF00879FB7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				84A3F03620F8508000879FB7 /* images */,
 				84A3F02E20F84CBF00879FB7 /* HeadLineView.h */,
 				84A3F03020F84CBF00879FB7 /* HeadLineView.m */,
 				84A3F04E20F87F1000879FB7 /* HeadLineView.xib */,
@@ -1892,24 +1955,6 @@
 				84A3F06B20F891A300879FB7 /* FJGameToolbar.xib */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		84A3F03620F8508000879FB7 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				84A3F06920F88F3E00879FB7 /* u84.png */,
-				84A3F03720F8508000879FB7 /* Mail@2x.png */,
-				84A3F03820F8508000879FB7 /* zrx7.jpg */,
-				84A3F03920F8508000879FB7 /* 29.jpg */,
-				84A3F03A20F8508000879FB7 /* Mail-click@2x.png */,
-				84A3F03B20F8508000879FB7 /* Setting@2x.png */,
-				84A3F03C20F8508000879FB7 /* bg-mine.png */,
-				84A3F03D20F8508000879FB7 /* Setting-click@2x.png */,
-				84A3F03E20F8508000879FB7 /* pencil-light-shadow@2x.png */,
-				84A3F03F20F8508000879FB7 /* 23.jpg */,
-				84A3F04020F8508000879FB7 /* 5.jpg */,
-			);
-			path = images;
 			sourceTree = "<group>";
 		};
 		84A3F05020F889A900879FB7 /* KNBannerView */ = {
@@ -1944,6 +1989,21 @@
 				84A3F07120F89D0500879FB7 /* CommTool.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		84A913CD214906BA00D80E63 /* AppVersion */ = {
+			isa = PBXGroup;
+			children = (
+				84A913CE214906BA00D80E63 /* FJVersionCheck.h */,
+				84A913D0214906BA00D80E63 /* FJVersionCheck.m */,
+				84A913D1214906BA00D80E63 /* FJAppModel.h */,
+				84A913CF214906BA00D80E63 /* FJAppModel.m */,
+				84A913D42149070A00D80E63 /* FJAppVerAppstore.h */,
+				84A913D52149070A00D80E63 /* FJAppVerAppstore.m */,
+				84A913D72149072A00D80E63 /* FJAppVerServer.h */,
+				84A913D82149072A00D80E63 /* FJAppVerServer.m */,
+			);
+			path = AppVersion;
 			sourceTree = "<group>";
 		};
 		84B2A8A421142B8800BEB5A8 /* RichVC */ = {
@@ -2042,53 +2102,51 @@
 			buildActionMask = 2147483647;
 			files = (
 				84503A59210087C50007437B /* help.jpg in Resources */,
-				84A3F06A20F88F3F00879FB7 /* u84.png in Resources */,
 				84A3EFFB20F5ED1100879FB7 /* FJGameCell.xib in Resources */,
 				840641A9210B36DD00F88007 /* FJModifyPwdController.xib in Resources */,
 				84A3F06C20F891A300879FB7 /* FJGameToolbar.xib in Resources */,
-				84A3F04720F8508000879FB7 /* Setting-click@2x.png in Resources */,
 				848D0837212BF9B0006D749B /* FJPromotionDetailCell.xib in Resources */,
 				84A3EFC820F4AAFF00879FB7 /* FJNewsCell.xib in Resources */,
 				848D0832212BE1FA006D749B /* FJPromotionDeteilHeader.xib in Resources */,
 				84503A3A20FF67040007437B /* FJOrderGameCell.xib in Resources */,
 				84503A57210087C50007437B /* NewsHtml.html in Resources */,
+				845C482E213A732100D60D22 /* SourceHanSansCN-Heavy.otf in Resources */,
 				84B2A8BF21142B8800BEB5A8 /* RichText.storyboard in Resources */,
 				840641B9210FFB5800F88007 /* FJPromotionCell.xib in Resources */,
 				848D083F212D5DE4006D749B /* FJPromotionHeader.xib in Resources */,
 				84451E5D20EDFAE4001044FD /* README.md in Resources */,
-				84A3F04A20F8508000879FB7 /* 5.jpg in Resources */,
 				84451F0220F0C3BD001044FD /* XBMeFooterView.xib in Resources */,
 				846550FD20FB2B6000A3202A /* SVProgressHUD.bundle in Resources */,
 				84451F2E20F1E7C8001044FD /* LICENSE.md in Resources */,
 				84451E5A20EDFAE4001044FD /* LICENSE.md in Resources */,
-				84A3F04920F8508000879FB7 /* 23.jpg in Resources */,
-				84A3F04520F8508000879FB7 /* Setting@2x.png in Resources */,
 				84451E5820EDFAE4001044FD /* LICENSE in Resources */,
 				84451ED320EE2391001044FD /* FJLoginViewController.xib in Resources */,
-				84A3F04120F8508000879FB7 /* Mail@2x.png in Resources */,
 				84503A58210087C50007437B /* me_aboutme.html in Resources */,
-				84A3F04320F8508000879FB7 /* 29.jpg in Resources */,
+				845C482F213A732100D60D22 /* SourceHanSansCN-Regular.otf in Resources */,
+				845C482D213A732100D60D22 /* SourceHanSansCN-Bold.otf in Resources */,
+				845C482C213A732100D60D22 /* SourceHanSansCN-Light.otf in Resources */,
+				845C4830213A732100D60D22 /* SourceHanSansCN-Normal.otf in Resources */,
 				8406417B2109742400F88007 /* FJFindPwdViewController.xib in Resources */,
 				84A3F04F20F87F1000879FB7 /* HeadLineView.xib in Resources */,
 				84A3EF5920F34FAB00879FB7 /* README.md in Resources */,
 				84503A5A210087C50007437B /* me_help.html in Resources */,
-				84A3F04420F8508000879FB7 /* Mail-click@2x.png in Resources */,
 				84451E9020EDFAE4001044FD /* README.md in Resources */,
 				84451F2F20F1E7C8001044FD /* README.md in Resources */,
+				845C4832213A732100D60D22 /* SourceHanSansCN-Medium.otf in Resources */,
 				84772C702126752200029A4F /* Info.plist in Resources */,
 				84451D6820EDF5AE001044FD /* LaunchScreen.storyboard in Resources */,
 				84A3EFED20F5B69F00879FB7 /* FJCommentCell.xib in Resources */,
 				84451EB920EDFFE7001044FD /* XBMeHeaderView.xib in Resources */,
+				845C4872213FB3F300D60D22 /* FJNewsTitleView.xib in Resources */,
 				84A3EF5820F34FAB00879FB7 /* LICENSE in Resources */,
-				84A3F04820F8508000879FB7 /* pencil-light-shadow@2x.png in Resources */,
+				845C4831213A732100D60D22 /* SourceHanSansCN-ExtraLight.otf in Resources */,
 				84451E8F20EDFAE4001044FD /* LICENSE in Resources */,
-				84A3F04620F8508000879FB7 /* bg-mine.png in Resources */,
 				84451EDA20F0656F001044FD /* FJRegisterViewController.xib in Resources */,
 				84451E5920EDFAE4001044FD /* README.md in Resources */,
 				84503A5B210087C50007437B /* me_user_protocol.html in Resources */,
+				84A913412147BF8C00D80E63 /* FJSettleDetailCell.xib in Resources */,
 				848D0929212D79D8006D749B /* PGDatePicker.bundle in Resources */,
 				84772CA221267A8600029A4F /* MJRefresh.bundle in Resources */,
-				84A3F04220F8508000879FB7 /* zrx7.jpg in Resources */,
 				84451F3620F1E7C8001044FD /* IQKeyboardManager.bundle in Resources */,
 				84451D6520EDF5AE001044FD /* Assets.xcassets in Resources */,
 			);
@@ -2126,6 +2184,7 @@
 				84A3F03320F84CBF00879FB7 /* NavHeadTitleView.m in Sources */,
 				84B2A8C92117EA4200BEB5A8 /* UIImage+Wechat.m in Sources */,
 				84451E9D20EDFAE4001044FD /* UIView+WebCacheOperation.m in Sources */,
+				845C487C2140C65F00D60D22 /* FDFontPickerViewController.m in Sources */,
 				84A3F00520F60BF000879FB7 /* FJSendCommentController.m in Sources */,
 				84451F3C20F1E7C8001044FD /* IQUIView+Hierarchy.m in Sources */,
 				840641A2210B36DD00F88007 /* FJMeViewController.m in Sources */,
@@ -2165,6 +2224,7 @@
 				84451ECC20EE0E9E001044FD /* AppDelegate.m in Sources */,
 				84A3EFEC20F5B69F00879FB7 /* FJCommentCell.m in Sources */,
 				840641C02110126500F88007 /* FJPromotionDetailController.m in Sources */,
+				84A913442147C19B00D80E63 /* FJSettleDetailModel.m in Sources */,
 				848D0923212D79D8006D749B /* NSBundle+PGDatePicker.m in Sources */,
 				84451F3720F1E7C8001044FD /* IQKeyboardManager.m in Sources */,
 				848D0927212D79D8006D749B /* NSDate+PGCategory.m in Sources */,
@@ -2188,9 +2248,11 @@
 				84A3F06620F889A900879FB7 /* KNBannerView.m in Sources */,
 				84451E9A20EDFAE4001044FD /* SDWebImageDownloaderOperation.m in Sources */,
 				84503A3520FF66850007437B /* FJOrderGame.m in Sources */,
+				845C487B2140C65F00D60D22 /* FDLabelConfigViewController.m in Sources */,
 				84A3F06420F889A900879FB7 /* KNBannerPageControl.m in Sources */,
 				84A3EF5E20F34FAB00879FB7 /* TAPageControl.m in Sources */,
 				84A3F07320F89D0500879FB7 /* CommTool.m in Sources */,
+				84A913D3214906BA00D80E63 /* FJVersionCheck.m in Sources */,
 				848D092A212D79D8006D749B /* PGDatePicker+TimeAndSecond.m in Sources */,
 				844958472135691400D4890A /* UIImageView+AFNetworking.m in Sources */,
 				840641A7210B36DD00F88007 /* FJOrderGameController.m in Sources */,
@@ -2248,14 +2310,17 @@
 				844958522135691400D4890A /* AFSecurityPolicy.m in Sources */,
 				8406418F210B1D3B00F88007 /* FJBanner.m in Sources */,
 				84451ED220EE2391001044FD /* FJLoginViewController.m in Sources */,
+				84A913402147BF8C00D80E63 /* FJSettleDetailCell.m in Sources */,
 				84772C6F2126752200029A4F /* MASViewAttribute.m in Sources */,
 				84503A1320FDDB840007437B /* FJGamePic.m in Sources */,
 				84772CAE21267A8600029A4F /* MJRefreshGifHeader.m in Sources */,
 				848D0930212D79D8006D749B /* PGDatePickManagerHeaderView.m in Sources */,
 				8406417A2109742400F88007 /* FJFindPwdViewController.m in Sources */,
 				84451E5020EDFAE4001044FD /* MJProperty.m in Sources */,
+				845C4835213D541B00D60D22 /* UILabel+FJ.m in Sources */,
 				84503A1020FDDB720007437B /* FJGameInfo.m in Sources */,
 				84A3EF4220F3335400879FB7 /* FJBaseSettingController.m in Sources */,
+				84A913D62149070A00D80E63 /* FJAppVerAppstore.m in Sources */,
 				840641D521105ADA00F88007 /* FJDownloadBean.m in Sources */,
 				84451EB420EDFFE7001044FD /* UIView+XBExtension.m in Sources */,
 				84772C672126752200029A4F /* ViewController+MASAdditions.m in Sources */,
@@ -2289,6 +2354,7 @@
 				84451EB720EDFFE7001044FD /* XBSettingCell.m in Sources */,
 				84451E9420EDFAE4001044FD /* SDWebImageDownloader.m in Sources */,
 				84A3F02820F7543700879FB7 /* FJSectionHeader.m in Sources */,
+				84A9133C2147B09900D80E63 /* FJSettleDetailController.m in Sources */,
 				84451F3020F1E7C8001044FD /* IQTextView.m in Sources */,
 				846550FB20FB2B6000A3202A /* SVProgressHUD.m in Sources */,
 				846550F920FB2B6000A3202A /* SVRadialGradientLayer.m in Sources */,
@@ -2312,10 +2378,11 @@
 				84772C662126752200029A4F /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				844958442135691400D4890A /* UIProgressView+AFNetworking.m in Sources */,
 				84451EC820EE0E60001044FD /* FJTabBarController.m in Sources */,
-				84B2AAD4211D630C00BEB5A8 /* FJVersionCheck.m in Sources */,
+				845C4870213FB33100D60D22 /* FJNewsTitleView.m in Sources */,
 				84A3EF6B20F3652C00879FB7 /* FJNews.m in Sources */,
 				84503A2720FF32E30007437B /* FJBaseRefreshTableController.m in Sources */,
 				840641A5210B36DD00F88007 /* FJModifyAvatarController.m in Sources */,
+				84A913D2214906BA00D80E63 /* FJAppModel.m in Sources */,
 				84A3EF6F20F3669900879FB7 /* FJComment.m in Sources */,
 				848D0931212D79D8006D749B /* PGDatePicker+Year.m in Sources */,
 				848D083E212D5DE4006D749B /* FJPromotionHeader.m in Sources */,
@@ -2324,16 +2391,17 @@
 				848D092C212D79D8006D749B /* PGDatePicker+DateAndTime.m in Sources */,
 				84772C6D2126752200029A4F /* MASConstraint.m in Sources */,
 				84451E5720EDFAE4001044FD /* MJFoundation.m in Sources */,
+				845C487A2140C65F00D60D22 /* FDLabelView.m in Sources */,
 				84A3EF5B20F34FAB00879FB7 /* UIView+SDExtension.m in Sources */,
 				846550FC20FB2B6000A3202A /* SVIndefiniteAnimatedView.m in Sources */,
 				84772C6A2126752200029A4F /* MASLayoutConstraint.m in Sources */,
+				84A913D92149072A00D80E63 /* FJAppVerServer.m in Sources */,
 				84A3F06120F889A900879FB7 /* UIView+KNExtension.m in Sources */,
 				84A3EFE420F5A51B00879FB7 /* IMY_NJKWebViewProgress.m in Sources */,
 				84451EB620EDFFE7001044FD /* XBSettingSectionModel.m in Sources */,
 				84451ECD20EE0E9E001044FD /* main.m in Sources */,
 				84451EE920F0AAD4001044FD /* UserAuth.m in Sources */,
 				84A3F06320F889A900879FB7 /* KNBannerViewText.m in Sources */,
-				84B2AAD1211D369400BEB5A8 /* FJAppModel.m in Sources */,
 				8449584C2135691400D4890A /* AFImageDownloader.m in Sources */,
 				84B2A8C521142D7D00BEB5A8 /* NSJSON+Extension.m in Sources */,
 				84451E5B20EDFAE4001044FD /* DALabeledCircularProgressView.m in Sources */,
@@ -2468,6 +2536,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P9L47388DW;
 				GCC_PREFIX_HEADER = "${SRCROOT}/LetuGame/Classes/Others/PrefixHeader.pch";
@@ -2487,6 +2556,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P9L47388DW;
 				GCC_PREFIX_HEADER = "${SRCROOT}/LetuGame/Classes/Others/PrefixHeader.pch";

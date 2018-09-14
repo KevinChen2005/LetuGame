@@ -119,4 +119,48 @@
 //    return localeDate;
 }
 
++ (NSDate*)dateFromComponents:(NSDateComponents*)dateComponents
+{
+    NSDateComponents* components = dateComponents;
+    
+    NSCalendar * calendar = [NSCalendar currentCalendar];
+    calendar.timeZone = [NSTimeZone systemTimeZone];
+    
+    if (components.month == 4 || components.month == 6 ||
+        components.month == 9 || components.month == 11) {
+        if (components.day >= 31) {
+            components.day = 30;
+        }
+    } else if (components.month == 2) {
+        if ([self leapYear:components.year] == YES && components.day >= 30) {
+            components.day = 29;
+        }
+        
+        if ([self leapYear:components.year] == NO && components.day >= 29) {
+            components.day = 28;
+        }
+    } else {
+        if (components.day >= 32) {
+            components.day = 31;
+        }
+    }
+    
+    return [calendar dateFromComponents:dateComponents];
+}
+
+// 判断闰年
++ (BOOL)leapYear:(NSInteger)year
+{
+    if (year <= 0 || year >= 9999) {
+        return NO;
+    }
+    
+    if ((year%4 == 0 && year % 100 !=0) || year%400==0) {
+        return YES;
+    }else {
+        return NO;
+    }
+    return NO;
+}
+
 @end

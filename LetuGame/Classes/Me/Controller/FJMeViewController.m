@@ -74,13 +74,13 @@
         FJOrderGameController* gameVC = [FJOrderGameController create];
         [self.navigationController pushViewController:gameVC animated:YES];
     };
-    item1.img = [UIImage imageNamed:@"list_game"];
+    item1.img = [UIImage imageNamed:@"tu_ic_wodeyouxi"];
 //    item1.detailText = @"做任务赢大奖";
     item1.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
     
     XBSettingItemModel *item2 = [[XBSettingItemModel alloc]init];
     item2.funcName = @"我的攻略";
-    item2.img = [UIImage imageNamed:@"list_game"];
+    item2.img = [UIImage imageNamed:@"tu_ic_wodeyouxi"];
     item2.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
     item2.executeCode = ^{
         NSLog(@"我的攻略");
@@ -88,7 +88,7 @@
     
     XBSettingItemModel *item3 = [[XBSettingItemModel alloc]init];
     item3.funcName = @"我的收藏";
-    item3.img = [UIImage imageNamed:@"list_collection"];
+    item3.img = [UIImage imageNamed:@"tu_ic_wodeshoucang"];
     item3.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
     item3.executeCode = ^{
         if (![CommTool isLogined]) {
@@ -101,7 +101,7 @@
     
     XBSettingItemModel *item4 = [[XBSettingItemModel alloc]init];
     item4.funcName = @"我的推广";
-    item4.img = [UIImage imageNamed:@"list_promotion"];
+    item4.img = [UIImage imageNamed:@"tu_ic_wodetuiguang"];
     item4.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
     item4.executeCode = ^{
         if (![CommTool isLogined]) {
@@ -113,7 +113,7 @@
     };
     
     XBSettingSectionModel *section1 = [[XBSettingSectionModel alloc]init];
-    section1.sectionHeaderHeight = 1;
+    section1.sectionHeaderHeight = 15;
     if ([UserAuth shared].isLogin && [UserAuth shared].userInfo.isSpreader){//是推广员，并且登录
         section1.itemArray = @[item1, item3, item4];
     } else {
@@ -122,7 +122,7 @@
     
     XBSettingItemModel *item5 = [[XBSettingItemModel alloc]init];
     item5.funcName = @"获得帮助";
-    item5.img = [UIImage imageNamed:@"list_help"];
+    item5.img = [UIImage imageNamed:@"tu_ic_huodebangzu"];
     item5.executeCode = ^{
         FJWebViewController* vc = [FJWebViewController new];
         vc.title = @"帮助";
@@ -141,7 +141,7 @@
     
     XBSettingItemModel *item7 = [[XBSettingItemModel alloc]init];
     item7.funcName = @"关于我们";
-    item7.img = [UIImage imageNamed:@"list_about"];
+    item7.img = [UIImage imageNamed:@"tu_ic_guanyuwomen"];
     item7.executeCode = ^{
         FJWebViewController* vc = [FJWebViewController new];
         vc.title = @"关于我们";
@@ -152,11 +152,15 @@
     
     XBSettingItemModel *item8 = [[XBSettingItemModel alloc]init];
     item8.funcName = @"当前版本";
-    item8.img = [UIImage imageNamed:@"list_version"];
+    item8.img = [UIImage imageNamed:@"tu_ic_dangqianbanben"];
     item8.detailText = [FJVersionCheck shareInstance].currentVersion;
     item8.executeCode = ^{
         if ([FJVersionCheck shareInstance].isNeedUpdate) {
-            [[FJVersionCheck shareInstance] gotoUpdate];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [FJPopView showConfirmViewWithTitle:@"提示" message:@"检测到新版本，是否去更新？" okTitle:@"更新" cancelTitle:@"以后再说" okBlock:^{//点击确认
+                    [[FJVersionCheck shareInstance] gotoUpdate];
+                } cancelBlock:nil];
+            });
         }
     };
     item8.isForbidSelect = YES;
@@ -170,7 +174,7 @@
     section2.sectionHeaderHeight = 15;
     section2.sectionFooterHeight = 15;
     section2.itemArray = @[item5, item7];
-//    section2.itemArray = @[item5, item7, item8];
+    section2.itemArray = @[item5, item7, item8];
     
     self.sectionArray = @[section1,section2];
     

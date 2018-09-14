@@ -29,6 +29,11 @@
 {
     [super awakeFromNib];
     // Initialization code
+    
+    self.name.textColor = FJBlackContent;
+    self.registerion.textColor = FJBlackContent;
+    self.money.textColor = FJBlackContent;
+    self.code.textColor = FJBlackContent;
 }
 
 - (void)setPromotion:(FJPromotion *)promotion
@@ -38,7 +43,7 @@
     self.name.text = _promotion.gameName;
     self.registerion.text = [NSString stringWithFormat:@"%ld", (long)_promotion.registNum];
     self.money.text = [NSString stringWithFormat:@"%0.2f", _promotion.agentMoney];
-    self.code.text = _promotion.isChecked ? @"是":@"否";//_promotion.code; //显示推广码改为显示是否结算
+    self.code.text = [NSString stringWithFormat:@"%0.2f", _promotion.payMoney];;//_promotion.code; //显示推广码改为显示充值金额
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

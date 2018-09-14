@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "nav_back_arrow_white.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "nav_back_arrow_white@2x.png",
+      "filename" : "tu_ic_zuojiantou@2x.png",
       "scale" : "2x"
     },
     {

@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 @property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topMarginContraint;
 
 @end
 
@@ -27,13 +28,15 @@
 
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"注册" forState:UIControlStateNormal];
-    [button setTitleColor:FJRGBColor(0, 130, 188) forState:UIControlStateNormal];
+    [button setTitleColor:FJWhiteColor forState:UIControlStateNormal];
     [button sizeToFit];
     [button.titleLabel setFont:FJNavbarItemFont];
     [button addTarget:self action:@selector(onClickRegister:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = rightItem;
+    
+    self.topMarginContraint.constant = iphoneX ? (134 + 24) : 134;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -134,7 +137,6 @@
     [self.view endEditing:YES];
     return YES;
 }
-
 @end
 
 

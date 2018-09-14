@@ -23,7 +23,9 @@
 
 @property (nonatomic, copy)NSString* content;
 
-@property (nonatomic, assign)NSInteger score;
+@property (nonatomic, assign)NSInteger score; //点赞数
+
+@property (nonatomic, assign)NSInteger readTimes; //阅读量
 
 @property (nonatomic, copy)NSString* source;
 

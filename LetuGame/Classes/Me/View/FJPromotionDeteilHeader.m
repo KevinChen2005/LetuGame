@@ -9,7 +9,7 @@
 #import "FJPromotionDeteilHeader.h"
 #import "FJPromotion.h"
 
-#define kPromotionDetailHeaderHeight 470.0
+#define kPromotionDetailHeaderHeight 450.0
 
 static CGFloat g_height = kPromotionDetailHeaderHeight;
 
@@ -37,6 +37,15 @@ static CGFloat g_height = kPromotionDetailHeaderHeight;
     [super awakeFromNib];
     
     g_height = kPromotionDetailHeaderHeight;
+}
+
+- (IBAction)onClickCopyCode:(id)sender
+{
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    NSString* shareInfo = [NSString stringWithFormat:@"%@", self.promotion.code];
+    pasteboard.string = shareInfo;
+    
+    [FJProgressHUB showInfoWithMessage:@"复制成功" withTimeInterval:1.5f];
 }
 
 - (IBAction)onClickShare:(id)sender

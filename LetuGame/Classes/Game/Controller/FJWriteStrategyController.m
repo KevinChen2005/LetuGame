@@ -81,13 +81,7 @@
     }];
 
     // 发表按钮
-    UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [sendBtn setTitle:@"提交" forState:UIControlStateNormal];
-    [sendBtn setTitleColor:FJRGBColor(0, 130, 188) forState:UIControlStateNormal];
-    [sendBtn sizeToFit];
-    [sendBtn.titleLabel setFont:FJNavbarItemFont];
-    [sendBtn addTarget:self action:@selector(send) forControlEvents:UIControlEventTouchUpInside];
-
+    UIButton *sendBtn = [CommTool submitButtonWithTarget:self Action:@selector(send)];
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:sendBtn];
     self.navigationItem.rightBarButtonItem = rightItem;
 }

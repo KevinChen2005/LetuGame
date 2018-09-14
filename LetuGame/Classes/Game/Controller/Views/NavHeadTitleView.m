@@ -23,7 +23,7 @@
 {
     if (self=[super initWithFrame:frame]) {
         self.headBgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        self.headBgView.backgroundColor=[UIColor whiteColor];
+        self.headBgView.backgroundColor= FJBlueStyleColor;
         self.headBgView.image = [UIImage imageNamed:@"nav－-bar"];
         //隐藏黑线
         self.headBgView.alpha=0;
@@ -41,11 +41,13 @@
         self.label.font = [UIFont boldSystemFontOfSize:18];
         [self addSubview:self.label];
         
-        self.rightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        [self.rightBtn setTitle:@"我要玩" forState:UIControlStateNormal];
-        self.rightBtn.backgroundColor = [UIColor clearColor];
-        self.rightBtn.frame = CGRectMake(self.frame.size.width-76, 30, 60, 30);
-        [self.rightBtn addTarget:self action:@selector(rightBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        self.rightBtn = [CommTool wantPlayGameButtonWithTitle:@"我要玩" image:@"tu_ic_woyaowan" Target:self Action:@selector(rightBtnClick)];
+        self.rightBtn.frame = CGRectMake(self.frame.size.width-100, 27, 80, 30);
+//        [UIButton buttonWithType:UIButtonTypeSystem];
+//        [self.rightBtn setTitle:@"我要玩" forState:UIControlStateNormal];
+//        self.rightBtn.backgroundColor = [UIColor clearColor];
+//        self.rightBtn.frame = CGRectMake(self.frame.size.width-76, 30, 60, 30);
+//        [self.rightBtn addTarget:self action:@selector(rightBtnClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.rightBtn];
         
 //        @weakify(self);
@@ -92,15 +94,15 @@
 {
     _color=color;
     self.label.textColor=color;
-    if (![color isEqual:[UIColor whiteColor]]) {
-        [self.rightBtn setTitleColor:FJRGBColor(51, 139, 193) forState:UIControlStateNormal];
-    } else {
-        [self.rightBtn setTitleColor:color forState:UIControlStateNormal];
-    }
+//    if (![color isEqual:[UIColor whiteColor]]) {
+//        [self.rightBtn setTitleColor:FJRGBColor(51, 139, 193) forState:UIControlStateNormal];
+//    } else {
+//        [self.rightBtn setTitleColor:color forState:UIControlStateNormal];
+//    }
     
     
     
-    //[self jianBian];
+//    [self jianBian];
 }
 
 //返回按钮

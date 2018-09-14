@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *authcodeLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordLabel;
 @property (weak, nonatomic) IBOutlet UITextField *confirmLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topMarginContraint;
 
 @end
 
@@ -33,6 +34,8 @@
 
     self.title = @"找回密码";
     self.view.backgroundColor =[UIColor whiteColor];
+    
+    self.topMarginContraint.constant = iphoneX ? (110 + 24) : 110;
 }
 
 // 退出键盘

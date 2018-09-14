@@ -210,6 +210,13 @@ typedef void(^FJNetworkStatusBlock)(FJNetworkStatusType networkStatus);
  */
 + (void)fetchPromotionDetailListWithGameId:(NSString*)gameid startTime:(NSDate*)startTime endTime:(NSDate*)endTime Success:(successBlock)success failure:(failureBlock)failure;
 
+/**
+ 获取结算详情（按周返回，仅推广员用户适用）
+ 
+ month: 格式"2018-07"
+ */
++ (void)fetchSettleDetailListWithGameId:(NSString*)gameid month:(NSString*)month Success:(successBlock)success failure:(failureBlock)failure;
+
 #pragma mark - 个人中心
 /**
  修改个人信息
@@ -252,6 +259,12 @@ typedef void(^FJNetworkStatusBlock)(FJNetworkStatusType networkStatus);
  版本更新检测（通过AppStore）
  */
 + (void)checkVersionFromAppstoreSuccess:(successBlock)success failure:(failureBlock)failure;
+
+#pragma mark - 版本更新检测（通过服务器）
+/**
+ 版本更新检测（通过服务器）
+ */
++ (void)checkVersionSuccess:(successBlock)success failure:(failureBlock)failure;
 
 @end
 

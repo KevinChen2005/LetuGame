@@ -14,7 +14,7 @@
 #import "HZPhotoBrowser.h"
 
 #define kDefaultText @"---"
-#define kDefaultHeight 670
+#define kDefaultHeight 800
 
 CGFloat g_height = kDefaultHeight;
 
@@ -56,8 +56,13 @@ CGFloat g_height = kDefaultHeight;
     self.company.text = kDefaultText;
     self.date.text = kDefaultText;
     
+    self.name.font = [UIFont fontWithName:FJFontSiHanMedium size:19];
+    self.name.textColor = FJBlackTitle;
+    self.content.font = [UIFont fontWithName:FJFontSiHanRegular size:16];
+    self.content.textColor = FJBlackContent;
+    
     self.bannerHoldViewHeightConstraint.constant = kBannerHeight;
-    g_height = g_height - 150 + kBannerHeight*2;
+    g_height = g_height + kBannerHeight;
 }
 
 - (IBAction)clickWantPlay:(id)sender
@@ -101,18 +106,16 @@ CGFloat g_height = kDefaultHeight;
     self.date.text = detail.gameInfo.openTime;
     
     self.content.text = detail.gameInfo.desc;
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObject:self.content.font forKey:NSFontAttributeName];
-    CGSize size = [self.content.text boundingRectWithSize:CGSizeMake(self.content.frame.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
-    [self.content mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo([NSNumber numberWithFloat:size.height]);
-    }];
+    self.content.textAlignment = NSTextAlignmentJustified;
+//    self.content.text = @"height 和 width 属性有一种隐藏的特性，就是人们无需指定图像的实际大小，也就是说，这两个值可以比实际的尺寸大一些或小一些。浏览器会自动调整图像，使其适应这个预留空间的大小。使用这种方法就可以很容易地为大图像创建其缩略图，以及放大很小的图像。但需要注意的是：浏览器还是必须要下载整个文件，不管它最终显示的尺寸到底是多大，而且，如果没有保持其原来的宽度和高度比例，图像会发生扭曲。使用 height 和 width 属性的另外一种技巧，是可以非常容易地实现对页面区域的填充，同时还可以改善文档的性能。设想一下，如果你想在文档中放置一个彩色的横条。您不需要创建一个具有完整尺寸的图像，相反，您只要创建一个宽度和高度都为 1 个像素的图像，并把自己希望使用的颜色赋给它。然后使用 height 和 width 属性把它扩展到更大的尺寸。height 和 width 属性有一种隐藏的特性，就是人们无需指定图像的实际大小，也就是说，这两个值可以比实际的尺寸大一些或小一些。浏览器会自动调整图像，使其适应这个预留空间的大小。使用这种方法就可以很容易地为大图像创建其缩略图，以及放大很小的图像。但需要注意的是：浏览器还是必须要下载整个文件，不管它最终显示的尺寸到底是多大，而且，如果没有保持其原来的宽度和高度比例，图像会发生扭曲。使用 height 和 width 属性的另外一种技巧，是可以非常容易地实现对页面区域的填充，同时还可以改善文档的性能。设想一下，如果你想在文档中放置一个彩色的横条。您不需要创建一个具有完整尺寸的图像，相反，您只要创建一个宽度和高度都为 1 个像素的图像，并把自己希望使用的颜色赋给它。然后使用 height 和 width 属性把它扩展到更大的尺寸。";
+    [self.content setLineSpacing:10.0];
+    NSLog(@"content.width = %f", self.content.fj_width);
+    CGSize size = [self.content sizeWhenFillText];
+    CGFloat contentHeight = size.height;
     
-    g_height = 470 + size.height;
-    g_height = g_height - 150 + kBannerHeight*2;
+    CGFloat otherCtrlHeight = 680; //其他控件加间距高度，由xib计算获得
+    g_height = otherCtrlHeight + contentHeight;
     NSLog(@"g_height = %f", g_height);
-    
-    CGFloat flag = iphoneX ? 750 : 650;
-    g_height = g_height < flag ? flag : g_height;
     
 }
 

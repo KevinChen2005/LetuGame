@@ -20,11 +20,16 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordLabel;
 @property (weak, nonatomic) IBOutlet UITextField *confirmLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nicknameLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topMarginContraint;
 
 @end
 
 @implementation FJRegisterViewController
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+}
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -39,12 +44,20 @@
     self.title = @"注册";
     _isAgreeUserProtocol = NO;
     self.view.backgroundColor =[UIColor whiteColor];
+    
+    self.topMarginContraint.constant = iphoneX ? (110 + 24) : 110;
 }
 
 // 退出键盘
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+}
+
+// 点击去登陆按钮
+- (IBAction)clickGoLogin:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 // 点击注册

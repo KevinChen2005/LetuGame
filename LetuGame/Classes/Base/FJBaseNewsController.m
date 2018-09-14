@@ -29,11 +29,14 @@
     // 设置tableView相关高度
     self.tableView.sectionHeaderHeight = 1;
     self.tableView.sectionFooterHeight = 1;
-    self.tableView.estimatedRowHeight = 80.0;
-    self.tableView.rowHeight = 80.0;
+    self.tableView.estimatedRowHeight = 160.0;
+    self.tableView.rowHeight = 160.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     // 注册cell
     [self.tableView registerNib:[FJNewsCell nib] forCellReuseIdentifier:NSStringFromClass([FJNewsCell class])];
+    
 }
 
 // 跳转详情控制器

@@ -49,7 +49,7 @@
         redView.backgroundColor = [UIColor redColor];
         [contentView addSubview:redView];
         [redView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(@3);;
+            make.width.mas_equalTo(@3);
             make.left.mas_equalTo(contentView.mas_left).offset(10);
             make.top.mas_equalTo(contentView.mas_top).offset(8);
             make.bottom.mas_equalTo(contentView.mas_bottom).offset(-8);

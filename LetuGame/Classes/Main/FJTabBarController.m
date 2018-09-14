@@ -13,6 +13,8 @@
 #import "FJGameViewController.h"
 #import "FJTabBar.h"
 
+#define FJTabbarNormalColor FJRGBColor(0x9F, 0xC5, 0xFF)
+
 @interface FJTabBarController() <FJTabBarDelegate>
 
 @end
@@ -27,13 +29,14 @@
     UITabBarItem *item = [UITabBarItem appearance];
     
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
-    attrs[NSForegroundColorAttributeName] = [UIColor grayColor];
-    //    attrs[NSFontAttributeName] = [UIFont systemFontOfSize:12];
+    attrs[NSForegroundColorAttributeName] = FJTabbarNormalColor;
     [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
     
     NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
-    selectedAttrs[NSForegroundColorAttributeName] = [UIColor redColor];
+    selectedAttrs[NSForegroundColorAttributeName] = FJWhiteColor;
     [item setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
+    
+    [[UITabBar appearance] setTintColor:FJTabbarNormalColor];
 }
 
 /**
@@ -47,8 +50,11 @@
 {
     viewController.title = title;
     viewController.tabBarItem.title = title;
-    viewController.tabBarItem.image = [UIImage imageNamed:[NSString stringWithFormat:@"tabBar_%@_icon", name]];
-   viewController.tabBarItem.selectedImage = [UIImage imageNamed:[NSString stringWithFormat:@"tabBar_%@_click_icon", name]];
+    
+    UIImage* imageNormal = [UIImage imageNamed:[NSString stringWithFormat:@"tabBar_%@_icon", name]];
+    imageNormal = [imageNormal imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    viewController.tabBarItem.image = imageNormal;
+    viewController.tabBarItem.selectedImage = [UIImage imageNamed:[NSString stringWithFormat:@"tabBar_%@_click_icon", name]];
     
     // 添加导航控制器
     FJNavigationController *nav = [[FJNavigationController alloc] initWithRootViewController:viewController];
@@ -59,17 +65,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // 添加子控制器
     [self addChildController:[[FJHomeViewController alloc] init] withTitle:@"首页" withName:@"home"];
 
     [self addChildController:[[FJGameViewController alloc] init] withTitle:@"游戏" withName:@"game"];
 
-    [self addChildController:[[FJMeViewController alloc] initWithStyle:UITableViewStyleGrouped] withTitle:@"我的" withName:@"me"];
+    [self addChildController:[[FJMeViewController alloc] initWithStyle:UITableViewStylePlain] withTitle:@"我的" withName:@"me"];
     
     // 更换tabBar
     FJTabBar* tabBar = [[FJTabBar alloc] init];
     tabBar.delegate = self;
     [self setValue:tabBar forKey:@"tabBar"];
+    
+    [self.tabBar setBackgroundImage:[UIImage imageWithColor:FJBlueStyleColor]];
+//    self.tabBar.selectionIndicatorImage = [UIImage imageWithColor:FJRGBColor(0x46, 0x71, 0xB2) size:CGSizeMake(kScreenWidth /3, 49)];
+    
 }
 
 -(void)viewWillLayoutSubviews
@@ -95,8 +106,7 @@
     return YES;
 }
 
-
-
-
-
 @end
+
+
+

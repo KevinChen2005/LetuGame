@@ -49,7 +49,7 @@
     // 发表按钮
     UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     [sendBtn setTitle:@"提交" forState:UIControlStateNormal];
-    [sendBtn setTitleColor:FJRGBColor(0, 130, 188) forState:UIControlStateNormal];
+    [sendBtn setTitleColor:FJWhiteColor forState:UIControlStateNormal];
     sendBtn.frame = CGRectMake(0, 0, 50, 20);
     [sendBtn sizeToFit];
     [sendBtn.titleLabel setFont:FJNavbarItemFont];

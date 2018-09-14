@@ -46,11 +46,11 @@
     // 选择按钮
     UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     [sendBtn setTitle:@"选择" forState:UIControlStateNormal];
-    [sendBtn setTitleColor:FJRGBColor(0, 130, 188) forState:UIControlStateNormal];
+    [sendBtn setTitleColor:FJWhiteColor forState:UIControlStateNormal];
     sendBtn.frame = CGRectMake(0, 0, 50, 20);
     [sendBtn sizeToFit];
     [sendBtn.titleLabel setFont:FJNavbarItemFont];
-    [sendBtn addTarget:self action:@selector(select) forControlEvents:UIControlEventTouchUpInside];
+    [sendBtn addTarget:self action:@selector(select:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:sendBtn];
     self.navigationItem.rightBarButtonItem = rightItem;
@@ -63,8 +63,16 @@
 //    [self.avatarView sd_setImageWithURL:[NSURL URLWithString:[UserAuth shared].userInfo.avatar] placeholderImage:[UIImage imageNamed:@"avatar"]];
 }
 
-- (void)select
+- (void)select:(UIButton*)sender
 {
+    if (isIpad) {
+        UIPopoverPresentationController* popoverController = self.alertController.popoverPresentationController;
+        if (popoverController) {
+            popoverController.sourceView = sender;
+            popoverController.sourceRect = sender.bounds;
+        }
+    }
+    
     [self.navigationController presentViewController:self.alertController animated:YES completion:nil];
 }
 

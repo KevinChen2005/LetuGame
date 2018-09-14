@@ -9,11 +9,14 @@
 #import "FJDetailHeader.h"
 #import "IMYWebView.h"
 #import "HZPhotoBrowser.h"
+#import "FJNewsTitleView.h"
+#import "FJNewsDetail.h"
 
 #define kMargin 20
 
 @interface FJDetailHeader() <IMYWebViewDelegate, HZPhotoBrowserDelegate>
 
+@property(nonatomic, strong)FJNewsTitleView* titleView;
 @property(nonatomic, strong)IMYWebView *htmlWebView;
 @property(nonatomic, copy)completeBlock complete;
 @property(nonatomic, strong)NSMutableArray *imageArray;//HTML中的图片个数
@@ -23,19 +26,32 @@
 
 @implementation FJDetailHeader
 
-- (instancetype)initWithLoadHtmlString:(NSString *)htmlString CompleteBlock:(completeBlock)complete
+- (instancetype)init
 {
     if (self = [super init]) {
-        // 从下往上布局
-//        // 构建底部分割线
-//        UIView* seperateLine = [[UIView alloc] init];
-//        seperateLine.backgroundColor = FJGlobalBG;
-//        [self addSubview:seperateLine];
-//        [seperateLine mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.right.bottom.equalTo(self);
-//            make.height.equalTo(@1);
-//        }];
         self.backgroundColor = [UIColor whiteColor];
+        
+        // 构建顶部标题栏
+        FJNewsTitleView* titleView = [FJNewsTitleView titleView];
+        titleView.newsDetail = self.newsDetail;
+        [self addSubview:titleView];
+        self.titleView = titleView;
+        
+        [titleView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.right.mas_equalTo(self);
+            make.height.mas_equalTo(@150);
+        }];
+        
+        // 从下往上布局
+        
+        // 构建底部分割线
+        UIView* seperateLine = [[UIView alloc] init];
+        seperateLine.backgroundColor = FJGlobalBG;
+        [self addSubview:seperateLine];
+        [seperateLine mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(self);
+            make.height.equalTo(@1);
+        }];
         
         // 构建点赞按钮
         UIButton* likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -74,18 +90,22 @@
         [self addSubview:htmlWebView];
         
         [htmlWebView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.right.equalTo(self);
+            make.top.mas_equalTo(titleView.mas_bottom);
+            make.left.right.equalTo(self);
             make.bottom.equalTo(likeBtn.mas_top).offset(-kMargin);
         }];
-        
-        self.complete = complete;
-        
-        [self.htmlWebView loadHTMLString:htmlString baseURL:nil];
         
         self.likeCount = 0;
     }
     
     return self;
+}
+
+- (void)startLoadHtmlString:(NSString *)htmlString CompleteBlock:(completeBlock)complete
+{
+    self.complete = complete;
+    
+    [self.htmlWebView loadHTMLString:htmlString baseURL:nil];
 }
 
 - (void)clickLike:(UIButton*)btn
@@ -102,11 +122,34 @@
     }
 }
 
+- (void)setNewsDetail:(FJNewsDetail *)newsDetail
+{
+    _newsDetail = newsDetail;
+    
+    [self.likeBtn setTitle:[NSString stringWithFormat:@"%ld人喜欢", (long)_newsDetail.score] forState:UIControlStateNormal];
+    
+    self.likeBtn.selected = _newsDetail.isLiked;
+    if (_newsDetail.isLiked) {
+        [self.likeBtn setBackgroundColor:[UIColor redColor]];
+    } else {
+        [self.likeBtn setBackgroundColor:[UIColor whiteColor]];
+    }
+    
+    self.titleView.newsDetail = newsDetail;
+    
+    WEAKSELF
+    [self.titleView mas_updateConstraints:^(MASConstraintMaker *make) {
+        STRONGSELF
+        make.height.mas_equalTo([NSNumber numberWithFloat:[strongSelf.titleView height]]);
+    }];
+}
+
 - (void)setLikeCount:(NSInteger)likeCount
 {
     _likeCount = likeCount;
     
-    [self.likeBtn setTitle:[NSString stringWithFormat:@"%ld人喜欢", likeCount] forState:UIControlStateNormal];
+    [self.likeBtn setTitle:[NSString stringWithFormat:@"%ld人喜欢", (long)likeCount] forState:UIControlStateNormal];
+    
 }
 
 - (void)setIsLiked:(BOOL)isLiked
@@ -161,7 +204,9 @@
         NSInteger height = [object integerValue];
         //返回header总高度 webView 和 点赞按钮高度
         if (self.complete) {
-            self.complete(height + self.likeBtn.fj_height + 4*kMargin);
+            CGFloat titleH = [self.titleView height];
+            NSLog(@"titleH = %f", [self.titleView height]);
+            self.complete(height + self.likeBtn.fj_height + titleH + 4*kMargin);
         }
     }];
     

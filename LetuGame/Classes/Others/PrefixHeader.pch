@@ -30,5 +30,6 @@
 #import "NSString+FJ.h"
 #import "FJAppModel.h"
 #import "FJVersionCheck.h"
+#import "UILabel+FJ.h"
 
 #endif /* PrefixHeader_pch */

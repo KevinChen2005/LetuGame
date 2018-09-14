@@ -29,7 +29,6 @@
         self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     }
     
-    
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
     self.view.backgroundColor = FJGlobalBG;

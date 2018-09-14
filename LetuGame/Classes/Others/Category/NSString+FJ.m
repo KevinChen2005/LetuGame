@@ -104,10 +104,10 @@
     //秒转月
     NSInteger months = time/3600/24/30;
     if (months < 12) {
-        [df setDateFormat:@"yyyy-MM-dd"];
-        return [df stringFromDate:beDate];
+//        [df setDateFormat:@"yyyy-MM-dd"];
+//        return [df stringFromDate:beDate];
         
-//        return [NSString stringWithFormat:@"%ld月前",months];
+        return [NSString stringWithFormat:@"%ld月前",(long)months];
     }
     
     //秒转年

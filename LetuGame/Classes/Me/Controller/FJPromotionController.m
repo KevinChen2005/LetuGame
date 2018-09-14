@@ -28,14 +28,15 @@
     self.tableView.rowHeight = 60;
     self.tableView.sectionHeaderHeight = 66;
     self.view.backgroundColor = [UIColor whiteColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     //注册tableview的cell
     [self.tableView registerNib:[UINib nibWithNibName:@"FJPromotionCell" bundle:nil] forCellReuseIdentifier:@"FJPromotionCell"];
     
     //设置tableview的footerview为一条灰线
-    UIView* footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.9)];
-    footer.backgroundColor = FJRGBColor(230, 230, 230);
-    self.tableView.tableFooterView = footer;
+//    UIView* footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.9)];
+//    footer.backgroundColor = FJRGBColor(230, 230, 230);
+//    self.tableView.tableFooterView = footer;
     
     //请求推广信息
     NSDate* now = [NSDate date];

@@ -34,7 +34,7 @@
 #endif
 #define kUrl(sub) [NSString stringWithFormat:@"%@/%@", URL_MAIN, sub]
 
-//检查版本更新
+//检查版本更新 (改由检测服务器版本更新)
 #define kAppleID @"1176462740"
 #define kUrlCheckVersion [NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=%@", kAppleID]
 
@@ -44,8 +44,21 @@
 //-------------------颜色和字体----------------
 #define FJRGBColor(r, g, b) [UIColor colorWithRed:(r) / 255.0 green:(g) / 255.0 blue:(b) / 255.0 alpha:1]
 #define FJGlobalBG FJRGBColor(245, 245, 245)
+#define FJWhiteColor [UIColor whiteColor]
+#define FJBlueStyleColor FJRGBColor(0x58, 0x81, 0xBF)
+#define FJBlackTitle     FJRGBColor(0x33, 0x33, 0x33)
+#define FJBlackContent   FJRGBColor(0x66, 0x66, 0x66)
+#define FJBlackAuthor    FJRGBColor(0x99, 0x99, 0x99)
 
-#define FJNavbarItemFont [UIFont systemFontOfSize:15]
+#define FJNavbarItemFont [UIFont systemFontOfSize:13]
+
+#define FJFontSiHanLight      @"SourceHanSansCN-Light"
+#define FJFontSiHanBold       @"SourceHanSansCN-Bold"
+#define FJFontSiHanHeavy      @"SourceHanSansCN-Heavy"
+#define FJFontSiHanRegular    @"SourceHanSansCN-Regular"
+#define FJFontSiHanNormal     @"SourceHanSansCN-Normal"
+#define FJFontSiHanExtraLight @"SourceHanSansCN-ExtraLight"
+#define FJFontSiHanMedium     @"SourceHanSansCN-Medium"
 
 //富文本编辑 图片标识
 #define RICHTEXT_IMAGE (@"[UIImageView]")
@@ -84,6 +97,7 @@
 
 //-------------------设备相关----------------
 #pragma mark - 设备相关
+#define isIpad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 //判断是什么大小的机型 4，4s ; 5,5s ; 6,6s ; 6+,6+s ; iphoneX
 #define iphone4s CGSizeEqualToSize(CGSizeMake(640,960), [[UIScreen mainScreen]currentMode].size)
 #define iphone5 CGSizeEqualToSize(CGSizeMake(640,1136), [[UIScreen mainScreen]currentMode].size)
@@ -92,16 +106,17 @@
 #define iphoneX CGSizeEqualToSize(CGSizeMake(1125,2436), [[UIScreen mainScreen] currentMode].size)
 
 //获取屏幕宽度、高度
-#define kScreenWidth [UIScreen mainScreen].bounds.size.width
-#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define kScreenWidth ([UIScreen mainScreen].bounds.size.width)
+#define kScreenHeight ([UIScreen mainScreen].bounds.size.height)
+//获取屏幕宽度(像素)、高度(像素)
+#define kScreenWidthPx (kScreenWidth*[UIScreen mainScreen].scale)
+#define kScreenHeightPx (kScreenHeight*[UIScreen mainScreen].scale)
 
 #define ToolBarHeight 49.5
 #define kBannerHeight (kScreenWidth*0.45)
 
 //获取状态栏和导航栏高度
-
 #define appStatusBarHeight  [UIApplication sharedApplication].statusBarFrame.size.height
-
 #define appNavigationBarHeight  self.navigationController.navigationBar.frame.size.height
 
 //-------------------设备相关----------------

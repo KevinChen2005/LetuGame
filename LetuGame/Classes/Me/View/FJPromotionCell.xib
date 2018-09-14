@@ -12,50 +12,60 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FJPromotionCell" rowHeight="60" id="KGk-i7-Jjw" customClass="FJPromotionCell">
-            <rect key="frame" x="0.0" y="0.0" width="363" height="40"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FJPromotionCell" rowHeight="83" id="KGk-i7-Jjw" customClass="FJPromotionCell">
+            <rect key="frame" x="0.0" y="0.0" width="363" height="63"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="329" height="39.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="329" height="62.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="游戏" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBU-rv-iiA">
-                        <rect key="frame" x="5" y="0.0" width="82.5" height="39.5"/>
+                        <rect key="frame" x="5" y="0.0" width="82.5" height="66.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Clq-Cu-zsU">
-                        <rect key="frame" x="87.5" y="0.0" width="82" height="39"/>
+                        <rect key="frame" x="87" y="0.0" width="82.5" height="62.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收入" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FWX-bL-EeL">
-                        <rect key="frame" x="169.5" y="0.0" width="82.5" height="39"/>
+                        <rect key="frame" x="169.5" y="0.0" width="83" height="62.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结算" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oT-9p-qMN">
-                        <rect key="frame" x="252" y="0.0" width="82" height="39.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oT-9p-qMN">
+                        <rect key="frame" x="252.5" y="0.0" width="82.5" height="62.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yNz-97-65B" userLabel="line">
+                        <rect key="frame" x="0.0" y="61.5" width="719" height="1"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.80000000000000004" id="lu9-wo-qcj"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="bBU-rv-iiA" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.25" id="0LH-2B-0QE"/>
                     <constraint firstItem="Clq-Cu-zsU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1Y8-F5-V2b"/>
                     <constraint firstAttribute="bottom" secondItem="FWX-bL-EeL" secondAttribute="bottom" id="8Uw-B0-5aY"/>
-                    <constraint firstAttribute="bottom" secondItem="bBU-rv-iiA" secondAttribute="bottom" id="AVY-0Z-NES"/>
+                    <constraint firstAttribute="bottom" secondItem="yNz-97-65B" secondAttribute="bottom" id="FH7-Fb-GPn"/>
                     <constraint firstAttribute="bottom" secondItem="Clq-Cu-zsU" secondAttribute="bottom" id="FQe-rc-4af"/>
                     <constraint firstItem="bBU-rv-iiA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="IPv-Bi-394"/>
                     <constraint firstItem="bBU-rv-iiA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NEV-UL-8rM"/>
                     <constraint firstItem="Clq-Cu-zsU" firstAttribute="leading" secondItem="bBU-rv-iiA" secondAttribute="trailing" id="Th3-qe-cTX"/>
                     <constraint firstItem="Clq-Cu-zsU" firstAttribute="width" secondItem="bBU-rv-iiA" secondAttribute="width" id="U2Q-D8-go8"/>
                     <constraint firstItem="FWX-bL-EeL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="UNk-VZ-zAC"/>
+                    <constraint firstItem="yNz-97-65B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bFz-hE-5P5"/>
                     <constraint firstAttribute="bottom" secondItem="8oT-9p-qMN" secondAttribute="bottom" id="bjn-he-Mc2"/>
+                    <constraint firstAttribute="trailing" secondItem="yNz-97-65B" secondAttribute="trailing" constant="-390" id="e2c-0K-6cW"/>
+                    <constraint firstItem="yNz-97-65B" firstAttribute="top" secondItem="bBU-rv-iiA" secondAttribute="bottom" constant="-5" id="j36-PR-rHk"/>
                     <constraint firstItem="8oT-9p-qMN" firstAttribute="width" secondItem="FWX-bL-EeL" secondAttribute="width" id="nMe-EV-Fbn"/>
                     <constraint firstItem="8oT-9p-qMN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qIL-3q-ifC"/>
                     <constraint firstItem="8oT-9p-qMN" firstAttribute="leading" secondItem="FWX-bL-EeL" secondAttribute="trailing" id="rjv-bD-na5"/>
@@ -70,7 +80,7 @@
                 <outlet property="name" destination="bBU-rv-iiA" id="rbd-xd-Zvj"/>
                 <outlet property="registerion" destination="Clq-Cu-zsU" id="fCn-J5-zs8"/>
             </connections>
-            <point key="canvasLocation" x="-30.5" y="50"/>
+            <point key="canvasLocation" x="-30.5" y="116.5"/>
         </tableViewCell>
     </objects>
 </document>

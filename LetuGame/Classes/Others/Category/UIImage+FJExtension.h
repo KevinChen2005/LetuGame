@@ -15,4 +15,10 @@
  */
 - (UIImage *)circleImage;
 
+- (UIImage*)fillWithColor:(UIColor*)color;
+
++ (UIImage *)imageWithColor:(UIColor *)color;
+
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
+
 @end

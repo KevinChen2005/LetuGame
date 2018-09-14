@@ -26,6 +26,26 @@
 + (void)wantPlayGame:(NSString*)gameId;
 
 /**
+ 构建导航栏按钮（如：“我要玩”）
+ */
++ (UIButton*)wantPlayGameButtonWithTitle:(NSString*)title image:(NSString*)image Target:(id)target Action:(SEL)action;
+
+/**
+ 构建导航栏“我要玩”按钮
+ */
++ (UIButton*)wantPlayGameButtonWithTarget:(id)target Action:(SEL)action;
+
+/**
+ 构建导航栏写攻略“提交”按钮
+ */
++ (UIButton*)submitButtonWithTarget:(id)target Action:(SEL)action;
+
+/**
+ 构建导航栏写攻略“插入图片”按钮
+ */
++ (UIButton*)insertImageWithTarget:(id)target Action:(SEL)action;
+
+/**
  获得view所在的控制器
  */
 + (UIViewController*)getViewControllerOfView:(UIView*)view;

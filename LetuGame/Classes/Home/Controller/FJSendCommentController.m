@@ -38,7 +38,7 @@
     // 评论占位符
     UILabel* placeholder = [UILabel new];
     placeholder.font = [UIFont systemFontOfSize:16];
-    placeholder.text = @"输入你想要说的...";
+    placeholder.text = @"输入你想要说的...（10-100字符）";
     placeholder.textColor = [UIColor lightGrayColor];
     [self.view addSubview:placeholder];
     self.placeholder = placeholder;
@@ -67,7 +67,7 @@
     // 发表按钮
     UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [sendBtn setTitle:@"发表" forState:UIControlStateNormal];
-    [sendBtn setTitleColor:FJRGBColor(0, 130, 188) forState:UIControlStateNormal];
+    [sendBtn setTitleColor:FJWhiteColor forState:UIControlStateNormal];
     [sendBtn sizeToFit];
     [sendBtn.titleLabel setFont:FJNavbarItemFont];
     [sendBtn addTarget:self action:@selector(send) forControlEvents:UIControlEventTouchUpInside];
@@ -102,7 +102,17 @@
     NSString* content = self.inputView.text;
     
     if ([content isNullString]) {
-        [FJProgressHUB showInfoWithMessage:@"内容不能为空" withTimeInterval:1.0];
+        [FJProgressHUB showInfoWithMessage:@"内容不能为空" withTimeInterval:1.5];
+        return;
+    }
+    
+    if (content.length < 10) {
+        [FJProgressHUB showInfoWithMessage:@"评论字数不够10" withTimeInterval:1.5];
+        return;
+    }
+    
+    if (content.length > 100) {
+        [FJProgressHUB showInfoWithMessage:@"评论字数超出限制100" withTimeInterval:1.5];
         return;
     }
     

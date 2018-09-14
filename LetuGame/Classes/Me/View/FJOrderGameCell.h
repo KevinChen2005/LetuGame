@@ -24,6 +24,7 @@
 @protocol FJOrderGameCellDelegate <NSObject>
 
 @optional
+
 /**
  点击删除按钮回调
  */

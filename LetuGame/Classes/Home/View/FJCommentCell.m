@@ -27,6 +27,12 @@
     
     // 禁止点击
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    self.username.textColor = FJBlackTitle;
+    self.content.textColor = FJBlackContent;
+    self.time.textColor = FJBlackAuthor;
+    
+    [self.content setLineSpacing:8.0];
 }
 
 + (UINib *)nib

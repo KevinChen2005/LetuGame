@@ -22,6 +22,15 @@
     // 设置导航图片
     UINavigationBar *bar = [UINavigationBar appearanceWhenContainedIn:[self class], nil];
     [bar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
+    
+    [bar setBarTintColor:FJBlueStyleColor]; //导航栏背景蓝色
+    
+    [bar setTitleTextAttributes:@{
+//                                  NSForegroundColorAttributeName : FJBlueStyleColor,
+                                  NSForegroundColorAttributeName : FJWhiteColor,
+                                  NSFontAttributeName : [UIFont fontWithName:FJFontSiHanMedium size:19.0]
+//                                  NSFontAttributeName : [UIFont systemFontOfSize:23.0f]
+                                  }];
 }
 
 - (void)viewDidLoad

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol FJDetailHeaderDelegate;
+@class FJNewsDetail;
 
 typedef void(^completeBlock)(NSInteger height);
 
@@ -16,10 +17,11 @@ typedef void(^completeBlock)(NSInteger height);
 
 @property (nonatomic, weak)id<FJDetailHeaderDelegate> delegate;
 
+@property(nonatomic, strong)FJNewsDetail* newsDetail;
 @property (nonatomic, assign)NSInteger likeCount;
 @property (nonatomic, assign)BOOL isLiked;
 
-- (instancetype)initWithLoadHtmlString:(NSString*)htmlString CompleteBlock:(completeBlock)complete;
+- (void)startLoadHtmlString:(NSString *)htmlString CompleteBlock:(completeBlock)complete;
 
 @end
 

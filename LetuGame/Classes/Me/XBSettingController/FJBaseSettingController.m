@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     //去掉分割线
-//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.rowHeight = 48;
     self.tableView.tableFooterView = [UIView new];
 }
@@ -48,6 +48,7 @@
         cell = [[XBSettingCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.item = itemModel;
+    
     return cell;
 }
 

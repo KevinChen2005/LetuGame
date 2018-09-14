@@ -63,20 +63,19 @@
 {
     [super viewDidLoad];
     
-    _toolbarConstrant.constant = -40;
+    _toolbarConstrant.constant = 0;
     
     self.title = @"写攻略";
     
     // 发表按钮
-    UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [sendBtn setTitle:@"提交" forState:UIControlStateNormal];
-    [sendBtn setTitleColor:FJRGBColor(0, 130, 188) forState:UIControlStateNormal];
-    [sendBtn sizeToFit];
-    [sendBtn.titleLabel setFont:FJNavbarItemFont];
-    [sendBtn addTarget:self action:@selector(finishClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *sendBtn = [CommTool submitButtonWithTarget:self Action:@selector(finishClick:)];
     
-    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:sendBtn];
-    self.navigationItem.rightBarButtonItem = rightItem;
+    // 选择图片按钮
+    UIButton *insertImgBtn = [CommTool insertImageWithTarget:self Action:@selector(imageClick:)];
+    
+    UIBarButtonItem* rightItemSend = [[UIBarButtonItem alloc] initWithCustomView:sendBtn];
+    UIBarButtonItem* rightItemInsert = [[UIBarButtonItem alloc] initWithCustomView:insertImgBtn];
+    self.navigationItem.rightBarButtonItems = @[rightItemSend, rightItemInsert];
     
     //如果无需改变字体 颜色 大小
     if (self.textType==RichTextType_PlainString) {
@@ -320,6 +319,21 @@
         return;
     }
     
+    NSString* tempContent = [content stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    tempContent = [tempContent stringByReplacingOccurrencesOfString:@"\U0000fffc" withString:@""];
+    
+    if (tempContent.length < 100) {
+        [FJProgressHUB showInfoWithMessage:@"内容字数不够100" withTimeInterval:1.0];
+        [self.textView becomeFirstResponder];
+        return;
+    }
+    
+    if (tempContent.length > 2000) {
+        [FJProgressHUB showInfoWithMessage:@"内容字数超过限制2000" withTimeInterval:1.0];
+        [self.textView becomeFirstResponder];
+        return;
+    }
+    
     if (self.textType==RichTextType_HtmlString) {
         if (_finished!=nil) {
             _finished(_textView.attributedText, [_textView.attributedText getImgaeArray]);
@@ -531,16 +545,17 @@
         if ([self.textView isFirstResponder]) {//如果是textView弹出toolbar
             _toolbarConstrant.constant = keyboardFrame.size.height;
         } else {
-            _toolbarConstrant.constant = -40;
+            _toolbarConstrant.constant = 0;
         }
+        NSLog(@"_toolbarConstrant.constant = %f", _toolbarConstrant.constant);
         
         //Animate change
         [UIView animateWithDuration:0.5f animations:^{
             [self.view layoutIfNeeded];
         }];
     } else if ([notification.name isEqualToString:UIKeyboardWillHideNotification]) {
-        _bottomConstraint.constant = -40;
-        _toolbarConstrant.constant = -40;
+        _bottomConstraint.constant = 0;
+        _toolbarConstrant.constant = 0;
         
         //Animate change
         [UIView animateWithDuration:0.5f animations:^{

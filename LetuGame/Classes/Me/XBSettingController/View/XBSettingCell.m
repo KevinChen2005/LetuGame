@@ -48,24 +48,28 @@
     if (self.item.accessoryType) {
         [self setupAccessoryType];
     }
-    
+
     if (self.item.detailImage || self.item.detailImageURL) {
         [self setupDetailImage];
     }
-    
+
     //detailView
     if (self.item.detailText) {
         [self setupDetailText];
     }
-    
+
     if (self.item.isForbidSelect) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 
     //bottomLine
-//    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, self.height, XBScreenWidth, 0.8)];
-//    line.backgroundColor = FJGlobalBG;
-//    [self.contentView addSubview:line];
+    UIView *line = [[UIView alloc]init];
+    line.backgroundColor = FJGlobalBG;
+    [self.contentView addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(@(0.8));
+        make.left.right.bottom.mas_equalTo(self.contentView);
+    }];
 }
 
 -(void)setupDetailImage
@@ -231,8 +235,10 @@
 {
     self.funcNameLabel = [[UILabel alloc]init];
     self.funcNameLabel.text = self.item.funcName;
-    self.funcNameLabel.textColor = XBMakeColorWithRGB(13, 13, 13, 1);
-    self.funcNameLabel.font = [UIFont systemFontOfSize:XBFuncLabelFont];
+//    self.funcNameLabel.textColor = XBMakeColorWithRGB(13, 13, 13, 1);
+    self.funcNameLabel.textColor = XBMakeColorWithRGB(0x33, 0x33, 0x33, 1);
+//    self.funcNameLabel.font = [UIFont systemFontOfSize:XBFuncLabelFont];
+    self.funcNameLabel.font = [UIFont fontWithName:FJFontSiHanRegular size:XBFuncLabelFont];
     self.funcNameLabel.size = [self sizeForTitle:self.item.funcName withFont:self.funcNameLabel.font];
     [self.contentView addSubview:self.funcNameLabel];
     

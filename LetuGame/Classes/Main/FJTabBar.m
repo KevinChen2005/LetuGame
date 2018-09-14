@@ -23,7 +23,10 @@
 {
     if (self = [super initWithFrame:frame]) {
         // 设置tabbar的背景图片
-        [self setBackgroundImage:[UIImage imageNamed:@"tabbar-light"]];
+        UIImage* image = [UIImage imageNamed:@"tabbar-light"];
+        [self setBackgroundImage:image];
+//        self.backgroundColor = FJWhiteColor;
+//        self.barTintColor = FJWhiteColor;
         
         // 添加按钮
 //        UIButton *publishButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -71,7 +74,6 @@
         // 计算按钮的x值
         CGFloat buttonX = buttonW * index;
         button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
-        
         
         if (added == NO) {
             // 设置tag

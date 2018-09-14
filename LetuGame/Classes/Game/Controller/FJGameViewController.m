@@ -31,7 +31,9 @@
     
     self.tableView.sectionHeaderHeight = 1;
     self.tableView.sectionFooterHeight = 1;
-    self.tableView.estimatedRowHeight = 70;
+    self.tableView.estimatedRowHeight = 100;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     // 注册tableView的cell
     [self.tableView registerNib:[FJGameCell nib] forCellReuseIdentifier:NSStringFromClass([FJGameCell class])];
     
@@ -181,7 +183,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80.0;
+    return 110.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

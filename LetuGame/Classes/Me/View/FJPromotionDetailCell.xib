@@ -21,10 +21,10 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNb-pZ-6m6">
                         <rect key="frame" x="8" y="5" width="144" height="33.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9c-Z7-TEh">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9c-Z7-TEh" userLabel="centerLineView">
                         <rect key="frame" x="160" y="5" width="1" height="33.5"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -34,16 +34,26 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值金额(单位：元)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8BC-aR-jgl">
                         <rect key="frame" x="169" y="5" width="143" height="33.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IM9-ch-OZg">
+                        <rect key="frame" x="0.0" y="43" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.59999999999999998" id="l4T-lH-tyy"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="IM9-ch-OZg" secondAttribute="trailing" id="4af-NV-9wl"/>
                     <constraint firstAttribute="bottom" secondItem="8BC-aR-jgl" secondAttribute="bottom" constant="5" id="6bj-xu-GrO"/>
                     <constraint firstItem="t9c-Z7-TEh" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9i1-Mk-wgR"/>
+                    <constraint firstItem="IM9-ch-OZg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="F9z-sP-Xap"/>
                     <constraint firstItem="8BC-aR-jgl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Plx-VE-nby"/>
                     <constraint firstItem="WNb-pZ-6m6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Sxy-q5-sgI"/>
                     <constraint firstItem="8BC-aR-jgl" firstAttribute="leading" secondItem="t9c-Z7-TEh" secondAttribute="trailing" constant="8" id="Vg4-bD-pWw"/>
+                    <constraint firstAttribute="bottom" secondItem="IM9-ch-OZg" secondAttribute="bottom" id="Yax-Kt-yby"/>
                     <constraint firstAttribute="bottom" secondItem="WNb-pZ-6m6" secondAttribute="bottom" constant="5" id="g9h-IT-Kma"/>
                     <constraint firstAttribute="trailing" secondItem="8BC-aR-jgl" secondAttribute="trailing" constant="8" id="l4m-d8-yxo"/>
                     <constraint firstAttribute="bottom" secondItem="t9c-Z7-TEh" secondAttribute="bottom" constant="5" id="pFb-H5-n6z"/>

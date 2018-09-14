@@ -26,6 +26,8 @@
 
 @property (nonatomic, assign)NSInteger readTimes; //阅读量
 
+@property (nonatomic, copy)NSString* desc; //描述
+
 @property (nonatomic, assign)NSInteger score;
 
 @property (nonatomic, copy)NSString* source;

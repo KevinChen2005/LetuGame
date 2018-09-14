@@ -502,6 +502,21 @@
     [self postShowToastWithURL:kUrl(@"user/spreadIncome") params:params success:success failure:failure];
 }
 
+/**
+ 获取结算详情（按周返回，仅推广员用户适用）
+ 
+ month: 格式"2018-07"
+ */
++ (void)fetchSettleDetailListWithGameId:(NSString*)gameid month:(NSString*)month Success:(successBlock)success failure:(failureBlock)failure
+{
+    NSDictionary* params = @{
+                             @"token"    : [CommTool safeString:[UserAuth shared].userInfo.token],
+                             @"gameid"   : [CommTool safeString:gameid],
+                             @"month" : [CommTool safeString:month],
+                             };
+    [self postShowToastWithURL:kUrl(@"user/agentBillDetailWeek") params:params success:success failure:failure];
+}
+
 #pragma mark - 个人中心
 /**
  修改个人信息
@@ -597,6 +612,15 @@
 + (void)checkVersionFromAppstoreSuccess:(successBlock)success failure:(failureBlock)failure
 {
     [self getWithURL:kUrlCheckVersion success:success failure:failure];
+}
+
+#pragma mark - 版本更新检测（通过服务器）
+/**
+ 版本更新检测（通过服务器）
+ */
++ (void)checkVersionSuccess:(successBlock)success failure:(failureBlock)failure
+{
+    [self getWithURL:kUrl(@"version/lastest?os=ios") success:success failure:failure];
 }
 
 @end

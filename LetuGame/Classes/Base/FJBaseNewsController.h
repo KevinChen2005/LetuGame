@@ -11,8 +11,6 @@
 
 @interface FJBaseNewsController : FJBaseRefreshTableController
 
-
-
 /**
  跳转到详情控制器
  */

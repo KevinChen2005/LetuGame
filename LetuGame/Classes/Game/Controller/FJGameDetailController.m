@@ -7,8 +7,8 @@
 //
 
 #import "FJGameDetailController.h"
-#import "NavHeadTitleView.h"
-#import "HeadImageView.h"
+//#import "NavHeadTitleView.h"
+//#import "HeadImageView.h"
 #import "HeadLineView.h"
 #import "FJGameToolbar.h"
 #import "FJGame.h"
@@ -18,12 +18,14 @@
 #import "RichTextViewController.h"
 #import "PictureModel.h"
 
-@interface FJGameDetailController () <NavHeadTitleViewDelegate, FJGameToolbarDelegate, UITableViewDataSource, UITableViewDelegate, RichTextViewControllerDelegate, HeadLineViewDelegate>
+@interface FJGameDetailController () <FJGameToolbarDelegate, RichTextViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 {
     //头像
     UIImageView *_headerImg;
     //昵称
     UILabel *_nickLabel;
+    
+    UIStatusBarStyle _barStyle;
 }
 @property(nonatomic,assign)NSInteger count;
 @property(nonatomic,strong)NSMutableDictionary *dictWork;//存放上传计数
@@ -33,8 +35,8 @@
 @property(nonatomic,assign)float backImgWidth;
 @property(nonatomic,assign)float backImgOrgy;
 @property(nonatomic,assign)int rowHeight;
-@property(nonatomic,strong)NavHeadTitleView *NavView;//导航栏
-@property(nonatomic,strong)HeadImageView *headImageView;//头视图
+//@property(nonatomic,strong)NavHeadTitleView *NavView;//导航栏
+//@property(nonatomic,strong)HeadImageView *headImageView;//头视图
 @property(nonatomic,strong)HeadLineView *headLineView;
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)FJGameToolbar *toolbar;
@@ -53,21 +55,31 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.detail = [FJGameDetail new];
+    _barStyle = [UIApplication sharedApplication].statusBarStyle;
+    
+    // 右上角“我要玩游戏”
+    UIButton *button = [CommTool wantPlayGameButtonWithTarget:self Action:@selector(onClickWantPlay:)];
+    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = rightItem;
     
     //拉伸顶部图片
-    [self lashenBgView];
+//    [self lashenBgView];
     
     //创建导航栏
-    [self createNav];
-    
-    //创建TableView
-    [self createTableView];
+//    [self createNav];
     
     //创建toolbar
     _toolbar = [FJGameToolbar toolbar];
     _toolbar.delegate = self;
-    _toolbar.frame = CGRectMake(0, kScreenHeight-[FJGameToolbar height], kScreenWidth, [FJGameToolbar height]);
+//    _toolbar.frame = CGRectMake(0, kScreenHeight-[FJGameToolbar height], kScreenWidth, [FJGameToolbar height]);
     [self.view addSubview:_toolbar];
+    [_toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(self.view);
+        make.height.mas_equalTo(@([FJGameToolbar height]));
+    }];
+    
+    //创建TableView
+    [self createTableView];
     
     // 加入遮盖，在数据加载完后移除
     UIView* cover = [UIView new];
@@ -109,7 +121,7 @@
     [super viewWillAppear:animated];
     
     self.backgroundImgV.hidden = NO;
-    self.navigationController.navigationBar.hidden = YES;
+//    self.navigationController.navigationBar.hidden = YES;
     [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
 }
 
@@ -118,21 +130,35 @@
     [super viewWillDisappear:animated];
     
     self.backgroundImgV.hidden = YES;
-    self.navigationController.navigationBar.hidden = NO;
-    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleDefault;
+//    self.navigationController.navigationBar.hidden = NO;
+    [UIApplication sharedApplication].statusBarStyle = _barStyle;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     
-    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleDefault;
+    [UIApplication sharedApplication].statusBarStyle = _barStyle;
 }
 
 - (void)endLoading
 {
     [FJProgressHUB dismiss];
     [self.cover removeFromSuperview];
+}
+
+// 点击“我要玩”按钮
+- (void)onClickWantPlay:(id)sender
+{
+    if ([CommTool isLogined] == NO) {
+        [CommTool showLoginPageWithNavVC:self.navigationController];
+        return;
+    }
+    
+    [CommTool wantPlayGame:self.game.gameId];
+    
+    //    FJOrderViewController* orderVC = [FJOrderViewController new];
+    //    [self.navigationController pushViewController:orderVC animated:YES];
 }
 
 - (void)loadSuccess:(NSDictionary*)dictData
@@ -149,84 +175,90 @@
     }
     self.headLineView.detail = self.detail;
     [self.tableView reloadData];
+    [self.tableView setContentOffset:CGPointZero];
 }
 
 //拉伸顶部图片
--(void)lashenBgView
-{
-    _backgroundImgV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kBannerHeight*2)];
-    _backgroundImgV.image=[UIImage imageNamed:@"img_place_holder"];
-    _backgroundImgV.userInteractionEnabled=YES;
-    [self.view addSubview:_backgroundImgV];
-    
-    _backImgHeight=_backgroundImgV.frame.size.height;
-    _backImgWidth=_backgroundImgV.frame.size.width;
-    _backImgOrgy=_backgroundImgV.frame.origin.y;
-}
+//-(void)lashenBgView
+//{
+//    _backgroundImgV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kBannerHeight*2)];
+//    _backgroundImgV.image=[UIImage imageNamed:@"img_place_holder"];
+//    _backgroundImgV.userInteractionEnabled=YES;
+//    [self.view addSubview:_backgroundImgV];
+//
+//    _backImgHeight=_backgroundImgV.frame.size.height;
+//    _backImgWidth=_backgroundImgV.frame.size.width;
+//    _backImgOrgy=_backgroundImgV.frame.origin.y;
+//}
 
 //创建TableView
 -(void)createTableView
 {
-    if (!_tableView) {
-        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-[FJGameToolbar height]) style:UITableViewStylePlain];
-        _tableView.backgroundColor=[UIColor clearColor];
-        _tableView.showsVerticalScrollIndicator=NO;
-        _tableView.dataSource=self;
-        _tableView.delegate=self;
-        _tableView.tableFooterView = [[UIView alloc] init];
-        
-        // tableView 偏移20/64适配
-        self.extendedLayoutIncludesOpaqueBars = YES;
-        if (@available(iOS 11.0, *)) {
-            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;//UIScrollView也适用
-        }else {
-            self.automaticallyAdjustsScrollViewInsets = NO;
-        }
-//        _tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
-//        _tableView.scrollIndicatorInsets = self.tableView.contentInset;
-        
-        [self.view addSubview:_tableView];
+    // 构建tableview
+    UITableView* tableView = [[UITableView alloc] init];
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    tableView.scrollsToTop = YES;
+    tableView.tableHeaderView = [[UIView alloc] init];
+    // tableView 偏移20/64适配
+    self.extendedLayoutIncludesOpaqueBars = YES;
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;//UIScrollView也适用
+    }else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    self.tableView.contentInset = UIEdgeInsetsMake(iphoneX?88:64, 0, 0, 0);
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    self.tableView.sectionHeaderHeight = 15;
+    self.tableView.sectionFooterHeight = 1;
+    self.tableView.estimatedRowHeight = 100;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    [self.view addSubview:tableView];
     
-    [_tableView setTableHeaderView:[self headImageView]];
+    [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo([NSNumber numberWithInt:iphoneX?88:64]);
+        make.bottom.mas_equalTo(self.toolbar.mas_top);
+    }];
+    self.tableView = tableView;
 }
 
-- (void)handleSwipes:(UISwipeGestureRecognizer *)sender
-{
-    UIView *targetview = sender.view;
-    if(targetview.tag == 1) {
-        return;
-    }
-}
+//- (void)handleSwipes:(UISwipeGestureRecognizer *)sender
+//{
+//    UIView *targetview = sender.view;
+//    if(targetview.tag == 1) {
+//        return;
+//    }
+//}
 
-//头视图
--(HeadImageView *)headImageView
-{
-    if (!_headImageView) {
-        _headImageView=[[HeadImageView alloc]init];
-        _headImageView.frame=CGRectMake(0, 64, kScreenWidth, kBannerHeight);
-        _headImageView.backgroundColor=[UIColor clearColor];
-    }
-    
-    return _headImageView;
-}
+////头视图
+//-(HeadImageView *)headImageView
+//{
+//    if (!_headImageView) {
+//        _headImageView=[[HeadImageView alloc]init];
+//        _headImageView.frame=CGRectMake(0, 64, kScreenWidth, kBannerHeight);
+//        _headImageView.backgroundColor=[UIColor clearColor];
+//    }
+//
+//    return _headImageView;
+//}
 
--(void)createNav
-{
-    self.NavView=[[NavHeadTitleView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 64)];
-    self.NavView.title=@"游戏详情";
-    self.NavView.color=[UIColor whiteColor];
-    self.NavView.backTitleImage=@"nav_back_arrow_white";
-    self.NavView.rightTitleImage=@"Setting";
-    self.NavView.delegate=self;
-    [self.view addSubview:self.NavView];
-}
-
-//左按钮
--(void)NavHeadback
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+//-(void)createNav
+//{
+//    self.NavView=[[NavHeadTitleView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 64)];
+//    self.NavView.title=@"游戏详情";
+//    self.NavView.color=[UIColor whiteColor];
+//    self.NavView.backTitleImage=@"nav_back_arrow_white";
+//    self.NavView.rightTitleImage=@"Setting";
+//    self.NavView.delegate=self;
+//    [self.view addSubview:self.NavView];
+//}
+//
+////左按钮
+//-(void)NavHeadback
+//{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 
 //右按钮回调(我要玩)
 -(void)NavHeadToRight
@@ -235,7 +267,7 @@
         [CommTool showLoginPageWithNavVC:self.navigationController];
         return;
     }
-    
+
     [CommTool wantPlayGame:self.detail.gameInfo.ID];
 }
 
@@ -259,10 +291,10 @@
 {
     if (!_headLineView) {
         _headLineView=[HeadLineView headLineView];
-        _headLineView.frame=CGRectMake(0, 0, kScreenWidth, [HeadLineView height]);
-        _headLineView.delegate = self;
+//        _headLineView.frame=CGRectMake(0, 0, kScreenWidth, [HeadLineView height]);
+//        _headLineView.delegate = self;
     }
-    
+
     return _headLineView;
 }
 
@@ -285,42 +317,42 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    int contentOffsety = scrollView.contentOffset.y;
-    
-    if (scrollView.contentOffset.y<=170) {
-        self.NavView.headBgView.alpha=scrollView.contentOffset.y/170;
-        self.NavView.backTitleImage=@"nav_back_arrow_white";
-        self.NavView.rightImageView=@"Setting";
-        self.NavView.color=[UIColor whiteColor];
-        //状态栏字体白色
-        [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
-    }else{
-        self.NavView.headBgView.alpha=1;
-        //self.NavView.title
-        self.NavView.backTitleImage=@"nav_back_arrow";
-        self.NavView.rightImageView=@"Setting-click";
-        self.NavView.color=[UIColor blackColor];
-        //隐藏黑线
-//        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-        //状态栏字体黑色
-        [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleDefault;
-    }
-    
-    if (contentOffsety<0) {
-        CGRect rect = _backgroundImgV.frame;
-        rect.size.height = _backImgHeight-contentOffsety;
-        rect.size.width = _backImgWidth* (_backImgHeight-contentOffsety)/_backImgHeight;
-        rect.origin.x =  -(rect.size.width-_backImgWidth)/2;
-        rect.origin.y = 0;
-        _backgroundImgV.frame = rect;
-    }else{
-        CGRect rect = _backgroundImgV.frame;
-        rect.size.height = _backImgHeight;
-        rect.size.width = _backImgWidth;
-        rect.origin.x = 0;
-        rect.origin.y = -contentOffsety;
-        _backgroundImgV.frame = rect;
-    }
+//    int contentOffsety = scrollView.contentOffset.y;
+//    
+//    if (scrollView.contentOffset.y<=170) {
+//        self.NavView.headBgView.alpha=scrollView.contentOffset.y/170;
+//        self.NavView.backTitleImage=@"nav_back_arrow_white";
+//        self.NavView.rightImageView=@"Setting";
+//        self.NavView.color=[UIColor whiteColor];
+//        //状态栏字体白色
+//        [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
+//    }else{
+//        self.NavView.headBgView.alpha=1;
+//        //self.NavView.title
+//        self.NavView.backTitleImage=@"nav_back_arrow";
+//        self.NavView.rightImageView=@"Setting-click";
+//        self.NavView.color=[UIColor whiteColor];
+//        //隐藏黑线
+////        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+//        //状态栏字体黑色
+//        [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
+//    }
+//    
+//    if (contentOffsety<0) {
+//        CGRect rect = _backgroundImgV.frame;
+//        rect.size.height = _backImgHeight-contentOffsety;
+//        rect.size.width = _backImgWidth* (_backImgHeight-contentOffsety)/_backImgHeight;
+//        rect.origin.x =  -(rect.size.width-_backImgWidth)/2;
+//        rect.origin.y = 0;
+//        _backgroundImgV.frame = rect;
+//    }else{
+//        CGRect rect = _backgroundImgV.frame;
+//        rect.size.height = _backImgHeight;
+//        rect.size.width = _backImgWidth;
+//        rect.origin.x = 0;
+//        rect.origin.y = -contentOffsety;
+//        _backgroundImgV.frame = rect;
+//    }
 }
 
 #pragma mark - FJGameToolbarDelegate
@@ -432,11 +464,11 @@
     }
 }
 
-#pragma mark - HeadLineViewDelegate
-- (void)headLineView:(HeadLineView *)view onClickWantPlay:(UIButton *)wantPlayBtn
-{
-    [self NavHeadToRight];
-}
+//#pragma mark - HeadLineViewDelegate
+//- (void)headLineView:(HeadLineView *)view onClickWantPlay:(UIButton *)wantPlayBtn
+//{
+//    [self NavHeadToRight];
+//}
 
 @end
 

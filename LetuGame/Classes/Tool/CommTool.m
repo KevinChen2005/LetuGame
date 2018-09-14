@@ -97,6 +97,65 @@
     }];
 }
 
++ (UIButton*)wantPlayGameButtonWithTitle:(NSString*)title image:(NSString*)image Target:(id)target Action:(SEL)action
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [button setTitleColor:FJWhiteColor forState:UIControlStateNormal];
+    [button sizeToFit];
+    [button.titleLabel setFont:FJNavbarItemFont];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    [button setImageEdgeInsets:UIEdgeInsetsMake(-16, 35, 0, 0)];
+    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, -16, 0)];
+    
+    return button;
+}
+
++ (UIButton*)wantPlayGameButtonWithTarget:(id)target Action:(SEL)action
+{
+    return [self wantPlayGameButtonWithTitle:@"我要玩" image:@"tu_ic_woyaowan" Target:target Action:action];
+}
+
++ (UIButton*)submitButtonWithTarget:(id)target Action:(SEL)action
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"提交" forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"tu_ic_tijiao"] forState:UIControlStateNormal];
+    [button setTitleColor:FJWhiteColor forState:UIControlStateNormal];
+    [button sizeToFit];
+    [button.titleLabel setFont:FJNavbarItemFont];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    [button setImageEdgeInsets:UIEdgeInsetsMake(-16, 25, 0, 0)];
+    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, -16, 0)];
+    button.frame = CGRectMake(0, 0, 50, 45);
+    
+    return button;
+    
+//    return [self wantPlayGameButtonWithTitle:@"提交" image:@"tu_ic_tijiao" Target:target Action:action];
+}
+
++ (UIButton*)insertImageWithTarget:(id)target Action:(SEL)action
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"插入图片" forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"tu_ic_charutupian"] forState:UIControlStateNormal];
+    [button setTitleColor:FJWhiteColor forState:UIControlStateNormal];
+    [button sizeToFit];
+    [button.titleLabel setFont:FJNavbarItemFont];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    [button setImageEdgeInsets:UIEdgeInsetsMake(-20, 35, 0, -10)];
+    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, -16, -18)];
+    button.frame = CGRectMake(0, 0, 60, 40);
+    
+    return button;
+    
+//    return [self wantPlayGameButtonWithTitle:@"插入图片" image:@"tu_ic_charutupian" Target:target Action:action];
+}
+
 + (NSInteger)timeIntervalOfTwoData:(NSDate*)startDate endDate:(NSDate*)endDate
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];

@@ -45,4 +45,9 @@
  */
 - (NSDate*)lastDayOfCurrentMonth;
 
+/**
+ 返回当前月的最后一天最后一秒钟时刻
+ */
++ (NSDate*)dateFromComponents:(NSDateComponents*)dateComponents;
+
 @end

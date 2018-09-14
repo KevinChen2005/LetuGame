@@ -11,6 +11,7 @@
 #import "FJPromotionDeteilHeader.h"
 #import "FJPromotionDetailModel.h"
 #import "FJPromotionDetailCell.h"
+#import "FJSettleDetailController.h"
 
 @interface FJPromotionDetailController ()
 
@@ -28,6 +29,7 @@
     self.title = [NSString stringWithFormat:@"《%@》- 推广详情", self.promotion.gameName];
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.rowHeight = [FJPromotionDetailCell height];
     [self.tableView registerNib:[FJPromotionDetailCell nib] forCellReuseIdentifier:[FJPromotionDetailCell reuseId]];
     
@@ -41,6 +43,7 @@
     UILabel* footerNoData = [UILabel new];
     footerNoData.text = @"暂无数据!";
     footerNoData.font = [UIFont systemFontOfSize:16];
+    footerNoData.textColor = FJBlackTitle;
     footerNoData.frame = CGRectMake(20, 0, kScreenWidth, 60);
     self.tableView.tableFooterView = footerNoData;
     self.footerNoData = footerNoData;
@@ -52,6 +55,35 @@
     self.footerLine = footer;
     
     [self requestPromotionListWithStartTime:self.promotion.startDate endTime:self.promotion.endDate];
+    
+    //结算详情
+    if (self.promotion.payMoney > 0.0) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitle:@"结算明细" forState:UIControlStateNormal];
+        [button setTitleColor:FJWhiteColor forState:UIControlStateNormal];
+        [button sizeToFit];
+        [button.titleLabel setFont:FJNavbarItemFont];
+        [button addTarget:self action:@selector(onClickSettleDetail:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+        self.navigationItem.rightBarButtonItem = rightItem;
+    }
+}
+
+- (void)onClickSettleDetail:(id)sender
+{
+    //弹出结算详情页
+    FJSettleDetailController* settleDetailVC = [FJSettleDetailController new];
+    settleDetailVC.promotion = self.promotion;
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue]>=8.0) {
+        settleDetailVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    }else{
+        self.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    }
+    if (self.presentedViewController == nil){
+        [self presentViewController:settleDetailVC animated:YES completion:nil];
+    }
 }
 
 - (void)requestPromotionListWithStartTime:(NSDate*)startDate endTime:(NSDate*)endDate

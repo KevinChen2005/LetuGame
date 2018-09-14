@@ -68,13 +68,7 @@
 - (void)buildUI
 {
     // 右上角“我要玩游戏”
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"我要玩" forState:UIControlStateNormal];
-    [button setTitleColor:FJRGBColor(0, 130, 188) forState:UIControlStateNormal];
-    [button sizeToFit];
-    [button.titleLabel setFont:FJNavbarItemFont];
-    [button addTarget:self action:@selector(onClickWantPlay:) forControlEvents:UIControlEventTouchUpInside];
-    
+    UIButton *button = [CommTool wantPlayGameButtonWithTarget:self Action:@selector(onClickWantPlay:)];
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = rightItem;
     
@@ -104,16 +98,16 @@
     // tableView 偏移20/64适配
     self.extendedLayoutIncludesOpaqueBars = YES;
     if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;//UIScrollView也适用
+        tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;//UIScrollView也适用
     }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.tableView.contentInset = UIEdgeInsetsMake(iphoneX?88:64, 0, 0, 0);
-    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
-    self.tableView.sectionHeaderHeight = 15;
-    self.tableView.sectionFooterHeight = 1;
-    self.tableView.estimatedRowHeight = 100;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    tableView.sectionHeaderHeight = 15;
+    tableView.sectionFooterHeight = 1;
+    tableView.estimatedRowHeight = 100;
+    tableView.rowHeight = UITableViewAutomaticDimension;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
     
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -146,8 +140,7 @@
         if ([code isEqualToString:@"1"]) {
             strongSelf.newsDetail = [FJNewsDetail mj_objectWithKeyValues:retData];
             [strongSelf makeHeaderWithTitle:self.newsDetail.title content:self.newsDetail.content];
-            strongSelf.header.likeCount = self.newsDetail.score;
-            strongSelf.header.isLiked = self.newsDetail.isLiked;
+            strongSelf.header.newsDetail = self.newsDetail;
             strongSelf.toolbar.isCollected = self.newsDetail.isCollected;
         }
     } failure:^(NSError *error) {
@@ -170,10 +163,13 @@
 {
     [super viewWillAppear:animated];
     
-//    if (self.isPushInto) {
-//        self.isPushInto = NO;
-//        [FJProgressHUB showWithMessage:nil];
-//    }
+    if (self.isPushInto) {
+        self.isPushInto = NO;
+        [FJProgressHUB showWithMessage:nil];
+        
+        //5秒后如果还没加载完就移除遮罩和hub
+        [self performSelector:@selector(endLoading:) withObject:[NSNumber numberWithBool:YES] afterDelay:5.0];
+    }
     
     // 加载评论数据
     NSInteger start = 0;
@@ -281,9 +277,8 @@
     NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"NewsHtml" ofType:@"html"];
     NSMutableString *appHtml = [NSMutableString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     //标题
-    NSString* t = [self.newsDetail.title isEqualToString:@""]?@"--":self.newsDetail.title;
-    
-    NSString* titleFormat = [NSString stringWithFormat:@"<h2 class = 'thicker'>%@</h2><p class='subtitle'>%@ 发布于 %@</p>", t, self.newsDetail.creatUser, [self.newsDetail.creattime timeFormat]];
+//    NSString* t = [self.newsDetail.title isEqualToString:@""]?@"--":self.newsDetail.title;
+//    NSString* titleFormat = [NSString stringWithFormat:@"<h2 class = 'thicker'>%@</h2><p class='subtitle'>%@ 发布于 %@</p>", t, self.newsDetail.creatUser, [self.newsDetail.creattime timeFormat]];
     
     //内容
     NSString* c = [content isEqualToString:@""]?@"--":content;
@@ -291,7 +286,10 @@
     if (![content containsString:@"<p>"]) {
         contentTemp = [NSString stringWithFormat:@"<p>%@</p>", c];
     }
-    NSString* strAdd = [NSString stringWithFormat:@"%@ %@", titleFormat, contentTemp];
+    
+    //标题改为原生实现
+//    NSString* strAdd = [NSString stringWithFormat:@"%@ %@", titleFormat, contentTemp];
+    NSString* strAdd = [NSString stringWithFormat:@"%@", contentTemp];
     [appHtml replaceOccurrencesOfString:@"<p>mainnews</p>" withString:strAdd options:NSCaseInsensitiveSearch range:[appHtml rangeOfString:@"<p>mainnews</p>"]];
     
     /*替换html中的格式代码------begin*/
@@ -342,7 +340,11 @@
     
     // 构建header
     __weak typeof(self) weakSelf = self;
-    FJDetailHeader* header = [[FJDetailHeader alloc] initWithLoadHtmlString:appHtml CompleteBlock:^(NSInteger height) {
+    FJDetailHeader* header = [[FJDetailHeader alloc] init];
+    header.delegate = self;
+    self.header = header;
+    
+    [header startLoadHtmlString:appHtml CompleteBlock:^(NSInteger height) {
         weakSelf.header.frame = CGRectMake(0, 0, weakSelf.tableView.bounds.size.width, height);
         weakSelf.tableView.tableHeaderView = weakSelf.header;
         
@@ -350,8 +352,6 @@
         NSLog(@"height = %ld", (long)height);
         
     }];
-    header.delegate = self;
-    self.header = header;
 }
 
 // 点击“我要玩”按钮
@@ -378,30 +378,30 @@
     return self.datas.count;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//    FJCommentCell *cell = (FJCommentCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([FJCommentCell class])];
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+////    FJCommentCell *cell = (FJCommentCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([FJCommentCell class])];
+////
+////    cell.comment = [self.datas objectAtIndex:indexPath.row];
+////
+////    //这句代码必须要有，也就是说必须要设定contentView的宽度约束。
+////    //设置以后，contentView里面的内容才知道什么时候该换行了
+////    CGFloat contentViewWidth = CGRectGetWidth(self.tableView.frame);
+////    [cell.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+////        make.width.equalTo(@(contentViewWidth));
+////    }];
+////
+////    //重新加载约束,每次计算之前一定要重新确认一下约束
+////    [cell setNeedsUpdateConstraints];
+////    [cell updateConstraintsIfNeeded];
+////
+////    //自动算高度，+1的原因是因为contentView的高度要比cell的高度小1
+////    CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height + 1;
+////
+////    return height;
 //
-//    cell.comment = [self.datas objectAtIndex:indexPath.row];
-//
-//    //这句代码必须要有，也就是说必须要设定contentView的宽度约束。
-//    //设置以后，contentView里面的内容才知道什么时候该换行了
-//    CGFloat contentViewWidth = CGRectGetWidth(self.tableView.frame);
-//    [cell.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.width.equalTo(@(contentViewWidth));
-//    }];
-//
-//    //重新加载约束,每次计算之前一定要重新确认一下约束
-//    [cell setNeedsUpdateConstraints];
-//    [cell updateConstraintsIfNeeded];
-//
-//    //自动算高度，+1的原因是因为contentView的高度要比cell的高度小1
-//    CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height + 1;
-//
-//    return height;
-    
-    return 100;
-}
+//    return 100;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
