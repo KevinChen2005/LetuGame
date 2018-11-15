@@ -8,11 +8,11 @@
 #ifndef MACMacro_h
 #define MACMacro_h
 
-#ifdef DEBUG
+//#ifdef DEBUG
 #   define DLog(fmt, ...) NSLog((@"%s [Line %d]: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#else
-#   define DLog(...)
-#endif
+//#else
+//#   define DLog(...)
+//#endif
 
 #define WEAKSELF typeof(self) __weak weakSelf = self;
 #define STRONGSELF typeof(weakSelf) __strong strongSelf = weakSelf;
@@ -103,7 +103,16 @@
 #define iphone5 CGSizeEqualToSize(CGSizeMake(640,1136), [[UIScreen mainScreen]currentMode].size)
 #define iphone6 CGSizeEqualToSize(CGSizeMake(750,1334), [[UIScreen mainScreen]currentMode].size)
 #define iphone6Plus CGSizeEqualToSize(CGSizeMake(1242,2208), [[UIScreen mainScreen]currentMode].size)
-#define iphoneX CGSizeEqualToSize(CGSizeMake(1125,2436), [[UIScreen mainScreen] currentMode].size)
+
+//判断iPhoneX iPhoneXs
+#define SCREENSIZE_IS_X (CGSizeEqualToSize(CGSizeMake(1125,2436), [[UIScreen mainScreen] currentMode].size))
+//判断iPHoneXr
+#define SCREENSIZE_IS_XR_0 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) && !isIpad : NO)
+#define SCREENSIZE_IS_XR_1 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1624), [[UIScreen mainScreen] currentMode].size) && !isIpad : NO)
+//判断iPhoneXs Max
+#define SCREENSIZE_IS_XS_MAX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size) && !isIpad : NO)
+
+#define iphoneX (SCREENSIZE_IS_X || SCREENSIZE_IS_XR_0 || SCREENSIZE_IS_XR_1 || SCREENSIZE_IS_XS_MAX)
 
 //获取屏幕宽度、高度
 #define kScreenWidth ([UIScreen mainScreen].bounds.size.width)

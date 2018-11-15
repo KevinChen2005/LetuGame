@@ -50,6 +50,8 @@
     
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
+    NSLog(@"%@", NSStringFromCGSize([[UIScreen mainScreen] currentMode].size));
+    
     return YES;
 }
 
@@ -201,7 +203,7 @@
     //将闪屏view添加到keyWindow
     UIView *launchView = viewController.view;
     launchView.userInteractionEnabled = YES;
-    UIWindow *mainWindow = [UIApplication sharedApplication].keyWindow;
+    UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
     [mainWindow addSubview:launchView];
     mainWindow.userInteractionEnabled = YES;
     [launchView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -216,7 +218,11 @@
             UIImageView* imageView = (UIImageView*)v;
             NSString* name = [NSString stringWithFormat:@"%.fx%.f", kScreenWidthPx, kScreenHeightPx];
             DLog(@"name=%@",name);
-            imageView.image = [UIImage imageNamed:name];
+            UIImage* image = [UIImage imageNamed:name];
+            if (image == nil) {
+                image = [UIImage imageNamed:@"2048x2732"];
+            }
+            imageView.image = image;
             [v mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.edges.mas_equalTo(launchView);
             }];

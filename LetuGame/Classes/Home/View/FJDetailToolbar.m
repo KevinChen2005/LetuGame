@@ -47,8 +47,12 @@
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self);
         make.top.equalTo(self);
-        make.width.equalTo(self);;
-        make.height.equalTo(@(0.5));
+        make.width.equalTo(self);
+        if ([[UIDevice currentDevice].systemVersion floatValue] < 10.0) {
+            make.height.mas_equalTo(@1);
+        } else {
+            make.height.mas_equalTo(@0.5);
+        }
     }];
     
     

@@ -200,6 +200,7 @@
     tableView.delegate = self;
     tableView.scrollsToTop = YES;
     tableView.tableHeaderView = [[UIView alloc] init];
+    tableView.tableFooterView = [[UIView alloc] init];
     // tableView 偏移20/64适配
     self.extendedLayoutIncludesOpaqueBars = YES;
     if (@available(iOS 11.0, *)) {

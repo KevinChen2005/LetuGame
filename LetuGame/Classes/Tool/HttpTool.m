@@ -476,8 +476,8 @@
  */
 + (void)fetchPromotionListWithStartTime:(NSDate*)startTime endTime:(NSDate*)endTime Success:(successBlock)success failure:(failureBlock)failure
 {
-    NSString* startTimeStr = [startTime formatString:@"yyyy-MM-dd hh:mm:ss"];
-    NSString* endTimeStr = [endTime formatString:@"yyyy-MM-dd hh:mm:ss"];
+    NSString* startTimeStr = [startTime formatString:@"yyyy-MM-dd HH:mm:ss"];
+    NSString* endTimeStr = [endTime formatString:@"yyyy-MM-dd HH:mm:ss"];
     NSDictionary* params = @{
                              @"token"   : [CommTool safeString:[UserAuth shared].userInfo.token],
                              @"startTime" : [CommTool safeString:startTimeStr],
@@ -491,8 +491,8 @@
  */
 + (void)fetchPromotionDetailListWithGameId:(NSString*)gameid startTime:(NSDate*)startTime endTime:(NSDate*)endTime Success:(successBlock)success failure:(failureBlock)failure
 {
-    NSString* startTimeStr = [startTime formatString:@"yyyy-MM-dd hh:mm:ss"];
-    NSString* endTimeStr = [endTime formatString:@"yyyy-MM-dd hh:mm:ss"];
+    NSString* startTimeStr = [startTime formatString:@"yyyy-MM-dd HH:mm:ss"];
+    NSString* endTimeStr = [endTime formatString:@"yyyy-MM-dd HH:mm:ss"];
     NSDictionary* params = @{
                              @"token"    : [CommTool safeString:[UserAuth shared].userInfo.token],
                              @"gameid"   : [CommTool safeString:gameid],

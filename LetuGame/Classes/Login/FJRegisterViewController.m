@@ -42,7 +42,7 @@
     [super viewDidLoad];
 
     self.title = @"注册";
-    _isAgreeUserProtocol = NO;
+    _isAgreeUserProtocol = YES;
     self.view.backgroundColor =[UIColor whiteColor];
     
     self.topMarginContraint.constant = iphoneX ? (110 + 24) : 110;
@@ -125,11 +125,10 @@
             [FJProgressHUB showErrorWithMessage:@"注册失败，返回数据错误" withTimeInterval:kTimeHubError];
             return;
         }
-        DLog(@"注册成功-%@", retObj);
         
         NSString* code = [NSString stringWithFormat:@"%@", retDict[@"code"]];
         NSString* message = [NSString stringWithFormat:@"%@", retDict[@"message"]];
-        if ([code isEqualToString:@"1"]) { //登录成功
+        if ([code isEqualToString:@"1"]) { //注册成功
             [FJProgressHUB showSuccessWithMessage:@"注册成功，请登录" withTimeInterval:kTimeHubSuccess];
             
             FJLoginViewController*loginVC= [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];

@@ -113,7 +113,7 @@ CGFloat g_height = kDefaultHeight;
     CGSize size = [self.content sizeWhenFillText];
     CGFloat contentHeight = size.height;
     
-    CGFloat otherCtrlHeight = 680; //其他控件加间距高度，由xib计算获得
+    CGFloat otherCtrlHeight = 700 + 100; //其他控件加间距高度，由xib计算获得
     g_height = otherCtrlHeight + contentHeight;
     NSLog(@"g_height = %f", g_height);
     
@@ -159,7 +159,7 @@ CGFloat g_height = kDefaultHeight;
 - (UIImage *)photoBrowser:(HZPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index
 {
     //图片浏览时，未加载出图片的占位图
-    return [UIImage imageNamed:@"img_place_holder2"];
+    return nil;//[UIImage imageNamed:@"img_place_holder2"];
 }
 
 - (NSURL *)photoBrowser:(HZPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index

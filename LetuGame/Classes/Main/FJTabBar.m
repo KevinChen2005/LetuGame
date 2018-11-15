@@ -22,6 +22,8 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        self.itemPositioning = UITabBarItemPositioningFill;
+        
         // 设置tabbar的背景图片
         UIImage* image = [UIImage imageNamed:@"tabbar-light"];
         [self setBackgroundImage:image];
@@ -92,7 +94,7 @@
 
 - (void)buttonClick:(UIControl*)btn
 {
-//    NSLog(@"click item %ld", (long)btn.tag);
+    NSLog(@"click item %ld", (long)btn.tag);
     // 发通知
 //    [[NSNotificationCenter defaultCenter] postNotificationName:FJTabBarDidSelectNotification object:nil userInfo:nil];
     

@@ -33,6 +33,7 @@
     //设置header
     XBMeHeaderView *header = [XBMeHeaderView header];
     header.delegate = self;
+    header.fj_height = isIpad ? 250 : 155;
     self.header = header;
     self.tableView.tableHeaderView = header;
     

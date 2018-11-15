@@ -39,14 +39,9 @@
 		84451E5520EDFAE4001044FD /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451DB220EDFAE4001044FD /* NSString+MJExtension.m */; };
 		84451E5620EDFAE4001044FD /* MJPropertyKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451DB320EDFAE4001044FD /* MJPropertyKey.m */; };
 		84451E5720EDFAE4001044FD /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451DB720EDFAE4001044FD /* MJFoundation.m */; };
-		84451E5820EDFAE4001044FD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 84451DB820EDFAE4001044FD /* LICENSE */; };
 		84451E5920EDFAE4001044FD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 84451DB920EDFAE4001044FD /* README.md */; };
-		84451E5A20EDFAE4001044FD /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 84451DBB20EDFAE4001044FD /* LICENSE.md */; };
 		84451E5B20EDFAE4001044FD /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451DBD20EDFAE4001044FD /* DALabeledCircularProgressView.m */; };
 		84451E5C20EDFAE4001044FD /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451DBE20EDFAE4001044FD /* DACircularProgressView.m */; };
-		84451E5D20EDFAE4001044FD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 84451DC120EDFAE4001044FD /* README.md */; };
-		84451E8F20EDFAE4001044FD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 84451E2E20EDFAE4001044FD /* LICENSE */; };
-		84451E9020EDFAE4001044FD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 84451E2F20EDFAE4001044FD /* README.md */; };
 		84451E9120EDFAE4001044FD /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451E3320EDFAE4001044FD /* SDWebImageManager.m */; };
 		84451E9220EDFAE4001044FD /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451E3420EDFAE4001044FD /* SDWebImageDecoder.m */; };
 		84451E9320EDFAE4001044FD /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451E3620EDFAE4001044FD /* UIImageView+HighlightedWebCache.m */; };
@@ -84,8 +79,6 @@
 		84451F0120F0C3BD001044FD /* XBMeFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451EFE20F0C3BD001044FD /* XBMeFooterView.m */; };
 		84451F0220F0C3BD001044FD /* XBMeFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84451EFF20F0C3BD001044FD /* XBMeFooterView.xib */; };
 		84451F0520F1E1E2001044FD /* FJBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451F0420F1E1E2001044FD /* FJBaseTableViewController.m */; };
-		84451F2E20F1E7C8001044FD /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 84451F0720F1E7C7001044FD /* LICENSE.md */; };
-		84451F2F20F1E7C8001044FD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 84451F0820F1E7C7001044FD /* README.md */; };
 		84451F3020F1E7C8001044FD /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451F0B20F1E7C7001044FD /* IQTextView.m */; };
 		84451F3120F1E7C8001044FD /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451F0F20F1E7C7001044FD /* IQToolbar.m */; };
 		84451F3220F1E7C8001044FD /* IQTitleBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84451F1120F1E7C7001044FD /* IQTitleBarButtonItem.m */; };
@@ -163,7 +156,6 @@
 		84772C6D2126752200029A4F /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84772C612126752100029A4F /* MASConstraint.m */; };
 		84772C6E2126752200029A4F /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84772C632126752100029A4F /* MASViewConstraint.m */; };
 		84772C6F2126752200029A4F /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 84772C642126752100029A4F /* MASViewAttribute.m */; };
-		84772C702126752200029A4F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84772C652126752100029A4F /* Info.plist */; };
 		84772CA021267A8600029A4F /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 84772C7221267A8600029A4F /* UIScrollView+MJRefresh.m */; };
 		84772CA121267A8600029A4F /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 84772C7321267A8600029A4F /* MJRefreshConst.m */; };
 		84772CA221267A8600029A4F /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84772C7721267A8600029A4F /* MJRefresh.bundle */; };
@@ -229,8 +221,6 @@
 		84A3EF3520F30CB700879FB7 /* UIImage+FJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3EF2E20F30CB700879FB7 /* UIImage+FJExtension.m */; };
 		84A3EF3920F30E6300879FB7 /* FJPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3EF3820F30E6300879FB7 /* FJPopView.m */; };
 		84A3EF4220F3335400879FB7 /* FJBaseSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3EF4020F3335400879FB7 /* FJBaseSettingController.m */; };
-		84A3EF5820F34FAB00879FB7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 84A3EF4420F34FAB00879FB7 /* LICENSE */; };
-		84A3EF5920F34FAB00879FB7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 84A3EF4520F34FAB00879FB7 /* README.md */; };
 		84A3EF5A20F34FAB00879FB7 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3EF4C20F34FAB00879FB7 /* SDCycleScrollView.m */; };
 		84A3EF5B20F34FAB00879FB7 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3EF4D20F34FAB00879FB7 /* UIView+SDExtension.m */; };
 		84A3EF5C20F34FAB00879FB7 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3EF4E20F34FAB00879FB7 /* SDCollectionViewCell.m */; };
@@ -1960,21 +1950,21 @@
 		84A3F05020F889A900879FB7 /* KNBannerView */ = {
 			isa = PBXGroup;
 			children = (
+				84A3F05A20F889A900879FB7 /* UIView+KNExtension.h */,
 				84A3F05120F889A900879FB7 /* UIView+KNExtension.m */,
+				84A3F05920F889A900879FB7 /* KNBannerCollectionViewCell.h */,
 				84A3F05220F889A900879FB7 /* KNBannerCollectionViewCell.m */,
+				84A3F05C20F889A900879FB7 /* KNBannerViewText.h */,
 				84A3F05320F889A900879FB7 /* KNBannerViewText.m */,
 				84A3F05420F889A900879FB7 /* KNBannerViewModel.h */,
+				84A3F05B20F889A900879FB7 /* KNBannerViewModel.m */,
+				84A3F05F20F889A900879FB7 /* KNBannerPageControl.h */,
 				84A3F05520F889A900879FB7 /* KNBannerPageControl.m */,
 				84A3F05620F889A900879FB7 /* KNWeekProxy.h */,
-				84A3F05720F889A900879FB7 /* KNBannerView.h */,
-				84A3F05820F889A900879FB7 /* KNCustomPageControl.h */,
-				84A3F05920F889A900879FB7 /* KNBannerCollectionViewCell.h */,
-				84A3F05A20F889A900879FB7 /* UIView+KNExtension.h */,
-				84A3F05B20F889A900879FB7 /* KNBannerViewModel.m */,
-				84A3F05C20F889A900879FB7 /* KNBannerViewText.h */,
-				84A3F05D20F889A900879FB7 /* KNBannerView.m */,
 				84A3F05E20F889A900879FB7 /* KNWeekProxy.m */,
-				84A3F05F20F889A900879FB7 /* KNBannerPageControl.h */,
+				84A3F05720F889A900879FB7 /* KNBannerView.h */,
+				84A3F05D20F889A900879FB7 /* KNBannerView.m */,
+				84A3F05820F889A900879FB7 /* KNCustomPageControl.h */,
 				84A3F06020F889A900879FB7 /* KNCustomPageControl.m */,
 			);
 			path = KNBannerView;
@@ -2114,12 +2104,8 @@
 				84B2A8BF21142B8800BEB5A8 /* RichText.storyboard in Resources */,
 				840641B9210FFB5800F88007 /* FJPromotionCell.xib in Resources */,
 				848D083F212D5DE4006D749B /* FJPromotionHeader.xib in Resources */,
-				84451E5D20EDFAE4001044FD /* README.md in Resources */,
 				84451F0220F0C3BD001044FD /* XBMeFooterView.xib in Resources */,
 				846550FD20FB2B6000A3202A /* SVProgressHUD.bundle in Resources */,
-				84451F2E20F1E7C8001044FD /* LICENSE.md in Resources */,
-				84451E5A20EDFAE4001044FD /* LICENSE.md in Resources */,
-				84451E5820EDFAE4001044FD /* LICENSE in Resources */,
 				84451ED320EE2391001044FD /* FJLoginViewController.xib in Resources */,
 				84503A58210087C50007437B /* me_aboutme.html in Resources */,
 				845C482F213A732100D60D22 /* SourceHanSansCN-Regular.otf in Resources */,
@@ -2128,19 +2114,13 @@
 				845C4830213A732100D60D22 /* SourceHanSansCN-Normal.otf in Resources */,
 				8406417B2109742400F88007 /* FJFindPwdViewController.xib in Resources */,
 				84A3F04F20F87F1000879FB7 /* HeadLineView.xib in Resources */,
-				84A3EF5920F34FAB00879FB7 /* README.md in Resources */,
 				84503A5A210087C50007437B /* me_help.html in Resources */,
-				84451E9020EDFAE4001044FD /* README.md in Resources */,
-				84451F2F20F1E7C8001044FD /* README.md in Resources */,
 				845C4832213A732100D60D22 /* SourceHanSansCN-Medium.otf in Resources */,
-				84772C702126752200029A4F /* Info.plist in Resources */,
 				84451D6820EDF5AE001044FD /* LaunchScreen.storyboard in Resources */,
 				84A3EFED20F5B69F00879FB7 /* FJCommentCell.xib in Resources */,
 				84451EB920EDFFE7001044FD /* XBMeHeaderView.xib in Resources */,
 				845C4872213FB3F300D60D22 /* FJNewsTitleView.xib in Resources */,
-				84A3EF5820F34FAB00879FB7 /* LICENSE in Resources */,
 				845C4831213A732100D60D22 /* SourceHanSansCN-ExtraLight.otf in Resources */,
-				84451E8F20EDFAE4001044FD /* LICENSE in Resources */,
 				84451EDA20F0656F001044FD /* FJRegisterViewController.xib in Resources */,
 				84451E5920EDFAE4001044FD /* README.md in Resources */,
 				84503A5B210087C50007437B /* me_user_protocol.html in Resources */,

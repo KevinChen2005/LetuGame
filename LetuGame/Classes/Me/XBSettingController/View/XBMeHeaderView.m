@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 @property (weak, nonatomic) IBOutlet UIImageView *editView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *avatarConstraintY;
 
 @end
 
@@ -46,6 +47,8 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickLoginBtn:)];
     self.editView.userInteractionEnabled = YES;
     [self.editView addGestureRecognizer:singleTap];
+    
+    self.avatarConstraintY.constant = -15;
 }
 
 - (void)loginStateChanged:(BOOL)loginState nickname:(NSString*)nickname avatar:(NSString*)avatar
