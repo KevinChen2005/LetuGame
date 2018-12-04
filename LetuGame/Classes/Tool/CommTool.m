@@ -86,8 +86,9 @@
         NSDictionary* retDict = retObj;
         NSString* code = [NSString stringWithFormat:@"%@", retDict[@"code"]];
         NSString* message = [NSString stringWithFormat:@"%@", retDict[@"message"]];
+        NSString* data = [NSString stringWithFormat:@"%@", retDict[@"data"]];//ios包的下载地址
         if ([code isEqualToString:@"1"]) { //成功
-            [FJProgressHUB showInfoWithMessage:@"请求成功，游戏信息将以短信形式下发，请注意查收！" withTimeInterval:3.0f];
+            [self openDownloadUrl:data];
         } else {
             [FJProgressHUB showInfoWithMessage:message withTimeInterval:1.5f];
         }
@@ -95,6 +96,28 @@
         DLog(@"wantPlayGame send error - %@", error);
         [FJProgressHUB showInfoWithMessage:@"请求失败！" withTimeInterval:1.5f];
     }];
+    
+//    [HttpTool wantPlayGameWithId:gameId Success:^(id retObj) {
+//        DLog(@"wantPlayGame send retObj - %@", retObj);
+//        NSDictionary* retDict = retObj;
+//        NSString* code = [NSString stringWithFormat:@"%@", retDict[@"code"]];
+//        NSString* message = [NSString stringWithFormat:@"%@", retDict[@"message"]];
+//        if ([code isEqualToString:@"1"]) { //成功
+//            [FJProgressHUB showInfoWithMessage:@"请求成功，游戏信息将以短信形式下发，请注意查收！" withTimeInterval:3.0f];
+//        } else {
+//            [FJProgressHUB showInfoWithMessage:message withTimeInterval:1.5f];
+//        }
+//    } failure:^(NSError *error) {
+//        DLog(@"wantPlayGame send error - %@", error);
+//        [FJProgressHUB showInfoWithMessage:@"请求失败！" withTimeInterval:1.5f];
+//    }];
+}
+
++ (void)openDownloadUrl:(NSString*)url
+{
+    [FJPopView showConfirmViewWithTitle:@"温馨提示" message:@"是否前往浏览器打开游戏下载页面？" okTitle:@"前往" cancelTitle:@"取消" okBlock:^{
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    } cancelBlock:nil];
 }
 
 + (UIButton*)wantPlayGameButtonWithTitle:(NSString*)title image:(NSString*)image Target:(id)target Action:(SEL)action

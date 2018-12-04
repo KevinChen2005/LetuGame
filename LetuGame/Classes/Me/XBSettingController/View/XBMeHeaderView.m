@@ -43,7 +43,6 @@
 - (void)setupHeaderCircle
 {
     _isLogin = NO;
-    
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickLoginBtn:)];
     self.editView.userInteractionEnabled = YES;
     [self.editView addGestureRecognizer:singleTap];
