@@ -36,8 +36,8 @@
     self.contentView.layer.cornerRadius = 10;
     
     // 添加长按手势
-//    UILongPressGestureRecognizer* longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressAction)];
-//    [self addGestureRecognizer:longPressGesture];
+    UILongPressGestureRecognizer* longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressAction)];
+    [self addGestureRecognizer:longPressGesture];
     
     _longPressState = NO;
 }
@@ -58,34 +58,34 @@
     _longPressState = game.isEdit;
     
     //动画（点击编辑后的摇头动画）
-//    CGFloat duration = 0.14;
-//    CGFloat angle = 0.02; //动画左右摇摆角度
-//    if (game.isEdit == YES) { //可删除
-//        [UIView animateWithDuration:duration delay:0 options:0  animations:^{
-//             //顺时针旋转0.05 = 0.05 * 180 = 9°
-//             self.transform=CGAffineTransformMakeRotation(-angle);
-//         } completion:^(BOOL finished) {
-//             //  重复                                  反向            动画时接收交互
-//             /**
-//              UIViewAnimationOptionAllowUserInteraction      //动画过程中可交互
-//              UIViewAnimationOptionBeginFromCurrentState     //从当前值开始动画
-//              UIViewAnimationOptionRepeat                    //动画重复执行
-//              UIViewAnimationOptionAutoreverse               //来回运行动画
-//              UIViewAnimationOptionOverrideInheritedDuration //忽略嵌套的持续时间
-//              UIViewAnimationOptionOverrideInheritedCurve    = 1 <<  6, // ignore nested curve
-//              UIViewAnimationOptionAllowAnimatedContent      = 1 <<  7, // animate contents (applies to transitions only)
-//              UIViewAnimationOptionShowHideTransitionViews   = 1 <<  8, // flip to/from hidden state instead of adding/removing
-//              UIViewAnimationOptionOverrideInheritedOptions  = 1 <<  9, // do not inherit any options or animation type
-//              */
-//             [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionRepeat|UIViewAnimationOptionAutoreverse|UIViewAnimationOptionAllowUserInteraction  animations:^{
-//                  self.transform=CGAffineTransformMakeRotation(angle);
-//              } completion:^(BOOL finished) {}];
-//         }];
-//    } else { //不可删除
-//        [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:^{
-//             self.transform=CGAffineTransformIdentity;
-//         } completion:^(BOOL finished) {}];
-//    }
+    CGFloat duration = 0.14;
+    CGFloat angle = 0.02; //动画左右摇摆角度
+    if (game.isEdit == YES) { //可删除
+        [UIView animateWithDuration:duration delay:0 options:0  animations:^{
+             //顺时针旋转0.05 = 0.05 * 180 = 9°
+             self.transform=CGAffineTransformMakeRotation(-angle);
+         } completion:^(BOOL finished) {
+             //  重复                                  反向            动画时接收交互
+             /**
+              UIViewAnimationOptionAllowUserInteraction      //动画过程中可交互
+              UIViewAnimationOptionBeginFromCurrentState     //从当前值开始动画
+              UIViewAnimationOptionRepeat                    //动画重复执行
+              UIViewAnimationOptionAutoreverse               //来回运行动画
+              UIViewAnimationOptionOverrideInheritedDuration //忽略嵌套的持续时间
+              UIViewAnimationOptionOverrideInheritedCurve    = 1 <<  6, // ignore nested curve
+              UIViewAnimationOptionAllowAnimatedContent      = 1 <<  7, // animate contents (applies to transitions only)
+              UIViewAnimationOptionShowHideTransitionViews   = 1 <<  8, // flip to/from hidden state instead of adding/removing
+              UIViewAnimationOptionOverrideInheritedOptions  = 1 <<  9, // do not inherit any options or animation type
+              */
+             [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionRepeat|UIViewAnimationOptionAutoreverse|UIViewAnimationOptionAllowUserInteraction  animations:^{
+                  self.transform=CGAffineTransformMakeRotation(angle);
+              } completion:^(BOOL finished) {}];
+         }];
+    } else { //不可删除
+        [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:^{
+             self.transform=CGAffineTransformIdentity;
+         } completion:^(BOOL finished) {}];
+    }
 }
 
 - (IBAction)onClickDelete:(id)sender

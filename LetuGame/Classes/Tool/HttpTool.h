@@ -248,6 +248,16 @@ typedef void(^FJNetworkStatusBlock)(FJNetworkStatusType networkStatus);
  */
 + (void)findPasswordWithVerifyCode:(NSString*)verifyCode newPwd:(NSString*)newPassword Success:(successBlock)success failure:(failureBlock)failure;
 
+/**
+ 获取用户信息（推广员认证信息）
+ */
++ (void)getUserDetailSuccess:(successBlock)success failure:(failureBlock)failure;
+
+/**
+ 更新用户信息（推广员认证信息）
+ */
++ (void)updateUserDetailWithRealName:(NSString*)realName idNumber:(NSString*)idNumber bankCardNumber:(NSString*)bankCardNumber openBank:(NSString*)openBank idCardUrl1:(NSString*)idCardUrl1 idCardUrl2:(NSString*)idCardUrl2 password:(NSString*)password Success:(successBlock)success failure:(failureBlock)failure;
+
 #pragma mark - 上传图片
 /**
  上传图片

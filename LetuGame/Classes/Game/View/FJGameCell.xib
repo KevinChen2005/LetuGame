@@ -26,6 +26,7 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_place_holder_icon" translatesAutoresizingMaskIntoConstraints="NO" id="IPz-1k-Ias">
                         <rect key="frame" x="16" y="24" width="65" height="65"/>
+                        <color key="backgroundColor" red="0.96337565010000004" green="0.97291402279999994" blue="0.97291402279999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="65" id="8Ux-I9-OUt"/>
                             <constraint firstAttribute="height" constant="65" id="alk-nh-LSH"/>

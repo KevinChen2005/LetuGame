@@ -80,4 +80,14 @@
  */
 + (NSString*)contentForFileName:(NSString*)filename ofType:(NSString*)type;
 
+/**
+ *  获取当前的keyWindow
+ */
++ (UIWindow*)getCurrentWindow;
+
+/**
+ *  获取当前keyWindow的rootViewController
+ */
++ (UIViewController*)getCurrentWindowRootVC;
+
 @end

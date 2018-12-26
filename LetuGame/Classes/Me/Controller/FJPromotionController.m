@@ -58,6 +58,7 @@
         STRONGSELF
         DLog(@"retObj = %@", retObj);
         NSDictionary* retDict = retObj;
+        NSString* message = retDict[@"message"];
         if ([retDict[@"code"] isEqualToString:@"1"]) {
             NSArray* arr = retDict[@"data"];
             if (arr == nil || [arr isEqual:[NSNull null]] || arr.count <= 0) {
@@ -75,7 +76,8 @@
             }];
             [strongSelf.tableView reloadData];
         } else {
-            [FJProgressHUB showInfoWithMessage:@"加载数据失败！" withTimeInterval:1.5f];
+            message = (message==nil) ? @"加载数据失败！" : message;
+            [FJProgressHUB showInfoWithMessage:message withTimeInterval:1.5f];
         }
     } failure:^(NSError *error) {
         DLog(@"fetchPromotionList error = %@", error);

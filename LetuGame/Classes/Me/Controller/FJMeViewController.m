@@ -16,6 +16,7 @@
 #import "FJOrderGameController.h"
 #import "FJWebViewController.h"
 #import "FJPromotionController.h"
+#import "FJIdentificationViewController.h"
 
 @interface FJMeViewController () <XBMeHeaderViewDelegate, XBMeFooterViewDelegate>
 
@@ -113,10 +114,23 @@
         [self.navigationController pushViewController:promotionVC animated:YES];
     };
     
+    XBSettingItemModel *item41 = [[XBSettingItemModel alloc]init];
+    item41.funcName = @"我的账户";
+    item41.img = [UIImage imageNamed:@"tu_ic_dangqianbanben"];
+    item41.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
+    item41.executeCode = ^{
+        if (![CommTool isLogined]) {
+            [CommTool showLoginPageWithNavVC:self.navigationController];
+            return ;
+        }
+        FJIdentificationViewController* identifyVC = [[FJIdentificationViewController alloc] init];
+        [self.navigationController pushViewController:identifyVC animated:YES];
+    };
+    
     XBSettingSectionModel *section1 = [[XBSettingSectionModel alloc]init];
     section1.sectionHeaderHeight = 15;
     if ([UserAuth shared].isLogin && [UserAuth shared].userInfo.isSpreader){//是推广员，并且登录
-        section1.itemArray = @[item1, item3, item4];
+        section1.itemArray = @[item1, item3, item4, item41];
     } else {
         section1.itemArray = @[item1, item3];
     }

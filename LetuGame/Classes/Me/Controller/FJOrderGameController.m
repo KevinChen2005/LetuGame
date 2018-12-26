@@ -12,6 +12,8 @@
 #import "FJGame.h"
 #import "FJGameDetailController.h"
 
+#define kShowEdit 0 //控制显示右上角的编辑按钮
+
 @interface FJOrderGameController ()<FJOrderGameCellDelegate>
 {
     BOOL _isEditModel;
@@ -90,21 +92,23 @@ static NSString * const reuseIdentifier = @"Cell";
     }];
     self.collectionView.mj_header = mjHeader;
     self.mjHeaderView = mjHeader;
-    
+  
+#if kShowEdit
     // 右上角“编辑”
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [button setTitle:@"编辑" forState:UIControlStateNormal];
-//    [button setTitle:@"完成" forState:UIControlStateSelected];
-//    [button setTitleColor:FJRGBColor(0, 130, 188) forState:UIControlStateNormal];
-//    [button sizeToFit];
-//    [button.titleLabel setFont:FJNavbarItemFont];
-//    [button addTarget:self action:@selector(onClickEdit:) forControlEvents:UIControlEventTouchUpInside];
-//    self.editButton = button;
-//    
-//    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-//    self.navigationItem.rightBarButtonItem = rightItem;
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterForeground) name:kNotificationAppWillEnterForeground object:nil];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"编辑" forState:UIControlStateNormal];
+    [button setTitle:@"完成" forState:UIControlStateSelected];
+    [button setTitleColor:FJWhiteColor forState:UIControlStateNormal];
+    [button sizeToFit];
+    [button.titleLabel setFont:FJNavbarItemFont];
+    [button addTarget:self action:@selector(onClickEdit:) forControlEvents:UIControlEventTouchUpInside];
+    self.editButton = button;
+    
+    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterForeground) name:kNotificationAppWillEnterForeground object:nil];
+#endif
 }
 
 // APP从后台进入前台，重新loadData，如果是编辑状态可以重新启动动画

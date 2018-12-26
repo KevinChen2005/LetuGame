@@ -291,6 +291,11 @@
 		84B2A8C521142D7D00BEB5A8 /* NSJSON+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C121142D7C00BEB5A8 /* NSJSON+Extension.m */; };
 		84B2A8C621142D7D00BEB5A8 /* NSString+CaclSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C321142D7D00BEB5A8 /* NSString+CaclSize.m */; };
 		84B2A8C92117EA4200BEB5A8 /* UIImage+Wechat.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C72117EA4200BEB5A8 /* UIImage+Wechat.m */; };
+		84CE5D4221D0CA3A008FA326 /* FJIdentificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE5D4021D0CA3A008FA326 /* FJIdentificationViewController.m */; };
+		84CE5D4321D0CA3A008FA326 /* FJIdentificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CE5D4121D0CA3A008FA326 /* FJIdentificationViewController.xib */; };
+		84CE5D4621D218DE008FA326 /* FJUserDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE5D4521D218DE008FA326 /* FJUserDetailModel.m */; };
+		84CE5D4D21D35359008FA326 /* FJConfirmPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE5D4B21D35359008FA326 /* FJConfirmPwdViewController.m */; };
+		84CE5D4E21D35359008FA326 /* FJConfirmPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CE5D4C21D35359008FA326 /* FJConfirmPwdViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -858,6 +863,14 @@
 		84B2A8C421142D7D00BEB5A8 /* NSJSON+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSON+Extension.h"; sourceTree = "<group>"; };
 		84B2A8C72117EA4200BEB5A8 /* UIImage+Wechat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Wechat.m"; sourceTree = "<group>"; };
 		84B2A8C82117EA4200BEB5A8 /* UIImage+Wechat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Wechat.h"; sourceTree = "<group>"; };
+		84CE5D3F21D0CA3A008FA326 /* FJIdentificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJIdentificationViewController.h; sourceTree = "<group>"; };
+		84CE5D4021D0CA3A008FA326 /* FJIdentificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJIdentificationViewController.m; sourceTree = "<group>"; };
+		84CE5D4121D0CA3A008FA326 /* FJIdentificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FJIdentificationViewController.xib; sourceTree = "<group>"; };
+		84CE5D4421D218DE008FA326 /* FJUserDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJUserDetailModel.h; sourceTree = "<group>"; };
+		84CE5D4521D218DE008FA326 /* FJUserDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJUserDetailModel.m; sourceTree = "<group>"; };
+		84CE5D4A21D35359008FA326 /* FJConfirmPwdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJConfirmPwdViewController.h; sourceTree = "<group>"; };
+		84CE5D4B21D35359008FA326 /* FJConfirmPwdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJConfirmPwdViewController.m; sourceTree = "<group>"; };
+		84CE5D4C21D35359008FA326 /* FJConfirmPwdViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FJConfirmPwdViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -897,6 +910,12 @@
 				840641BE2110126500F88007 /* FJPromotionDetailController.m */,
 				84A9133A2147B09900D80E63 /* FJSettleDetailController.h */,
 				84A9133B2147B09900D80E63 /* FJSettleDetailController.m */,
+				84CE5D3F21D0CA3A008FA326 /* FJIdentificationViewController.h */,
+				84CE5D4021D0CA3A008FA326 /* FJIdentificationViewController.m */,
+				84CE5D4121D0CA3A008FA326 /* FJIdentificationViewController.xib */,
+				84CE5D4A21D35359008FA326 /* FJConfirmPwdViewController.h */,
+				84CE5D4B21D35359008FA326 /* FJConfirmPwdViewController.m */,
+				84CE5D4C21D35359008FA326 /* FJConfirmPwdViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1397,6 +1416,8 @@
 				848D0839212BF9E1006D749B /* FJPromotionDetailModel.m */,
 				84A913422147C19B00D80E63 /* FJSettleDetailModel.h */,
 				84A913432147C19B00D80E63 /* FJSettleDetailModel.m */,
+				84CE5D4421D218DE008FA326 /* FJUserDetailModel.h */,
+				84CE5D4521D218DE008FA326 /* FJUserDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2095,6 +2116,7 @@
 				84A3EFFB20F5ED1100879FB7 /* FJGameCell.xib in Resources */,
 				840641A9210B36DD00F88007 /* FJModifyPwdController.xib in Resources */,
 				84A3F06C20F891A300879FB7 /* FJGameToolbar.xib in Resources */,
+				84CE5D4321D0CA3A008FA326 /* FJIdentificationViewController.xib in Resources */,
 				848D0837212BF9B0006D749B /* FJPromotionDetailCell.xib in Resources */,
 				84A3EFC820F4AAFF00879FB7 /* FJNewsCell.xib in Resources */,
 				848D0832212BE1FA006D749B /* FJPromotionDeteilHeader.xib in Resources */,
@@ -2121,6 +2143,7 @@
 				84451EB920EDFFE7001044FD /* XBMeHeaderView.xib in Resources */,
 				845C4872213FB3F300D60D22 /* FJNewsTitleView.xib in Resources */,
 				845C4831213A732100D60D22 /* SourceHanSansCN-ExtraLight.otf in Resources */,
+				84CE5D4E21D35359008FA326 /* FJConfirmPwdViewController.xib in Resources */,
 				84451EDA20F0656F001044FD /* FJRegisterViewController.xib in Resources */,
 				84451E5920EDFAE4001044FD /* README.md in Resources */,
 				84503A5B210087C50007437B /* me_user_protocol.html in Resources */,
@@ -2140,6 +2163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84451EEA20F0AAD4001044FD /* Base64.m in Sources */,
+				84CE5D4621D218DE008FA326 /* FJUserDetailModel.m in Sources */,
 				84A3EF6020F34FAB00879FB7 /* TAAbstractDotView.m in Sources */,
 				84A3EF5D20F34FAB00879FB7 /* TADotView.m in Sources */,
 				84451E9320EDFAE4001044FD /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -2260,6 +2284,7 @@
 				848D0919212D79D8006D749B /* UIColor+PGHex.m in Sources */,
 				84451E4F20EDFAE4001044FD /* NSObject+MJKeyValue.m in Sources */,
 				84451E9220EDFAE4001044FD /* SDWebImageDecoder.m in Sources */,
+				84CE5D4221D0CA3A008FA326 /* FJIdentificationViewController.m in Sources */,
 				84A3EF6C20F3652C00879FB7 /* FJHomeViewController.m in Sources */,
 				84451E9B20EDFAE4001044FD /* NSData+ImageContentType.m in Sources */,
 				84A3EF2F20F30CB700879FB7 /* UIView+FJExtension.m in Sources */,
@@ -2350,6 +2375,7 @@
 				84451E5420EDFAE4001044FD /* NSObject+MJClass.m in Sources */,
 				84451E5220EDFAE4001044FD /* MJExtensionConst.m in Sources */,
 				84772CA621267A8600029A4F /* MJRefreshBackGifFooter.m in Sources */,
+				84CE5D4D21D35359008FA326 /* FJConfirmPwdViewController.m in Sources */,
 				84451E5520EDFAE4001044FD /* NSString+MJExtension.m in Sources */,
 				84772CA321267A8600029A4F /* UIScrollView+MJExtension.m in Sources */,
 				84503A2020FE0D8A0007437B /* FJWriteStrategyController.m in Sources */,

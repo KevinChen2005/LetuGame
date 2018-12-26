@@ -24,7 +24,7 @@
 
 #if DevelopSever
 /**开发服务器*/
-#define URL_MAIN @"http://192.168.5.168:8000/GameSales"
+#define URL_MAIN @"http://192.168.5.222:8080/GameSales"
 #elif TestSever
 /**测试服务器*/
 #define URL_MAIN @"http://59.111.103.96:8000/GameSales"

@@ -34,6 +34,14 @@
 // 格式化时间戳输出
 - (NSString *)timeFormat;
 
+//身份证号验证 1900+/2000+的年份日期的正则表达式经过修改
+//返回yes位表示格式正确，否则no为错误
+-(BOOL)isIDCard;
+
+//银行卡验证
+//返回yes位表示格式正确，否则no为错误
+- (BOOL)isBankCardNumber;
+
 @end
 
 

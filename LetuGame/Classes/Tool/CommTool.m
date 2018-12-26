@@ -208,4 +208,34 @@
     
 }
 
+/**
+ *  获取当前的keyWindow
+ */
++ (UIWindow*)getCurrentWindow
+{
+    UIWindow* window = [UIApplication sharedApplication].keyWindow;
+    
+    if (window && window.windowLevel == UIWindowLevelNormal) {
+        return window;
+    }
+    
+    NSArray* windows = [[UIApplication sharedApplication] windows];
+    for (UIWindow* w in windows) {
+        if (w.windowLevel == UIWindowLevelNormal) {
+            window = w;
+            break;
+        }
+    }
+    
+    return window;
+}
+
+/**
+ *  获取当前keyWindow的rootViewController
+ */
++ (UIViewController*)getCurrentWindowRootVC
+{
+    return [self getCurrentWindow].rootViewController;
+}
+
 @end

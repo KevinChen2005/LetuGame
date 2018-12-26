@@ -588,6 +588,36 @@
     [self postShowToastWithURL:kUrl(@"user/forgetPassword") params:params success:success failure:failure];
 }
 
+/**
+ 获取用户信息（推广员认证信息）
+ */
++ (void)getUserDetailSuccess:(successBlock)success failure:(failureBlock)failure
+{
+    NSDictionary* params = @{
+                             @"token"        : [CommTool safeString:[UserAuth shared].userInfo.token],
+                             };
+    [self postShowToastWithURL:kUrl(@"user/findUserDetail") params:params success:success failure:failure];
+}
+
+/**
+ 更新用户信息（推广员认证信息）
+ */
++ (void)updateUserDetailWithRealName:(NSString*)realName idNumber:(NSString*)idNumber bankCardNumber:(NSString*)bankCardNumber openBank:(NSString*)openBank idCardUrl1:(NSString*)idCardUrl1 idCardUrl2:(NSString*)idCardUrl2 password:(NSString*)password Success:(successBlock)success failure:(failureBlock)failure
+{
+    NSDictionary* params = @{
+                             @"token"       : [CommTool safeString:[UserAuth shared].userInfo.token],
+                             @"realName"    : [CommTool safeString:realName],
+                             @"idNumber"    : [CommTool safeString:idNumber],
+                             @"bankCardNumber"  : [CommTool safeString:bankCardNumber],
+                             @"openBank"    : [CommTool safeString:openBank],
+                             @"idCardUrl1"  : [CommTool safeString:idCardUrl1],
+                             @"idCardUrl1"  : [CommTool safeString:idCardUrl1],
+                             @"other"       : [CommTool safeString:@""],
+                             @"password"    : [CommTool safeString:password],//密码，用于服务端验证
+                             };
+    [self postShowToastWithURL:kUrl(@"user/updateUserDetail") params:params success:success failure:failure];
+}
+
 #pragma mark - 上传图片
 /**
  上传图片
